@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Première Immo — Démo motion</title>
+<link rel="stylesheet" href="../node_modules/@fontsource-variable/inter-tight/index.css">
+<link rel="stylesheet" href="../node_modules/@fontsource-variable/inter/index.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/instrument-serif/400-italic.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Icônes (tracés Feather Icons, licence MIT) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><line x1="21" y1="21" x2="16.4" y2="16.4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-pin-solid" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 1a9 9 0 0 0-9 9c0 7 9 13 9 13s9-6 9-13a9 9 0 0 0-9-9zm0 12.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+    <symbol id="i-like" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon fill="currentColor" stroke="none" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <!-- Monogramme provisoire Première Immo : un toit + le « 1 » -->
+    <symbol id="i-mark" viewBox="0 0 100 100"><path d="M50 85 H15 V46 L50 16 L85 46 V85 Z"/><path d="M39 49 L53 40 V75"/></symbol>
+  </defs>
+</svg>
+
+<div id="viewport">
+<div id="stage">
+<div id="bump">
+
+  <!-- ============ PLAN A — S1 accroche + S2 question (fond encre) ============ -->
+  <section class="shot" id="shotA">
+    <div class="bg bg-ink"></div>
+    <div class="glow glow-a1"></div>
+    <div class="glow glow-a2"></div>
+    <div class="glow glow-red"></div>
+    <div class="cam" id="camA">
+
+      <div id="s1">
+        <div class="s1-row">
+          <div class="s1-phone">
+            <svg class="s1-wave s1-wave-l" viewBox="0 0 100 200"><path d="M70 40 Q30 100 70 160"/></svg>
+            <svg class="s1-wave s1-wave-l2" viewBox="0 0 100 200"><path d="M60 15 Q0 100 60 185"/></svg>
+            <svg class="s1-wave s1-wave-r" viewBox="0 0 100 200"><path d="M30 40 Q70 100 30 160"/></svg>
+            <svg class="s1-wave s1-wave-r2" viewBox="0 0 100 200"><path d="M40 15 Q100 100 40 185"/></svg>
+            <svg class="ico s1-handset"><use href="#i-phone"/></svg>
+          </div>
+          <div class="s1-lines">
+            <div class="mask"><div class="ln" id="s1l1">Le démarchage</div></div>
+            <div class="mask"><div class="ln" id="s1l2">téléphonique</div></div>
+            <div class="strike"></div>
+          </div>
+        </div>
+        <div class="s1-fin"><div class="mask"><div class="ln serif" id="s1fin">c’est fini.</div></div></div>
+        <div class="chip s1-chip"><i class="dot-red"></i>Depuis le 11 août 2026</div>
+      </div>
+
+      <div id="s2">
+        <div class="mask"><div class="ln"><span class="w">Et</span> <span class="w">si</span> <span class="w">les</span> <span class="w">vendeurs</span></div></div>
+        <div class="mask"><div class="ln"><span class="w">vous</span> <span class="w">trouvaient</span></div></div>
+        <div class="mask"><div class="ln"><span class="w serif s2-em">d’eux-mêmes</span><span class="w serif s2-q">&#8239;?</span></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PLAN B — S3 recherche Google → n°1 (fond papier) ============ -->
+  <section class="shot" id="shotB">
+    <div class="bg bg-paper"></div>
+    <svg class="map" id="map" viewBox="0 0 1920 1080" width="1920" height="1080"></svg>
+    <div class="pins" id="pins"></div>
+    <div class="cam" id="camB">
+      <i class="shock"></i><i class="shock"></i>
+      <div class="s3-head"><div class="mask"><div class="ln" id="s3head">Ils vous trouvent <span class="serif accent-ink">en premier.</span></div></div></div>
+
+      <div class="search" id="search">
+        <svg class="ico search-ico"><use href="#i-search"/></svg>
+        <div class="search-text"><span id="typed"></span><i class="caret" id="caret"></i></div>
+        <div class="search-btn"><svg class="ico"><use href="#i-arrow"/></svg></div>
+      </div>
+
+      <div class="results">
+        <div class="res res-a"><i class="sk-sq"></i><div class="sk-lines"><i style="width:380px"></i><i style="width:560px"></i></div><div class="sk-stars"><i></i><i></i><i></i></div></div>
+        <div class="res res-b"><i class="sk-sq"></i><div class="sk-lines"><i style="width:320px"></i><i style="width:500px"></i></div><div class="sk-stars"><i></i><i></i><i></i></div></div>
+        <div class="res res-me" id="resMe">
+          <div class="res-in">
+            <div class="me-ico"><svg class="ico"><use href="#i-pin-solid"/></svg></div>
+            <div class="me-txt">
+              <div class="me-title">Votre agence</div>
+              <div class="me-sub"><span class="stars"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></span><b>4,9</b> · Agence immobilière · Votre secteur</div>
+            </div>
+            <div class="badge-n1">N°1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLAN C — S4 canaux → S5 leads → S6 rappeler (fond encre, travelling) ============ -->
+  <section class="shot" id="shotC">
+    <div class="bg bg-ink"></div>
+    <div class="dotgrid" id="dotgrid"></div>
+    <div class="glow glow-c1"></div>
+    <div class="cam" id="camC">
+      <div class="world" id="world">
+        <svg class="flow" id="flow" viewBox="0 0 3840 1080" width="3840" height="1080"></svg>
+
+        <div class="s4-head"><div class="mask"><div class="ln" id="s4head">On s’occupe de <span class="serif accent-2">tout.</span></div></div></div>
+
+        <div class="chips" id="chips"></div>
+
+        <div class="hub" id="hub">
+          <i class="hub-ring r1"></i><i class="hub-ring r2"></i><i class="hub-ring r3"></i>
+          <div class="hub-core"><svg class="ico mark"><use href="#i-mark"/></svg></div>
+          <div class="hub-label">Première Immo</div>
+        </div>
+        <div class="out-label" id="outLabel">Leads vendeurs <svg class="ico"><use href="#i-arrow"/></svg></div>
+
+        <div class="s5-head">
+          <div class="mask"><div class="ln" id="s5l1">Les leads vendeurs</div></div>
+          <div class="mask"><div class="ln" id="s5l2">arrivent <span class="serif accent-2">en direct.</span></div></div>
+        </div>
+        <div class="s6-head">
+          <div class="mask"><div class="ln" id="s6l1">Votre seul travail&#8239;:</div></div>
+          <div class="mask"><div class="ln serif green" id="s6l2">rappeler.</div></div>
+        </div>
+
+        <div class="phone-wrap" id="phoneWrap">
+          <div class="phone" id="phone">
+            <div class="phone-screen">
+              <div class="wall"></div>
+              <div class="island"></div>
+              <div class="status"><span>9:41</span><span class="st-r"><i></i><i></i><i></i><b></b></span></div>
+              <div class="lock-clock">9:41</div>
+              <div class="lock-date">Mardi 29 septembre</div>
+            </div>
+          </div>
+          <div class="notifs" id="notifs"></div>
+          <div class="lead" id="lead">
+            <div class="lead-top">
+              <div class="avatar">SM</div>
+              <div class="lead-id"><div class="lead-name">Sophie M.</div><div class="lead-sub">Propriétaire · Maison 120 m²</div></div>
+            </div>
+            <div class="lead-tags"><span class="tg tg-a">Estimation demandée</span><span class="tg tg-g">Vente sous 3 mois</span></div>
+            <div class="lead-calling" id="calling">Appel en cours…</div>
+            <div class="call-btn" id="callBtn">
+              <i class="call-ring cr1"></i><i class="call-ring cr2"></i>
+              <svg class="ico call-ico" id="callIco"><use href="#i-phone"/></svg>
+              <span class="call-lbl" id="callLbl">Rappeler</span>
+            </div>
+          </div>
+          <div class="touch" id="touch"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLAN D — S7 ×2 mandats + tableau de bord (fond accent) ============ -->
+  <section class="shot" id="shotD">
+    <div class="bg bg-accent"></div>
+    <div class="marquee" id="marquee"></div>
+    <div class="growbars" id="growbars"></div>
+    <div class="cam" id="camD">
+      <div class="s7-x2" id="x2">
+        <span class="x2-x">×</span><span class="x2-roll"><span class="x2-reel" id="x2reel"><span>1</span><span>2</span></span></span>
+      </div>
+      <div class="s7-text">
+        <div class="mask"><div class="ln" id="s7l1">Doublez</div></div>
+        <div class="mask"><div class="ln" id="s7l2">vos <span class="serif">mandats.</span></div></div>
+      </div>
+
+      <div class="s7-cap"><div class="mask"><div class="ln" id="s7cap">Vos résultats, <span class="serif">chaque mois.</span></div></div></div>
+      <div class="dash-3d">
+        <div class="dash" id="dash">
+          <div class="dash-top">
+            <div class="dash-brand"><span class="dash-logo"><svg class="ico mark"><use href="#i-mark"/></svg></span>Rapport mensuel</div>
+            <div class="dash-month"><svg class="ico"><use href="#i-calendar"/></svg>Septembre</div>
+          </div>
+          <div class="kpis">
+            <div class="kpi"><div class="kpi-l">Leads vendeurs</div><div class="kpi-v"><span class="num" data-to="32">0</span><em class="up"><svg class="ico"><use href="#i-trend"/></svg></em></div></div>
+            <div class="kpi"><div class="kpi-l">RDV estimation</div><div class="kpi-v"><span class="num" data-to="14">0</span><em class="up"><svg class="ico"><use href="#i-trend"/></svg></em></div></div>
+            <div class="kpi kpi-hi"><div class="kpi-l">Mandats</div><div class="kpi-v"><span class="num" data-to="100" data-pre="+" data-suf="&#8239;%">0</span></div></div>
+          </div>
+          <svg class="chart" id="chart" viewBox="0 0 1220 250" width="1220" height="250"></svg>
+        </div>
+      </div>
+      <div class="tag-dedie" id="tagDedie"><span class="td-ico"><svg class="ico"><use href="#i-headset"/></svg></span>Interlocuteur dédié</div>
+      <div class="stamp" id="stamp"><svg class="ico"><use href="#i-check"/></svg>Sans engagement</div>
+    </div>
+  </section>
+
+  <!-- ============ PLAN E — S8 pour qui (fond encre) ============ -->
+  <section class="shot" id="shotE">
+    <div class="bg bg-ink"></div>
+    <div class="glow glow-e1"></div>
+    <div class="cam" id="camE">
+      <div class="s8">
+        <div class="s8-pour"><div class="mask"><div class="ln" id="s8pour">Pour les</div></div></div>
+        <ul class="s8-list" id="s8list">
+          <li><span class="s8-i">01</span><div class="mask"><div class="ln serif">agents immobiliers</div></div><i class="s8-rule"></i></li>
+          <li><span class="s8-i">02</span><div class="mask"><div class="ln serif">mandataires</div></div><i class="s8-rule"></i></li>
+          <li><span class="s8-i">03</span><div class="mask"><div class="ln serif">directeurs d’agence</div></div><i class="s8-rule"></i></li>
+          <li><span class="s8-i">04</span><div class="mask"><div class="ln serif">réseaux indépendants</div></div><i class="s8-rule"></i></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLAN F — S9 signature + appel à l'action ============ -->
+  <section class="shot" id="shotF">
+    <div class="bg bg-ink"></div>
+    <div class="s9-glow" id="s9glow"></div>
+    <div class="s9-ring" id="s9ring"></div>
+    <div class="cam" id="camF">
+      <svg class="burst" id="burst" viewBox="-400 -400 800 800" width="800" height="800"></svg>
+      <div class="logo">
+        <div class="logo-mark" id="logoMark"><svg viewBox="0 0 100 100"><path id="mRoof" d="M50 85 H15 V46 L50 16 L85 46 V85 Z"/><path id="mOne" d="M39 49 L53 40 V75"/></svg></div>
+        <div class="logo-word"><div class="mask"><div class="ln" id="logoWord">Première<span class="serif"> Immo</span></div></div></div>
+      </div>
+      <div class="s9-kicker"><div class="mask"><div class="ln" id="kicker">Agence marketing digital immobilier</div></div></div>
+      <div class="s9-tag"><div class="mask"><div class="ln" id="s9tag">Devenez l’agent <span class="gold">n°1</span> de votre secteur.</div></div></div>
+      <div class="cta" id="cta">
+        <div class="cta-in"><span id="ctaTxt">Appel découverte gratuit · 15&#8239;min</span><span class="cta-arrow"><svg class="ico"><use href="#i-arrow"/></svg></span></div>
+        <i class="cta-shine" id="ctaShine"></i>
+      </div>
+      <div class="s9-sub" id="s9sub">Sans engagement</div>
+      <div class="s9-url"><span id="s9url">premiere-immo.fr</span></div>
+    </div>
+  </section>
+
+</div><!-- /bump -->
+
+  <!-- Couches de transition -->
+  <div id="tx">
+    <div class="tx-zoomer" id="zoomer"></div>
+    <div class="tx-circle" id="txCircle"></div>
+    <div class="tx-bars" id="txBars"></div>
+  </div>
+  <div id="flash"></div>
+  <div id="vignette"></div>
+</div>
+</div>
+
+<div id="hud"></div>
+
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../node_modules/gsap/dist/CustomEase.min.js"></script>
+<script src="../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
