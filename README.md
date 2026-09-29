@@ -25,7 +25,7 @@ Tout est calé sur une musique à 120 BPM (1 temps = 0,5 s) : les coupes et les 
 | 18–20 s | Liste des cibles, roulement de caisse claire | **Pour les agents immobiliers, mandataires, directeurs d'agence, réseaux indépendants** |
 | 20–25 s | Impact final, signature, appel à l'action | **Première Immo · Devenez l'agent n°1 de votre secteur · Appel découverte gratuit · 15 min · Sans engagement · premiere-immo.fr** |
 
-Techniques utilisées : texte révélé par masques, lettre par lettre ; raccords de mouvement (le « ? » devient un cercle, puis une barre de recherche ; la fiche devient l'écran suivant ; le bouton d'appel devient le fond) ; tracés dessinés en SVG ; particules synchronisées sur la musique ; travelling avec parallaxe ; perspective 3D ; caméra qui avance et tremble sur les impacts. Le **flou de mouvement** est réel : chaque image est la moyenne de 5 sous-images, comme un obturateur à 180°.
+Techniques utilisées : texte révélé par masques, lettre par lettre ; raccords de mouvement (le « ? » devient un cercle, puis une barre de recherche ; la fiche devient l'écran suivant ; le bouton d'appel devient le fond) ; tracés dessinés en SVG ; particules synchronisées sur la musique ; travelling avec parallaxe ; perspective 3D ; caméra qui avance et tremble sur les impacts. Le **flou de mouvement** est réel et adaptatif : chaque image est la moyenne de 6 à 48 sous-images, selon la vitesse mesurée, comme un obturateur de caméra à 180°.
 
 ## Intégrer la vidéo sur le site
 
@@ -62,12 +62,12 @@ npx playwright install chromium       # si Chromium n'est pas déjà présent
 
 npm run preview                       # aperçu temps réel dans le navigateur (espace = pause, ←/→ = ±1 s)
 npm run stills -- 4.5 12.8 23         # images fixes dans build/stills/
-npm run build                         # rendu final complet → video/ (≈ 5 min)
+npm run build                         # rendu final complet → video/ (≈ 15 min)
 ./scripts/build.sh --sub 1            # rendu rapide sans flou de mouvement
 ```
 
 Fonctionnement : `src/index.html` contient toute l'animation, sous forme d'une timeline GSAP en pause.
-`scripts/render.mjs` la pilote image par image dans Chromium (Playwright) et envoie les images à ffmpeg.
+`scripts/render.mjs` la pilote image par image dans Chromium (Playwright). Il mesure d'abord le mouvement, puis fait la moyenne des sous-images de chaque image avant de les envoyer à ffmpeg (H.264, BT.709).
 La timeline exporte aussi ses repères sonores (`build/cues.json`). `scripts/audio.py` s'en sert pour synthétiser
 la musique et chaque effet au bon moment. La loudness est normalisée à -14 LUFS, le standard web.
 

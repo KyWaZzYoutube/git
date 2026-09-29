@@ -10,7 +10,7 @@ export FFMPEG
 mkdir -p build video
 
 echo "1/4  Rendu de l'animation"
-node scripts/render.mjs video --out build/video.mp4 --crf 18 "$@"
+node scripts/render.mjs video --out build/video.mp4 "$@"
 
 echo "2/4  Synthèse de la bande-son"
 python3 scripts/audio.py
