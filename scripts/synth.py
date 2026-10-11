@@ -12,11 +12,13 @@ Usage :
     bus = S.Bus()
 """
 import json
+import math
 import os
 
 import numpy as np
 from scipy import signal
 from scipy.io import wavfile
+from scipy.ndimage import maximum_filter1d
 
 SR = 48000
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -388,6 +390,67 @@ def blip(f):
     return sine(f * (1 + 0.15 * np.exp(-t / 0.01)), n) * np.exp(-t / 0.04) * np.minimum(1, t / 0.002)
 
 
+# ----------------------------------------------------------------------------- style « tech-house sombre »
+# (vidéos Facebook et agence : kick 808 accordé, boums de sub, stabs d'accords, basse en contretemps)
+def kick808(root_midi, tail=0.32, punch=1.9):
+    """Kick 808 : attaque claquante, puis note grave accordée sur la basse (longue traîne)."""
+    n = ns(0.62)
+    t = tt(n)
+    f1 = float(mtof(root_midi))
+    f = f1 + (170 - f1) * np.exp(-t / 0.03)
+    body = sine(f, n) * np.exp(-t / tail)
+    click = hp(rng.standard_normal(n), 3000) * np.exp(-t / 0.0035) * 0.5
+    x = np.tanh((body + click) * punch) / np.tanh(punch)
+    return fades(x, 0.0005, 0.08)
+
+
+def sub_drop(dur=1.8, f0=190.0, f1=40.0):
+    """Boum de sub qui plonge (le « drop » des motions produit)."""
+    n = ns(dur)
+    t = tt(n)
+    f = f1 + (f0 - f1) * np.exp(-t / 0.11)
+    x = np.tanh(2.4 * sine(f, n) * np.exp(-t / 0.6))
+    noise = lp(rng.standard_normal(n), 1600) * np.exp(-t / 0.05) * 0.45
+    return fades(x * 0.9 + noise, 0.001, 0.2)
+
+
+def rev_cymbal(dur=1.0):
+    c = crash(dur * 1.4)[: ns(dur)]
+    return fades(c[::-1].copy(), 0.01, 0.005)
+
+
+def rim():
+    n = ns(0.06)
+    t = tt(n)
+    return (bp(rng.standard_normal(n), 1800, 5200) * np.exp(-t / 0.006) * 0.7 + sine(1720, n) * np.exp(-t / 0.012) * 0.35)
+
+
+def tick_hat(level=1.0):
+    """Charleston très serrée, un peu métallique (tic-tac)."""
+    n = ns(0.04)
+    t = tt(n)
+    x = hp(rng.standard_normal(n), 8000, 4) * np.exp(-t / 0.008)
+    return x * level
+
+
+def house_stab(notes, dur=0.32):
+    """Stab d'accord house : supersaw filtré, attaque nette, chute rapide."""
+    n = ns(dur)
+    t = tt(n)
+    x = sum(supersaw(m, n, 5, 0.16) for m in notes) / len(notes)
+    x = sweep(x, lambda s: 700 + 4200 * np.exp(-s / 0.09), 'low')
+    return fades(x * np.exp(-t / 0.14) * np.minimum(1, t / 0.002), 0.001, 0.03)
+
+
+def offbass(midi, dur=0.2):
+    """Basse en contretemps (une octave au-dessus du kick), courte et ronde."""
+    n = ns(dur)
+    t = tt(n)
+    f = float(mtof(midi))
+    x = lp(saw(f, n), 380) * 0.75 + sine(f, n) * 0.4
+    return fades(x * np.exp(-t / 0.09) * np.minimum(1, t / 0.004), 0.002, 0.02)
+
+
 # ----------------------------------------------------------------------------- mastering
 def master(mix, fade_out=0.9, drive=1.35, ceiling_db=-1.0):
     """Passe-haut, fondu final, saturation douce et normalisation de crête."""
@@ -408,3 +471,83 @@ def write(comp, mix):
 
 def rms_db(x):
     return 20 * np.log10(np.sqrt(np.mean(x ** 2)) + 1e-12)
+
+
+# ----------------------------------------------------------------------------- voix off
+def load_voice(comp):
+    """Piste de voix off placée selon compositions/<comp>/voix/voix.json (une prise par ligne), ou None."""
+    d = os.path.join(ROOT, 'compositions', comp, 'voix')
+    if not os.path.exists(os.path.join(d, 'voix.json')):
+        return None
+    cfg = json.load(open(os.path.join(d, 'voix.json'), encoding='utf-8'))
+    vo = np.zeros(N)
+    for line in cfg['lignes']:
+        sr, x = wavfile.read(os.path.join(d, line['fichier']))
+        x = x.astype(float) / 32768 if x.dtype == np.int16 else x.astype(float)
+        if x.ndim > 1:
+            x = x.mean(axis=1)
+        if sr != SR:
+            g = math.gcd(SR, sr)
+            x = signal.resample_poly(x, SR // g, sr // g)
+        env = lp(np.abs(x), 20, 1)
+        voiced = x[env > 0.1 * env.max()]
+        x = fades(x / (np.sqrt(np.mean(voiced ** 2)) + 1e-9) * 0.1, 0.01, 0.04)   # chaque ligne au même niveau
+        i0 = int(round(line['debut'] * SR))
+        n = min(len(x), N - i0)
+        vo[i0:i0 + n] += x[:n]
+    return vo
+
+
+def compress(x, thr_db=-22.0, ratio=3.0, att=0.005, rel=0.12):
+    """Compresseur simple (détection RMS, attaque/relâchement lissés)."""
+    env = np.sqrt(lp(x ** 2, 30, 1).clip(1e-12))
+    lvl = 20 * np.log10(env)
+    gain_db = np.minimum(0.0, (thr_db - lvl) * (1 - 1 / ratio))
+    g = np.empty_like(gain_db)
+    a, r, cur = np.exp(-1 / (att * SR)), np.exp(-1 / (rel * SR)), 0.0
+    for i, v in enumerate(gain_db):
+        cur = a * cur + (1 - a) * v if v < cur else r * cur + (1 - r) * v
+        g[i] = cur
+    return x * 10 ** (g / 20)
+
+
+def write_wav(comp, name, mix):
+    out = os.path.join(ROOT, 'build', comp, name)
+    wavfile.write(out, SR, (mix * 32767).astype(np.int16))
+    return out
+
+
+def mix_voice(comp, music, fx, wet, fade_out=1.2, drive=1.35, voice_db=8.0):
+    """Mixage final avec la voix off de la composition, si elle en a une.
+
+    Écrit build/<comp>/audio.wav et, avec une voix, audio_sans_voix.wav (musique et effets seuls).
+    La musique s'efface sous la voix (avec 80 ms d'anticipation), les bruitages un peu moins.
+    """
+    vo = load_voice(comp)
+    plain = master(music + fx * 1.25 + wet, fade_out=fade_out, drive=drive)
+    if vo is None:
+        print(write(comp, plain), f'{DUR:.2f} s')
+        return
+    # voix : passe-haut, présence, compression, une pointe de réverbération courte
+    vo = hp(vo, 90, 2)
+    vo = vo + 0.3 * bp(vo, 2500, 6500)
+    vo = compress(vo)
+    vo_st = stereo(vo)
+    vo_wet = reverb(vo_st, make_ir(0.5, damp=6500)) * 0.05
+    env = lp(np.abs(vo), 8, 1)
+    active = np.clip((20 * np.log10(env + 1e-9) + 46) / 10, 0, 1)
+    k = ns(0.08)
+    active = maximum_filter1d(np.concatenate([active[k:], np.zeros(k)]), size=ns(0.25))
+    active = lp(active, 3, 1).clip(0, 1)
+    duck_m, duck_fx = (1 - 0.68 * active)[:, None], (1 - 0.75 * active)[:, None]
+    bed_in = music * duck_m + fx * 1.25 * duck_fx + wet * duck_m
+    bed_in -= 0.5 * active[:, None] * bp(bed_in, 800, 4000)     # creux dans les fréquences de la voix
+    bed = master(bed_in, fade_out=fade_out, drive=drive)
+    m = active > 0.9
+    bed_rms = np.sqrt(np.mean(bed[m] ** 2))
+    vo_rms = np.sqrt(np.mean(vo_st[m & (env > 0.05 * env.max())] ** 2))
+    g = bed_rms / vo_rms * 10 ** (voice_db / 20)        # voix au-dessus du fond
+    mix = bed + (vo_st + vo_wet) * g
+    mix *= min(1.0, 0.89 / np.max(np.abs(mix)))
+    print(write(comp, mix), f'{DUR:.2f} s (avec voix off)')
+    print(write_wav(comp, 'audio_sans_voix.wav', plain), '(sans voix off)')

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Première Immo — Agence de publicité immobilière</title>
+<link rel="stylesheet" href="../../node_modules/@fontsource-variable/plus-jakarta-sans/index.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phoneoff" viewBox="0 0 24 24"><path d="M10.7 13.3a16 16 0 0 0 3 2.3l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2v2.9a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-4.3-3.9"/><path d="M5.2 13.1A19.8 19.8 0 0 1 1.6 4.1 2 2 0 0 1 3.6 2h2.9a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.9"/><line x1="22" y1="2" x2="2" y2="22"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6.5 9.5 17 4 11.5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="20.5" y1="20.5" x2="16" y2="16"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><polyline points="3.5 6.5 12 13 20.5 6.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M21.5 16.9v2.9a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 4.1 2 2 0 0 1 3.6 2h2.9a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></symbol>
+    <symbol id="i-form" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2.5"/><line x1="8.5" y1="9" x2="15.5" y2="9"/><line x1="8.5" y1="12.5" x2="15.5" y2="12.5"/><line x1="8.5" y1="16" x2="12.5" y2="16"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+  </defs>
+</svg>
+
+<div id="stage">
+<div id="bump">
+
+  <!-- ============ A : pige, portails, flyers… ça ne suffit plus (bento « Pourquoi maintenant ») ============ -->
+  <section class="scene" id="sA">
+    <div class="cam" id="camA">
+      <div class="a-head">
+        <div class="mask km"><p class="kick" id="aKick">Pourquoi maintenant</p></div>
+        <div class="mask"><div class="ln" id="aL1">Pige, portails, flyers&#8239;:</div></div>
+        <div class="mask"><div class="ln" id="aL2"><span class="o">ça ne suffit plus.</span></div></div>
+      </div>
+      <div class="a-cards">
+        <div class="ac" id="ac1"><div class="ac-in"><span class="ac-ic"><svg class="ico"><use href="#i-phoneoff"/></svg></span><p class="ac-tag">Depuis le 11 août 2026</p><div class="ac-t">La pige à froid n’est plus&nbsp;possible</div></div><span class="ac-x"><svg class="ico"><use href="#i-x"/></svg></span></div>
+        <div class="ac" id="ac2"><div class="ac-in"><span class="ac-ic"><svg class="ico"><use href="#i-users"/></svg></span><p class="ac-tag">Portails d’annonces</p><div class="ac-t">Des contacts partagés</div></div><span class="ac-x"><svg class="ico"><use href="#i-x"/></svg></span></div>
+        <div class="ac" id="ac3"><div class="ac-in"><span class="ac-ic"><svg class="ico"><use href="#i-file"/></svg></span><p class="ac-tag">Flyers et boîtage</p><div class="ac-t">Impossible de mesurer</div></div><span class="ac-x"><svg class="ico"><use href="#i-x"/></svg></span></div>
+      </div>
+      <div class="a-sol" id="aSol"><div class="a-sol-in" id="aSolIn"><p class="a-sol-tag">La solution</p><div class="a-sol-t">Des vendeurs qui vous contactent d’eux-mêmes.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ============ B : Première Immo, les vendeurs vous contactent (orange) ============ -->
+  <section class="scene" id="sB">
+    <i class="b-glow" id="bGlow"></i>
+    <i class="ring r1" id="bRing1"></i><i class="ring r2" id="bRing2"></i>
+    <div class="cam" id="camB">
+      <div class="b-logo" id="bLogo"><img class="b-logo-ic" src="../_shared/assets/logo-icon.png" alt=""><img class="b-logo-w" src="../_shared/assets/logo-word.png" alt="Première Immo"></div>
+      <div class="b-head">
+        <div class="mask km"><p class="kick kick-w" id="bKick">Agence de publicité 100&nbsp;% immobilier</p></div>
+        <div class="mask"><div class="ln" id="bL1">Les vendeurs de votre secteur</div></div>
+        <div class="mask"><div class="ln" id="bL2"><span class="ink">vous contactent.</span></div></div>
+      </div>
+      <div class="b-chips">
+        <span class="b-chip">Google Ads</span><span class="b-chip">Facebook</span><span class="b-chip">Instagram</span><span class="b-chip">Référencement naturel</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ C : nos leviers (onglets du site) ============ -->
+  <section class="scene" id="sC">
+    <div class="glow-o" id="glowC"></div>
+    <div class="cam" id="camC">
+      <div class="c-head">
+        <div class="mask km"><p class="kick" id="cKick">Nos leviers</p></div>
+        <div class="mask"><div class="ln" id="cTitle">Le bon levier, <span class="o">au bon moment.</span></div></div>
+      </div>
+      <div class="tabs" id="tabs"><i class="tab-ind" id="tabInd"></i><span class="tab" id="tab1">Google Ads</span><span class="tab" id="tab2">Facebook et Instagram</span><span class="tab" id="tab3">Référencement naturel</span></div>
+
+      <div class="cp-main" id="cpMain">
+        <div class="cp-txt" id="cpt1"><p class="cp-n">01</p><div class="mask"><div class="cp-name">Google Ads</div></div><p class="cp-hook">Le levier le plus direct pour rentrer des mandats</p><p class="cp-desc">En tête de Google quand un propriétaire de votre secteur cherche à vendre ou à faire estimer son&nbsp;bien.</p></div>
+        <div class="cp-txt" id="cpt2"><p class="cp-n">02</p><div class="mask"><div class="cp-name">Facebook et Instagram</div></div><p class="cp-hook">Faites-vous connaître avant que le propriétaire cherche</p><p class="cp-desc">Vos annonces touchent les propriétaires de votre zone et leur proposent une estimation en quelques clics.</p></div>
+        <div class="cp-txt" id="cpt3"><p class="cp-n">03</p><div class="mask"><div class="cp-name">Référencement naturel</div></div><p class="cp-hook">Une visibilité durable, sans budget publicitaire</p><p class="cp-desc">Votre site remonte sur Google pour les recherches de votre secteur.</p></div>
+      </div>
+
+      <div class="cp-side" id="cpSide">
+        <!-- Google Ads : votre agence passe n°1 -->
+        <div class="mock" id="mockG">
+          <div class="g-search"><span class="g-logo"><b>G</b><b>o</b><b>o</b><b>g</b><b>l</b><b>e</b></span><span class="g-pill"><svg class="ico"><use href="#i-search"/></svg><span class="g-q" id="gQ">estimation maison</span><span class="g-city"><svg class="ico"><use href="#i-pin"/></svg>votre ville</span></span></div>
+          <div class="g-res g-c" id="gr1"><span class="g-url">www.agence-concurrente.fr</span><span class="g-title">Agence immobilière — votre ville</span><i class="g-bar"></i><span class="g-tag">Concurrent</span></div>
+          <div class="g-res g-c" id="gr2"><span class="g-url">www.portail-annonces.fr</span><span class="g-title">Estimation et annonces — votre ville</span><i class="g-bar"></i><span class="g-tag">Portail</span></div>
+          <div class="g-res g-me" id="grMe"><svg class="g-ring" id="gRing" width="644" height="128" viewBox="0 0 644 128"><rect x="2" y="2" width="640" height="124" rx="26" ry="26"/></svg><span class="g-url"><b>Sponsorisé</b> · www.votre-agence.fr</span><span class="g-title g-title-me">Estimation offerte | Votre agence</span><span class="g-badge" id="gBadge">Position n°1</span></div>
+        </div>
+
+        <!-- Facebook / Instagram : votre publicité dans le fil -->
+        <div class="mock" id="mockF">
+          <div class="mphone" id="mPhone">
+            <div class="mp-screen">
+              <div class="mp-top"><span class="fb-word">facebook</span><span class="fb-dots"><i></i><i></i></span></div>
+              <div class="mp-post">
+                <div class="p-h"><span class="av av-o">VA</span><span><span class="p-n">Votre agence</span><span class="p-m">Sponsorisé · <svg class="ico"><use href="#i-pin"/></svg> votre secteur</span></span></div>
+                <p class="p-txt">Vous pensez à vendre&#8239;? Découvrez la valeur de votre bien en 2 minutes.</p>
+                <div class="ad-img"><img src="../facebook/assets/annonce-maison.jpg" alt=""><span class="ad-badge">Estimation offerte</span></div>
+                <div class="ad-cta"><span><small>VOTRE-AGENCE.FR</small><b>Combien vaut votre bien&#8239;?</b></span><em>En savoir plus</em></div>
+              </div>
+            </div>
+            <i class="mp-notch"></i>
+          </div>
+          <div class="f-toast" id="fToast"><span class="t-ic"><svg class="ico"><use href="#i-form"/></svg></span><span class="t-txt"><span class="t-title">Demande d’estimation</span><span class="t-text">Maison 5 pièces · votre secteur</span></span></div>
+        </div>
+
+        <!-- Référencement naturel : le site remonte, durablement -->
+        <div class="mock" id="mockS">
+          <div class="s-card">
+            <div class="s-head"><span class="s-ic"><svg class="ico"><use href="#i-trend"/></svg></span><span class="s-hl"><b>Visites depuis Google</b><small>www.votre-agence.fr</small></span></div>
+            <svg class="s-chart" id="sChart" width="560" height="270" viewBox="0 0 560 270">
+              <line x1="0" y1="60" x2="560" y2="60"/><line x1="0" y1="130" x2="560" y2="130"/><line x1="0" y1="200" x2="560" y2="200"/><line x1="0" y1="268" x2="560" y2="268"/>
+              <path id="sArea" d=""/><path id="sLine" d=""/><circle id="sDot" r="9"/>
+            </svg>
+            <div class="s-months"><span>Mois 1</span><span>Mois 2</span><span>Mois 3</span><span>Mois 4</span><span>Mois 5</span><span>Mois 6</span></div>
+            <span class="s-tag"><svg class="ico"><use href="#i-check"/></svg>Sans budget publicitaire</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ D : résultats (chiffres du site) ============ -->
+  <section class="scene" id="sD">
+    <div class="glow-o glow-d"></div>
+    <div class="cam" id="camD">
+      <div class="d-head"><div class="mask km"><p class="kick" id="dKick">Résultats</p></div></div>
+      <div class="d-big"><span class="d-n" id="dN">+0</span><span class="d-l" id="dL">contacts qualifiés générés</span></div>
+      <div class="toast" id="dt1"><span class="t-ic"><svg class="ico"><use href="#i-search"/></svg></span><span class="t-txt"><span class="t-title">Nouveau contact vendeur</span><span class="t-text">via Google Ads</span></span></div>
+      <div class="toast" id="dt2"><span class="t-ic"><svg class="ico"><use href="#i-form"/></svg></span><span class="t-txt"><span class="t-title">Demande d’estimation</span><span class="t-text">via Facebook</span></span></div>
+      <div class="toast" id="dt3"><span class="t-ic"><svg class="ico"><use href="#i-phone"/></svg></span><span class="t-txt"><span class="t-title">Appel entrant</span><span class="t-text">via votre site</span></span></div>
+      <div class="d-stats" id="dStats">
+        <div class="d-stat"><b id="dS1">+0</b><span>campagnes créées</span></div>
+        <div class="d-stat"><b id="dS2">+0</b><span>professionnels accompagnés</span></div>
+        <div class="d-stat"><b id="dS3">+0</b><span>années d’expérience en publicité</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ E : méthode (ligne d'étapes du site) ============ -->
+  <section class="scene" id="sE">
+    <div class="cam" id="camE">
+      <div class="e-head">
+        <div class="mask km"><p class="kick" id="eKick">Méthode</p></div>
+        <div class="mask"><div class="ln" id="eTitle">On s’occupe de <span class="o">tout.</span></div></div>
+        <p class="e-sub" id="eSub">Vous n’avez rien de technique à gérer.</p>
+      </div>
+      <div class="proc" id="proc">
+        <i class="p-track" id="pTrack"></i><i class="p-fill" id="pFill"></i>
+        <div class="p-s"><span class="p-dot">1</span><span class="p-when">Jour 1</span><span class="p-t">Appel découverte</span></div>
+        <div class="p-s"><span class="p-dot">2</span><span class="p-when">Jours 1 à 2</span><span class="p-t">Stratégie</span></div>
+        <div class="p-s"><span class="p-dot">3</span><span class="p-when">Sous 72 h</span><span class="p-t">Mise en place</span></div>
+        <div class="p-s"><span class="p-dot">4</span><span class="p-when">2 à 4 semaines</span><span class="p-t">Premiers contacts</span></div>
+        <div class="p-s"><span class="p-dot" id="pLast">5</span><span class="p-when">Chaque mois</span><span class="p-t">Optimisation</span></div>
+      </div>
+      <div class="e-chips">
+        <span class="e-chip"><svg class="ico"><use href="#i-lock"/></svg>Une seule agence par secteur</span>
+        <span class="e-chip"><svg class="ico"><use href="#i-user"/></svg>Comptes à votre nom</span>
+        <span class="e-chip"><svg class="ico"><use href="#i-check"/></svg>Sans engagement</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ F : appel à l'action (bandeau orange du site) ============ -->
+  <section class="scene" id="sF">
+    <i class="b-glow f-glow"></i>
+    <i class="ring r1 f-r1" id="fRing1"></i><i class="ring r2 f-r2" id="fRing2"></i>
+    <div class="cam" id="camF">
+      <div class="b-logo f-logo" id="fLogo"><img class="b-logo-ic" src="../_shared/assets/logo-icon.png" alt=""><span class="f-logo-box" id="fLogoBox"><img class="b-logo-w" src="../_shared/assets/logo-word.png" alt="Première Immo"></span></div>
+      <div class="f-head">
+        <div class="mask"><div class="ln" id="fL1">Votre secteur est-il</div></div>
+        <div class="mask"><div class="ln" id="fL2">encore <span class="ink">disponible&#8239;?</span></div></div>
+      </div>
+      <p class="f-sub" id="fSub">Une seule agence accompagnée par secteur.</p>
+      <div class="f-btn" id="fBtn"><i class="f-btn-ring" id="fBtnRing"></i>Appel de découverte gratuit<span class="f-arrow" id="fArrow"><svg viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></div>
+      <div class="f-reassure" id="fReassure">Sans engagement<b>·</b>15 minutes<b>·</b>Réponse immédiate sur votre zone</div>
+      <div class="f-url" id="fUrl">premiere-immo.fr</div>
+    </div>
+  </section>
+
+</div><!-- /bump -->
+<div class="wipe" id="wipe"></div>
+</div>
+<div id="hud"></div>
+
+<script src="../../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../../node_modules/gsap/dist/CustomEase.min.js"></script>
+<script src="../../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="../_shared/engine.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Voix off de « Publicité Facebook immobilier » : synthèse vocale française.
+Voix off des vidéos : synthèse vocale française.
 
-Les prises retenues sont déjà dans compositions/facebook/voix/ (avec voix.json :
-texte, fichier, instant de début dans la vidéo). Ce script ne sert qu'à les
-régénérer, par exemple après avoir changé le texte.
+Les prises retenues sont déjà dans compositions/<vidéo>/voix/ (avec voix.json :
+texte, fichier, instant de début dans la vidéo, graine de la prise). Ce script ne
+sert qu'à les régénérer, par exemple après avoir changé le texte.
 
   Modèle : Kyutai TTS 1.6B en/fr (kyutai/tts-1.6b-en_fr, poids sous licence CC-BY 4.0)
   Voix   : « developpeuse-3 » du dépôt kyutai/tts-voices, enregistrée par Kyutai
@@ -14,11 +14,11 @@ Installation (environnement à part, sur processeur ≈ 8 s de calcul par second
   python3 -m venv venv-voix
   venv-voix/bin/pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
   venv-voix/bin/pip install moshi==0.2.11 sphn
-  venv-voix/bin/python scripts/voix_facebook.py            # régénère toutes les lignes
-  venv-voix/bin/python scripts/voix_facebook.py l3 l7      # ou seulement certaines
+  venv-voix/bin/python scripts/voix.py facebook            # régénère toutes les lignes
+  venv-voix/bin/python scripts/voix.py agence a4 a7        # ou seulement certaines
 
 Après une régénération, vérifiez l'instant « debut » de chaque ligne dans voix.json,
-puis relancez ./scripts/build.sh facebook.
+puis relancez ./scripts/build.sh <vidéo>.
 """
 import json
 import os
@@ -31,11 +31,13 @@ from moshi.models.loaders import CheckpointInfo
 from moshi.models.tts import DEFAULT_DSM_TTS_REPO, TTSModel
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DIR = os.path.join(ROOT, 'compositions', 'facebook', 'voix')
+if len(sys.argv) < 2:
+    sys.exit('usage : voix.py <vidéo> [lignes…]   (vidéo : facebook, agence…)')
+DIR = os.path.join(ROOT, 'compositions', sys.argv[1], 'voix')
 VOICE = 'unmute-prod-website/developpeuse-3.wav'
 
 cfg = json.load(open(os.path.join(DIR, 'voix.json'), encoding='utf-8'))
-only = set(sys.argv[1:])
+only = set(sys.argv[2:])
 torch.set_num_threads(os.cpu_count() or 4)
 tts = TTSModel.from_checkpoint_info(CheckpointInfo.from_hf_repo(DEFAULT_DSM_TTS_REPO), n_q=32,
                                     temp=cfg['temperature'], device='cpu', dtype=torch.float32)
