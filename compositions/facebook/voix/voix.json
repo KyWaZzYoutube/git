@@ -1,0 +1,138 @@
+{
+ "voix": "kyutai/tts-voices : unmute-prod-website/developpeuse-3.wav (CC0)",
+ "modele": "kyutai/tts-1.6b-en_fr (CC-BY 4.0)",
+ "temperature": 0.6,
+ "cfg": 2.0,
+ "lignes": [
+  {
+   "id": "l1",
+   "texte": "Vos futurs vendeurs sont sur Facebook. Chaque jour.",
+   "fichier": "l1.wav",
+   "debut": 0.284,
+   "prise": {
+    "graine": 1
+   },
+   "parole": [
+    0.4,
+    3.42
+   ]
+  },
+  {
+   "id": "l2",
+   "texte": "Un propriétaire de votre secteur voit votre publicité.",
+   "fichier": "l2.wav",
+   "debut": 4.097,
+   "prise": {
+    "graine": 101
+   },
+   "parole": [
+    4.3,
+    7.28
+   ]
+  },
+  {
+   "id": "l3",
+   "texte": "En deux clics, il demande une estimation.",
+   "fichier": "l3.wav",
+   "debut": 7.374,
+   "prise": {
+    "graine": 1
+   },
+   "parole": [
+    7.55,
+    9.86
+   ]
+  },
+  {
+   "id": "l4",
+   "texte": "Vous recevez son contact : tout de suite, et rien qu'à vous.",
+   "fichier": "l4.wav",
+   "debut": 10.468,
+   "prise": {
+    "graine": 1
+   },
+   "parole": [
+    10.65,
+    13.42
+   ]
+  },
+  {
+   "id": "l5",
+   "texte": "Vous le rappelez, et vous fixez le rendez-vous.",
+   "fichier": "l5.wav",
+   "debut": 13.661,
+   "prise": {
+    "graine": 101
+   },
+   "parole": [
+    13.8,
+    16.45
+   ]
+  },
+  {
+   "id": "l6",
+   "texte": "Et vous signez le mandat.",
+   "fichier": "l6.wav",
+   "debut": 17.71,
+   "prise": {
+    "graine": 101
+   },
+   "parole": [
+    17.91,
+    18.96
+   ]
+  },
+  {
+   "id": "l7",
+   "texte": "Et nous, chez Première Immo, on s'occupe de tout.",
+   "fichier": "l7.wav",
+   "debut": 20.19,
+   "prise": {
+    "graine": 101
+   },
+   "parole": [
+    20.32,
+    22.9
+   ]
+  },
+  {
+   "id": "l8",
+   "texte": "Comme Lucas, à Lyon : deux mandats signés en deux mois.",
+   "fichier": "l8.wav",
+   "debut": 23.85,
+   "prise": {
+    "graine": 101
+   },
+   "parole": [
+    24.05,
+    26.47
+   ]
+  },
+  {
+   "id": "l9",
+   "texte": "Votre secteur est-il encore disponible ?",
+   "fichier": "l9.wav",
+   "debut": 28.182,
+   "prise": {
+    "graine": 1
+   },
+   "parole": [
+    28.3,
+    30.1
+   ]
+  },
+  {
+   "id": "l10",
+   "texte": "Réservez votre appel gratuit.",
+   "fichier": "l10.wav",
+   "debut": 30.192,
+   "prise": {
+    "graine": 1
+   },
+   "parole": [
+    30.35,
+    31.64
+   ]
+  }
+ ]
+}

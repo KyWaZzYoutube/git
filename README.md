@@ -4,11 +4,11 @@ Vidéos animées pour **premiere-immo.fr**, rendues image par image à partir de
 
 | Vidéo | Durée | Fichiers |
 |---|---|---|
-| **Publicité Facebook immobilier** pour la page `/publicite-facebook-immobilier` | 32 s | [`video/facebook/premiere-immo-facebook.mp4`](video/facebook/premiere-immo-facebook.mp4) · [`…-muet.mp4`](video/facebook/premiere-immo-facebook-muet.mp4) · [`poster.jpg`](video/facebook/poster.jpg) |
+| **Publicité Facebook immobilier** pour la page `/publicite-facebook-immobilier` (avec voix off) | 32 s | [`video/facebook/premiere-immo-facebook.mp4`](video/facebook/premiere-immo-facebook.mp4) · [`…-sans-voix.mp4`](video/facebook/premiere-immo-facebook-sans-voix.mp4) · [`…-muet.mp4`](video/facebook/premiere-immo-facebook-muet.mp4) · [`poster.jpg`](video/facebook/poster.jpg) |
 | **Google Ads immobilier** pour la page `/google-ads-immobilier` | 32 s | [`video/google-ads/premiere-immo-google-ads.mp4`](video/google-ads/premiere-immo-google-ads.mp4) · [`…-muet.mp4`](video/google-ads/premiere-immo-google-ads-muet.mp4) · [`poster.jpg`](video/google-ads/poster.jpg) |
 | Démo générale | 25 s | [`video/demo/premiere-immo-demo.mp4`](video/demo/premiere-immo-demo.mp4) · [`…-muet.mp4`](video/demo/premiere-immo-demo-muet.mp4) · [`poster.jpg`](video/demo/poster.jpg) |
 
-Format : 1920×1080, 30 i/s, H.264 + AAC, son normalisé à -14 LUFS (standard web). La version `-muet` n'a pas de piste audio : elle est plus légère pour une lecture automatique en arrière-plan.
+Format : 1920×1080, 30 i/s, H.264 + AAC, son normalisé à -14 LUFS (standard web). La version `-muet` n'a pas de piste audio : elle est plus légère pour une lecture automatique en arrière-plan. La version `-sans-voix` garde la musique et les effets, sans la voix off.
 
 ## Publicité Facebook immobilier : le film, plan par plan
 
@@ -19,6 +19,23 @@ La charte est celle de la page Facebook du site (projet Framer, `PIFacebook.tsx`
 Le fil Facebook du téléphone utilise de **vraies photos** pour être crédible : la maison de la publicité, la plage et le chien des publications d'« amis », et deux photos de profil sans visage. Elles sont dans `compositions/facebook/assets/` (sources et licences dans « Crédits et droits »).
 
 La musique suit le style des motions « produit » donnés en référence : intro atmosphérique, boum de sub au départ des étapes (4 s), kick 808 profond sur chaque temps, peu de médiums, roulements avant les transitions, puis une fin lumineuse (fa# mineur → la majeur).
+
+**Voix off** : une voix féminine française, dynamique, presque continue, comme dans la référence. C'est une voix de synthèse (voir « Crédits et droits »). La musique s'efface sous la voix, et le fond laisse de la place aux fréquences de la parole. Le texte, calé sur l'image :
+
+| Temps | Voix off |
+|---|---|
+| 0,4 s | « Vos futurs vendeurs sont sur Facebook. Chaque jour. » |
+| 4,3 s | « Un propriétaire de votre secteur voit votre publicité. » |
+| 7,6 s | « En deux clics, il demande une estimation. » |
+| 10,7 s | « Vous recevez son contact : tout de suite, et rien qu'à vous. » |
+| 13,8 s | « Vous le rappelez, et vous fixez le rendez-vous. » |
+| 17,9 s | « Et vous signez le mandat. » (« mandat » tombe sur le coup de tampon) |
+| 20,3 s | « Et nous, chez Première Immo, on s'occupe de tout. » |
+| 24,1 s | « Comme Lucas, à Lyon : deux mandats signés en deux mois. » |
+| 28,3 s | « Votre secteur est-il encore disponible ? » |
+| 30,4 s | « Réservez votre appel gratuit. » |
+
+Les prises retenues sont dans `compositions/facebook/voix/` : un fichier par phrase, et `voix.json` pour le texte et l'instant de départ. Pour changer une phrase, modifiez `voix.json`, régénérez-la avec `scripts/voix_facebook.py` (installation décrite en tête du script), puis relancez `SKIP_RENDER=1 ./scripts/build.sh facebook` : l'image est réutilisée et seul le son est refait. Vous pouvez aussi remplacer les fichiers par l'enregistrement d'une comédienne, aux mêmes noms.
 
 | Temps | Plan | Message |
 |---|---|---|
@@ -72,13 +89,14 @@ Les textes reprennent ceux de la page Google Ads du site.
 compositions/
   _shared/engine.js        moteur commun : timeline GSAP en pause, révélations de texte, mesures, caméra, aperçu
   _shared/assets/          logo du site
-  facebook/                index.html · styles.css · main.js · assets/ (photos du fil Facebook)
+  facebook/                index.html · styles.css · main.js · assets/ (photos du fil Facebook) · voix/ (voix off)
   google-ads/              index.html · styles.css · main.js
   demo/                    la démo générale
 scripts/
   render.mjs               rendu image par image (Playwright → ffmpeg), flou de mouvement adaptatif
   synth.py                 synthétiseur partagé : instruments, effets d'interface, mastering
-  score_facebook.py        bande-son de la vidéo Facebook
+  score_facebook.py        bande-son de la vidéo Facebook (musique, effets, mixage de la voix off)
+  voix_facebook.py         synthèse de la voix off (Kyutai TTS), si l'on veut changer le texte
   score_google_ads.py      bande-son de la vidéo Google Ads
   score_demo.py            bande-son de la démo
   build.sh                 chaîne complète : ./scripts/build.sh <composition>
@@ -119,6 +137,7 @@ Dans l'aperçu : `espace` met en pause, `←` et `→` reculent ou avancent d'un
 - Animation : [GSAP](https://gsap.com), gratuit y compris en usage commercial ([licence « no charge »](https://gsap.com/standard-license)).
 - Polices : Plus Jakarta Sans, Inter, Inter Tight et Instrument Serif (SIL Open Font License), via Fontsource.
 - Icônes : tracés dessinés pour le projet. La démo reprend des tracés de [Feather Icons](https://feathericons.com) (MIT).
+- Voix off de la vidéo Facebook : **voix de synthèse** générée avec [Kyutai TTS 1.6B](https://huggingface.co/kyutai/tts-1.6b-en_fr) (modèle de Kyutai, laboratoire français, poids sous licence CC-BY 4.0), voix « developpeuse-3 » du dépôt [kyutai/tts-voices](https://huggingface.co/kyutai/tts-voices), enregistrée par Kyutai et publiée sous licence CC0. Usage commercial autorisé. Bonne pratique : indiquer « voix générée par IA » dans la description de la vidéo.
 - Photos de la vidéo Facebook : [Unsplash](https://unsplash.com/license), licence Unsplash (usage commercial gratuit, sans autorisation ni mention obligatoire). Fichiers d'origine : maison `images.unsplash.com/photo-1523217582562-09d0def993a6`, plage `photo-1507525428034-b723cf961d3e`, chien `photo-1543466835-00a7907e9de1`, fleurs `photo-1490750967868-88aa4486c946`, montagne `photo-1464822759023-fed622ff2c3b`. Aucune photo ne montre de visage.
 - Logo, textes et chiffres de Première Immo : issus du site (projet Framer).
 - Musique et effets sonores : **entièrement synthétisés par code**, sans aucun échantillon externe, donc libres de droits.

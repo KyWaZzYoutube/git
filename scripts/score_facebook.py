@@ -14,11 +14,20 @@ transitions, fin lumineuse (note de sub tenue + cloche). 120 BPM, fa# mineur →
   24 s     respiration sous le témoignage (sans kick) : sim – ré – mi …
   28 s     … la majeur : impact, sub tenu et cloche sous la signature
 Les effets d'interface sont posés sur les repères exportés par la timeline.
+
+Voix off : les prises de compositions/facebook/voix/ (voir scripts/voix_facebook.py) sont
+placées selon voix.json, compressées, et la musique s'efface sous la voix. Le script
+écrit audio.wav (avec voix) et audio_sans_voix.wav (musique et effets seuls).
 """
+import json
+import math
 import os
 import sys
 
 import numpy as np
+from scipy import signal
+from scipy.io import wavfile
+from scipy.ndimage import maximum_filter1d
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import synth as S  # noqa: E402
@@ -294,7 +303,7 @@ SFX = {
     'pop': (lambda c: S.pop(420, 820, 0.09), 0.3, 0.12),
     'bubble': (bubble, 0.15, 0.15),
     'react': (react, 0.13, 0.2),
-    'star': (star, 0.15, 0.2),
+    'star': (star, 0.05, 0.1),
     'step': (step, 0.28, 0.35),
     'tap': (tap, 0.34, 0.05),
     'click': (lambda c: S.click(2400, 0.006), 0.32, 0.06),
@@ -312,7 +321,7 @@ SFX = {
     'scribble': (lambda c: S.scribble(), 0.5, 0.05),
     'stamp': (lambda c: S.stamp(), 0.55, 0.15),
     'riser_short': (lambda c: S.riser(0.5, tone=(54, 66)), 0.26, 0.2),
-    'hit': (lambda c: S.stab([66, 69, 73, 78, 81], 1.2, 0.3) * 0.6 + np.pad(S.impact(), (0, ns(1.2) - ns(0.9))) * 0.6, 0.45, 0.35),
+    'hit': (lambda c: S.stab([66, 69, 73, 78, 81], 1.2, 0.3) * 0.6 + np.pad(S.impact(), (0, ns(1.2) - ns(0.9))) * 0.6, 0.38, 0.35),
     'zip': (lambda c: S.zip_(), 0.2, 0.1),
     'counter': (lambda c: S.counter_ticks(18, 1.0), 0.28, 0.05),
     'logo': (lambda c: S.sparkle((880.0, 1108.73, 1318.51, 1760.0), 0.06, 0.9), 0.36, 0.55),   # la majeur
@@ -349,5 +358,76 @@ if os.environ.get('STEMS'):
     for name, x in (('batterie', drums.x * 0.62), ('basse', bass.x), ('nappe', pad), ('arpège', arp * 0.75), ('stabs', stabs * 0.8), ('effets', fx.x), ('réverb', wet)):
         print(f'{name:10s}', ' '.join(f'{S.rms_db(x[ns(a):ns(b)]):6.1f}' for a, b in ((0, 4), (4, 20), (20, 24), (24, 28), (28, 32))))
 
-mix = S.master(music + fx.x * 1.25 + wet, fade_out=1.2, drive=1.35)
-print(S.write(COMP, mix), f'{DUR:.2f} s')
+# ---------------------------------------------------------------- voix off (compositions/facebook/voix)
+def load_voice():
+    """Piste de voix off placée selon voix.json (une prise par ligne), ou None s'il n'y en a pas."""
+    d = os.path.join(S.ROOT, 'compositions', COMP, 'voix')
+    if not os.path.exists(os.path.join(d, 'voix.json')):
+        return None
+    cfg = json.load(open(os.path.join(d, 'voix.json'), encoding='utf-8'))
+    vo = np.zeros(N)
+    for line in cfg['lignes']:
+        sr, x = wavfile.read(os.path.join(d, line['fichier']))
+        x = x.astype(float) / 32768 if x.dtype == np.int16 else x.astype(float)
+        if x.ndim > 1:
+            x = x.mean(axis=1)
+        if sr != S.SR:
+            g = math.gcd(S.SR, sr)
+            x = signal.resample_poly(x, S.SR // g, sr // g)
+        env = S.lp(np.abs(x), 20, 1)
+        voiced = x[env > 0.1 * env.max()]
+        x = S.fades(x / (np.sqrt(np.mean(voiced ** 2)) + 1e-9) * 0.1, 0.01, 0.04)   # chaque ligne au même niveau
+        i0 = int(round(line['debut'] * S.SR))
+        n = min(len(x), N - i0)
+        vo[i0:i0 + n] += x[:n]
+    return vo
+
+
+def compress(x, thr_db=-22.0, ratio=3.0, att=0.005, rel=0.12):
+    """Compresseur simple (détection RMS, attaque/relâchement lissés)."""
+    env = np.sqrt(S.lp(x ** 2, 30, 1).clip(1e-12))
+    lvl = 20 * np.log10(env)
+    gain_db = np.minimum(0.0, (thr_db - lvl) * (1 - 1 / ratio))
+    g = np.empty_like(gain_db)
+    a, r, cur = np.exp(-1 / (att * S.SR)), np.exp(-1 / (rel * S.SR)), 0.0
+    for i, v in enumerate(gain_db):
+        cur = a * cur + (1 - a) * v if v < cur else r * cur + (1 - r) * v
+        g[i] = cur
+    return x * 10 ** (g / 20)
+
+
+def write_wav(name, mix):
+    out = os.path.join(S.ROOT, 'build', COMP, name)
+    wavfile.write(out, S.SR, (mix * 32767).astype(np.int16))
+    return out
+
+
+vo = load_voice()
+plain = S.master(music + fx.x * 1.25 + wet, fade_out=1.2, drive=1.35)
+if vo is None:
+    print(S.write(COMP, plain), f'{DUR:.2f} s')
+else:
+    # voix : passe-haut, présence, compression, une pointe de réverbération courte
+    vo = S.hp(vo, 90, 2)
+    vo = vo + 0.3 * S.bp(vo, 2500, 6500)
+    vo = compress(vo)
+    vo_st = S.stereo(vo)
+    vo_wet = S.reverb(vo_st, S.make_ir(0.5, damp=6500)) * 0.05
+    # la musique s'efface sous la voix (avec 80 ms d'anticipation), les bruitages un peu moins
+    env = S.lp(np.abs(vo), 8, 1)
+    active = np.clip((20 * np.log10(env + 1e-9) + 46) / 10, 0, 1)
+    k = ns(0.08)
+    active = maximum_filter1d(np.concatenate([active[k:], np.zeros(k)]), size=ns(0.25))
+    active = S.lp(active, 3, 1).clip(0, 1)
+    duck_m, duck_fx = (1 - 0.68 * active)[:, None], (1 - 0.75 * active)[:, None]
+    bed_in = music * duck_m + fx.x * 1.25 * duck_fx + wet * duck_m
+    bed_in -= 0.5 * active[:, None] * S.bp(bed_in, 800, 4000)     # creux dans les fréquences de la voix
+    bed = S.master(bed_in, fade_out=1.2, drive=1.35)
+    m = active > 0.9
+    bed_rms = np.sqrt(np.mean(bed[m] ** 2))
+    vo_rms = np.sqrt(np.mean(vo_st[m & (env > 0.05 * env.max())] ** 2))
+    g = bed_rms / vo_rms * 10 ** (8.0 / 20)        # voix 8 dB au-dessus du fond
+    mix = bed + (vo_st + vo_wet) * g
+    mix *= min(1.0, 0.89 / np.max(np.abs(mix)))
+    print(S.write(COMP, mix), f'{DUR:.2f} s (avec voix off)')
+    print(write_wav('audio_sans_voix.wav', plain), '(sans voix off)')
