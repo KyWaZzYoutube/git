@@ -9,7 +9,7 @@ COMP=${1:-google-ads}
 shift || true
 case "$COMP" in
   demo)       NAME=premiere-immo-demo;       POSTER=23 ;;
-  google-ads) NAME=premiere-immo-google-ads; POSTER=6.4 ;;
+  google-ads) NAME=premiere-immo-google-ads; POSTER=8.78 ;;
   *) echo "composition inconnue : $COMP" >&2; exit 1 ;;
 esac
 

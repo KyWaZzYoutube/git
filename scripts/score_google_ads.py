@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Bande-son de « Google Ads immobilier » (30 s) — 100 % synthétisée.
+Bande-son de « Google Ads immobilier » (32 s) — 100 % synthétisée.
 
   python3 scripts/score_google_ads.py   → build/google-ads/audio.wav
 
 Pop « corporate » lumineuse, 120 BPM, fa majeur :
   0–4 s    intro légère (piano électrique tenu, shaker de frappe au clavier)
-  4–16 s   groove (kick 1-3, clap 2-4, basse en croches, piano syncopé, arpèges dès 8 s)
-  16 s     relance sur « plus de chiffre d'affaires » (kick 4/4, pad plus large)
-  25,75 s  respiration → 26 s accord final sous la signature, qui résonne jusqu'à 30 s
+  4–18 s   groove (kick 1-3, clap 2-4, basse en croches, piano syncopé, arpèges dès 10 s)
+  18 s     relance sur « plus de chiffre d'affaires » (kick 4/4, pad plus large)
+  27,75 s  respiration → 28 s accord final sous la signature, qui résonne jusqu'à 32 s
 Les effets d'interface sont posés sur les repères exportés par la timeline.
 """
 import os
@@ -24,24 +24,25 @@ DUR, CUES = S.load_cues(COMP)
 S.setup(DUR, seed=11)
 N, ns, tt = S.N, S.ns, S.tt
 
-INTRO, LIFT, BREAK, FINAL = 4.0, 16.0, 25.75, 26.0
+INTRO, ARPS, LIFT, BREAK, FINAL = 4.0, 10.0, 18.0, 27.75, 28.0
 
 #            début  fin   basse  voicing (piano / pad)
 CHORDS = [(0.0, 2.0, 41, [57, 60, 64, 65]),      # Fmaj7
           (2.0, 4.0, 40, [55, 60, 64, 67]),      # C/E
-          (4.0, 6.0, 41, [57, 60, 65, 67]),      # F(add9)
-          (6.0, 8.0, 48, [55, 60, 64, 67]),      # C
-          (8.0, 10.0, 50, [57, 60, 62, 65]),     # Dm7
-          (10.0, 12.0, 46, [57, 62, 65, 69]),    # Bbmaj7
-          (12.0, 14.0, 41, [57, 60, 65, 67]),    # F(add9)
-          (14.0, 16.0, 48, [55, 60, 64, 67]),    # C
-          (16.0, 18.0, 50, [57, 60, 62, 65]),    # Dm7
-          (18.0, 20.0, 46, [57, 62, 65, 69]),    # Bbmaj7
-          (20.0, 22.0, 41, [57, 60, 65, 67]),    # F(add9)
-          (22.0, 24.0, 48, [55, 60, 64, 67]),    # C
-          (24.0, 25.0, 50, [57, 60, 62, 65]),    # Dm7
-          (25.0, 26.0, 46, [57, 62, 65, 69]),    # Bbmaj7
-          (26.0, DUR, 41, [60, 64, 65, 67, 69])]  # Fmaj9 final
+          (4.0, 6.0, 41, [57, 60, 65, 67]),      # F(add9)    1re recherche
+          (6.0, 8.0, 46, [57, 62, 65, 69]),      # Bbmaj7     2e recherche
+          (8.0, 10.0, 48, [55, 60, 64, 67]),     # C
+          (10.0, 12.0, 50, [57, 60, 62, 65]),    # Dm7        contacts
+          (12.0, 14.0, 46, [57, 62, 65, 69]),    # Bbmaj7
+          (14.0, 16.0, 41, [57, 60, 65, 67]),    # F(add9)    RDV, mandat
+          (16.0, 18.0, 48, [55, 60, 64, 67]),    # C
+          (18.0, 20.0, 50, [57, 60, 62, 65]),    # Dm7        relance
+          (20.0, 22.0, 46, [57, 62, 65, 69]),    # Bbmaj7
+          (22.0, 24.0, 41, [57, 60, 65, 67]),    # F(add9)
+          (24.0, 26.0, 48, [55, 60, 64, 67]),    # C
+          (26.0, 27.0, 50, [57, 60, 62, 65]),    # Dm7
+          (27.0, 28.0, 46, [57, 62, 65, 69]),    # Bbmaj7
+          (28.0, DUR, 41, [60, 64, 65, 67, 69])]  # Fmaj9 final
 ARP = {41: [65, 69, 72, 77, 72, 69, 67, 69], 40: [64, 67, 72, 76, 72, 67, 64, 67],
        48: [67, 72, 76, 79, 76, 72, 74, 72], 50: [69, 72, 74, 77, 74, 72, 69, 72],
        46: [70, 74, 77, 81, 77, 74, 72, 74]}
@@ -70,7 +71,7 @@ for t in np.arange(LIFT + 0.25, BREAK, 0.5):
     drums.add(S.hat(True), t, 0.13, pan=-0.2)
 for k, t in enumerate(np.arange(1.0, BREAK, 0.125)):        # shaker : de la frappe au groove
     drums.add(S.shaker(), t, (0.16 if k % 2 else 0.08) * (0.6 if t < INTRO else 1.0), pan=-0.35)
-for k, t in enumerate(np.arange(15.5, 15.98, 0.0625)):       # petit roulement avant la relance
+for k, t in enumerate(np.arange(LIFT - 0.5, LIFT - 0.02, 0.0625)):   # petit roulement avant la relance
     drums.add(S.snare(0.25 + 0.75 * k / 8), t, 0.28)
 drums.add(S.crash(2.4), INTRO, 0.32)
 drums.add(S.crash(2.4), LIFT, 0.4)
@@ -117,10 +118,10 @@ pad_gain = np.interp(tsec, [0, INTRO, LIFT - 0.01, LIFT, BREAK, FINAL, DUR], [0,
 pad *= (pad_gain * np.where(tsec < BREAK, sc, 1.0))[:, None] * 0.55
 
 # ---------------------------------------------------------------- arpèges
-for k, t in enumerate(np.arange(8.0, BREAK, 0.125)):
+for k, t in enumerate(np.arange(ARPS, BREAK, 0.125)):
     m = ARP[chord_at(t + 1e-3)[2]][k % 8]
     arp_b.add(S.pluck(m, bright=3800), t, (0.42 if k % 2 == 0 else 0.28) * (1.15 if t >= LIFT else 1.0), pan=(-0.35 if k % 2 else 0.35))
-for k, t in enumerate(np.arange(FINAL + 0.5, 29.0, 0.25)):
+for k, t in enumerate(np.arange(FINAL + 0.5, DUR - 1.0, 0.25)):
     m = [84, 81, 77, 76, 72, 77, 81, 84][k % 8]
     arp_b.add(S.pluck(m, 0.3, bright=3000), t, 0.3 * (1 - (t - FINAL) / 4), pan=(-0.5 if k % 2 else 0.5))
 arp = arp_b.x + S.pingpong(arp_b.x.mean(axis=1)) * 0.5
@@ -130,8 +131,18 @@ arp *= np.where(tsec < BREAK, 0.6 + 0.4 * sc, 1.0)[:, None]
 fx.add(S.riser(1.0, tone=(60, 72)), INTRO - 1.0, 0.16)
 
 # ---------------------------------------------------------------- effets sur repères
+BLIP0 = min((c['t'] for c in CUES if c['type'] == 'blip'), default=0.0)
+
+
 def blip_for(c):
-    return S.blip(700 * 2 ** (round((c['t'] - 16.32) / 0.07) * 2 / 12))
+    return S.blip(700 * 2 ** (round((c['t'] - BLIP0) / 0.07) * 2 / 12))
+
+
+def sparkle_on_chord(c):
+    """Scintillement construit sur l'accord joué à cet instant (toujours consonant)."""
+    notes = sorted(set(m % 12 for m in chord_at(c['t'])[3]))
+    freqs = [float(S.mtof(96 + n)) for n in notes][:4]
+    return S.sparkle(tuple(freqs))
 
 
 SFX = {
@@ -140,7 +151,7 @@ SFX = {
     'click': (lambda c: S.click(2400, 0.006), 0.32, 0.06),
     'whoosh': (lambda c: S.whoosh(0.5), 0.26, 0.12),
     'swoosh': (lambda c: S.whoosh(0.38, 500, 3600), 0.22, 0.1),
-    'gold': (lambda c: S.sparkle((2793.8, 3520.0, 4186.0, 5587.6)), 0.3, 0.4),         # fa-la-do-fa
+    'gold': (sparkle_on_chord, 0.3, 0.4),
     'notif': (lambda c: S.chime((1174.66, 1760.0)), 0.36, 0.3),                       # ré-la (Dm)
     'tick': (lambda c: S.tick(), 0.26, 0.1),
     'scribble': (lambda c: S.scribble(), 0.5, 0.05),

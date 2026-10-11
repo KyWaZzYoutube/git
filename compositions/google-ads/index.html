@@ -43,7 +43,11 @@
       <div class="col" id="colB">
         <div class="mask"><p class="eyebrow">Position n°1</p></div>
         <div class="h"><div class="mask"><div class="ln">Votre agence</div></div><div class="mask"><div class="ln">passe <span class="o">en tête.</span></div></div></div>
-        <p class="sub">Devant vos concurrents et les portails, sur les recherches vendeurs de votre secteur.</p>
+        <p class="sub">Devant vos concurrents et les portails, sur les recherches de votre secteur.</p>
+        <div class="queries">
+          <div class="q" id="q1"><svg class="ico"><use href="#i-search"/></svg><span>estimation maison</span><span class="q-c">+ votre ville</span><span class="q-okw" id="q1ok"><span class="q-ok"><svg class="ico"><use href="#i-check"/></svg>N°1</span></span></div>
+          <div class="q" id="q2"><svg class="ico"><use href="#i-search"/></svg><span>agence immobilière</span><span class="q-c">+ votre ville</span><span class="q-okw" id="q2ok"><span class="q-ok"><svg class="ico"><use href="#i-check"/></svg>N°1</span></span></div>
+        </div>
       </div>
       <div class="col" id="colC">
         <div class="mask"><p class="eyebrow">Contacts vendeurs</p></div>
@@ -66,16 +70,16 @@
             <span class="res-tag">Concurrent</span>
           </div>
           <div class="res res-c" id="resC2">
-            <span class="res-url">www.portail-annonces.fr</span>
-            <span class="res-title">Estimation et annonces — votre ville</span>
+            <span class="res-url" id="c2Url">www.portail-annonces.fr</span>
+            <span class="res-title" id="c2Title">Estimation et annonces — votre ville</span>
             <div class="res-bars"><i style="width:86%"></i><i style="width:58%"></i></div>
-            <span class="res-tag">Portail</span>
+            <span class="res-tag" id="c2Tag">Portail</span>
           </div>
           <div class="res res-me" id="resMe">
             <svg class="ad-border" id="adBorder" width="644" height="174" viewBox="0 0 644 174"><rect x="2" y="2" width="640" height="170" rx="30" ry="30"/></svg>
             <span class="res-url"><span class="res-sponso" id="sponso">Sponsorisé · </span>www.votre-agence.fr</span>
-            <span class="res-title" id="adTitle">Agence immobilière à votre ville | Votre agence</span>
-            <span class="res-text">Estimation offerte sous 48 h. Agence locale, experte de votre quartier.</span>
+            <span class="res-title" id="adTitle">Estimation offerte en 48 h | Votre agence</span>
+            <span class="res-text" id="adText">Agence locale, experte de votre quartier. Rendez-vous en ligne.</span>
             <span class="badge" id="badge"><i class="badge-ring" id="badgeRing"></i>Position n°1</span>
           </div>
         </div>
@@ -159,10 +163,10 @@
         <p class="sub" id="dSub">Vous n’avez rien de technique à gérer.</p>
       </div>
       <div class="grid">
-        <div class="card"><span class="card-n">01</span><div class="card-t">Mots-clés vendeurs</div><div class="card-d">« estimation maison », « vendre appartement »…</div></div>
-        <div class="card"><span class="card-n">02</span><div class="card-t">Acheteurs et locataires exclus</div><div class="card-d">Votre budget ne touche que des vendeurs.</div></div>
-        <div class="card"><span class="card-n">03</span><div class="card-t">Appels et formulaires suivis</div><div class="card-d">Vous savez ce que rapporte chaque euro.</div></div>
-        <div class="card"><span class="card-n">04</span><div class="card-t">Un rapport clair chaque mois</div><div class="card-d">Et un interlocuteur dédié.</div></div>
+        <div class="card"><span class="card-n">01</span><div class="card-t">Campagne « vendeurs »</div><div class="card-d">« estimation maison », « vendre appartement »…</div></div>
+        <div class="card"><span class="card-n">02</span><div class="card-t">Campagne « agence + ville »</div><div class="card-d">Devant vos concurrents et les portails.</div></div>
+        <div class="card"><span class="card-n">03</span><div class="card-t">Acheteurs et locataires exclus</div><div class="card-d">Votre budget ne touche que des vendeurs.</div></div>
+        <div class="card"><span class="card-n">04</span><div class="card-t">Appels et formulaires suivis</div><div class="card-d">Et un rapport clair chaque mois.</div></div>
       </div>
       <div class="chips">
         <span class="chip-d"><svg class="ico"><use href="#i-bolt"/></svg>En ligne en 72 h</span>

@@ -4,7 +4,7 @@ Vidéos animées pour **premiere-immo.fr**, rendues image par image à partir de
 
 | Vidéo | Durée | Fichiers |
 |---|---|---|
-| **Google Ads immobilier** pour la page `/google-ads-immobilier` | 30 s | [`video/google-ads/premiere-immo-google-ads.mp4`](video/google-ads/premiere-immo-google-ads.mp4) · [`…-muet.mp4`](video/google-ads/premiere-immo-google-ads-muet.mp4) · [`poster.jpg`](video/google-ads/poster.jpg) |
+| **Google Ads immobilier** pour la page `/google-ads-immobilier` | 32 s | [`video/google-ads/premiere-immo-google-ads.mp4`](video/google-ads/premiere-immo-google-ads.mp4) · [`…-muet.mp4`](video/google-ads/premiere-immo-google-ads-muet.mp4) · [`poster.jpg`](video/google-ads/poster.jpg) |
 | Démo générale | 25 s | [`video/demo/premiere-immo-demo.mp4`](video/demo/premiere-immo-demo.mp4) · [`…-muet.mp4`](video/demo/premiere-immo-demo-muet.mp4) · [`poster.jpg`](video/demo/poster.jpg) |
 
 Format : 1920×1080, 30 i/s, H.264 + AAC, son normalisé à -14 LUFS (standard web). La version `-muet` n'a pas de piste audio : elle est plus légère pour une lecture automatique en arrière-plan.
@@ -21,13 +21,14 @@ La charte est celle du site, lue dans le projet Framer :
 | Temps | Plan | Message |
 |---|---|---|
 | 0–3,6 s | Recherche Google : « estimation maison » + « votre ville » | **Un propriétaire veut vendre ? Son premier réflexe : Google.** |
-| 3,6–7,6 s | « Votre agence » remonte devant le concurrent et le portail. Bordure orange, badge « Position n°1 », puis clic sur l'annonce | **Votre agence passe en tête.** Devant vos concurrents et les portails |
-| 7,6–11,6 s | L'annonce devient une notification, puis 3 contacts arrivent (demande d'estimation, appel entrant, formulaire) | **Les vendeurs vous contactent.** Contacts exclusifs, sans pige ni démarchage |
-| 11,6–16 s | Le contact devient un RDV (« RDV fixé · Estimation jeudi 10 h »), puis un mandat signé à la main, tamponné « SIGNÉ » | **Vous estimez. Vous signez.** |
-| 16–19 s | Le tampon remplit l'écran d'orange, les barres montent, la courbe grimpe | **Plus de mandats, plus de chiffre d'affaires.** |
-| 19–23,6 s | Section sombre, comme « Nos leviers » sur le site : 4 cartes numérotées et 3 garanties | **On s'occupe de tout.** Mots-clés vendeurs · Acheteurs et locataires exclus · Appels et formulaires suivis · Rapport chaque mois · En ligne en 72 h · Compte à votre nom · Sans engagement |
-| 23,6–26 s | Compteurs | **+500 campagnes · +8 000 contacts qualifiés · +300 professionnels accompagnés** |
-| 26–30 s | Logo, ondes « secteur », bouton | **Votre secteur est-il encore disponible ?** Une seule agence par secteur · Appel de découverte gratuit · Sans engagement · 15 minutes |
+| 3,6–6 s | Sur « estimation maison », « Votre agence » remonte devant le concurrent et le portail. Bordure orange, badge « Position n°1 » | **Votre agence passe en tête.** La pastille « estimation maison + votre ville » se coche « N°1 » |
+| 6–9,6 s | La recherche s'efface, on tape « agence immobilière ». Les résultats se rechargent avec un concurrent devant, puis « Votre agence » remonte en n°1. Clic sur l'annonce | La pastille « agence immobilière + votre ville » se coche « N°1 » |
+| 9,6–13,6 s | L'annonce devient une notification, puis 3 contacts arrivent (demande d'estimation, appel entrant, formulaire) | **Les vendeurs vous contactent.** Contacts exclusifs, sans pige ni démarchage |
+| 13,6–18 s | Le contact devient un RDV (« RDV fixé · Estimation jeudi 10 h »), puis un mandat signé à la main, tamponné « SIGNÉ » | **Vous estimez. Vous signez.** |
+| 18–21 s | Le tampon remplit l'écran d'orange, les barres montent, la courbe grimpe | **Plus de mandats, plus de chiffre d'affaires.** |
+| 21–25,6 s | Section sombre, comme « Nos leviers » sur le site : vos 4 leviers et 3 garanties | **On s'occupe de tout.** Campagne « vendeurs » · Campagne « agence + ville » · Acheteurs et locataires exclus · Appels et formulaires suivis · En ligne en 72 h · Compte à votre nom · Sans engagement |
+| 25,6–28 s | Compteurs | **+500 campagnes · +8 000 contacts qualifiés · +300 professionnels accompagnés** |
+| 28–32 s | Logo, ondes « secteur », bouton | **Votre secteur est-il encore disponible ?** Une seule agence par secteur · Appel de découverte gratuit · Sans engagement · 15 minutes |
 
 Les textes reprennent ceux de la page Google Ads du site.
 
