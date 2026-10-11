@@ -4,13 +4,15 @@ Bande-son de « Publicité Facebook immobilier » (32 s) — 100 % synthétisée
 
   python3 scripts/score_facebook.py   → build/facebook/audio.wav
 
-Pop lumineuse, 120 BPM, do majeur :
-  0–4 s    intro légère (fa → sol), bulles et réactions des propriétaires
-  4–20 s   groove (do – sol – lam – fa) sous les 5 étapes ; chaque étape sonne une note
-           de plus haut en plus haut (mi, sol, la, do, mi)
-  20 s     relance sur « Et on s'occupe de tout » (kick 4/4)
-  24 s     respiration sous le témoignage (sans batterie), montée vers…
-  28 s     l'accord final de do sous la signature, qui résonne jusqu'à 32 s
+Style « tech-house sombre » des motion designs produit (demandé en référence) :
+intro atmosphérique, « drop » sur un boum de sub, kick 808 profond sur chaque
+temps dont la traîne sert de basse, peu de médiums, roulements avant les
+transitions, fin lumineuse (note de sub tenue + cloche). 120 BPM, fa# mineur → la majeur.
+  0–4 s    nappe sombre, tic-tac, montée → boum de sub à 4 s
+  4–20 s   groove (fa#m – la – mi – sim) sous les 5 étapes ; chaque étape sonne une note
+  20 s     relance sur « Et on s'occupe de tout » (stabs, charleston ouverte)
+  24 s     respiration sous le témoignage (sans kick) : sim – ré – mi …
+  28 s     … la majeur : impact, sub tenu et cloche sous la signature
 Les effets d'interface sont posés sur les repères exportés par la timeline.
 """
 import os
@@ -23,30 +25,26 @@ import synth as S  # noqa: E402
 
 COMP = 'facebook'
 DUR, CUES = S.load_cues(COMP)
-S.setup(DUR, seed=23)
+S.setup(DUR, seed=31)
 N, ns, tt = S.N, S.ns, S.tt
+rng = S.rng
 
-INTRO, ARPS, LIFT, DROP, BREAK, FINAL = 4.0, 10.0, 20.0, 24.0, 27.75, 28.0
+DROP, CLAPS, ARPS, LIFT, BREAKDOWN, BREAK, FINAL = 4.0, 8.0, 12.0, 20.0, 24.0, 27.75, 28.0
 
-#            début  fin   basse  voicing (piano / pad)
-CHORDS = [(0.0, 2.0, 41, [57, 60, 65, 67]),      # F(add9)
-          (2.0, 4.0, 43, [55, 59, 62, 67]),      # G
-          (4.0, 6.0, 48, [55, 60, 64, 67]),      # C          1. il voit votre publicité
-          (6.0, 8.0, 43, [55, 59, 62, 67]),      # G
-          (8.0, 10.0, 45, [57, 60, 64, 69]),     # Am         2. il demande une estimation
-          (10.0, 12.0, 41, [57, 60, 65, 69]),    # F          3. vous recevez le contact
-          (12.0, 14.0, 48, [55, 60, 64, 67]),    # C
-          (14.0, 16.0, 43, [55, 59, 62, 67]),    # G          4. vous le rappelez
-          (16.0, 18.0, 45, [57, 60, 64, 69]),    # Am         5. vous signez le mandat
-          (18.0, 20.0, 41, [57, 60, 65, 69]),    # F
-          (20.0, 22.0, 48, [55, 60, 64, 67]),    # C          on s'occupe de tout
-          (22.0, 24.0, 43, [55, 59, 62, 67]),    # G
-          (24.0, 26.0, 45, [57, 60, 64, 69]),    # Am         témoignage
-          (26.0, 27.0, 41, [57, 60, 65, 69]),    # F
-          (27.0, 28.0, 43, [55, 59, 62, 65]),    # G7
-          (28.0, DUR, 36, [60, 64, 67, 72, 74])]  # Cadd9 final
-ARP = {48: [72, 76, 79, 84, 79, 76, 74, 76], 43: [71, 74, 79, 83, 79, 74, 71, 74],
-       45: [69, 72, 76, 81, 76, 72, 71, 72], 41: [69, 72, 77, 81, 77, 72, 69, 72]}
+#            début  fin   basse (kick 808)  voicing (nappe / stabs)
+CHORDS = [(0.0, 4.0, 42, [54, 61, 64, 68]),      # F#m(add9)  intro
+          (4.0, 8.0, 42, [54, 57, 61, 64]),      # F#m        1. il voit votre publicité
+          (8.0, 12.0, 45, [57, 61, 64, 69]),     # A          2. il demande une estimation
+          (12.0, 16.0, 40, [56, 59, 64, 68]),    # E          3. contact, 4. rappel
+          (16.0, 20.0, 47, [54, 59, 62, 66]),    # Bm         5. mandat
+          (20.0, 22.0, 42, [54, 57, 61, 64]),    # F#m        on s'occupe de tout
+          (22.0, 24.0, 40, [56, 59, 64, 68]),    # E
+          (24.0, 26.0, 47, [54, 59, 62, 66]),    # Bm         témoignage
+          (26.0, 27.0, 50, [54, 57, 62, 66]),    # D
+          (27.0, 28.0, 40, [56, 59, 62, 64]),    # E7
+          (28.0, DUR, 45, [57, 61, 64, 68, 71])]  # Amaj9 final
+ARP = {42: [66, 69, 73, 76, 73, 69, 68, 69], 45: [69, 73, 76, 81, 76, 73, 71, 73],
+       40: [68, 71, 76, 80, 76, 71, 68, 71], 47: [66, 71, 74, 78, 74, 71, 69, 71]}
 
 
 def chord_at(t):
@@ -56,96 +54,162 @@ def chord_at(t):
     return CHORDS[-1]
 
 
-drums, bass, keys_b, pad_b, arp_b, fx, send = (S.Bus() for _ in range(7))
+# ---------------------------------------------------------------- instruments propres à ce style
+def kick808(root_midi, tail=0.32, punch=1.9):
+    """Kick 808 : attaque claquante, puis note grave accordée sur la basse (longue traîne)."""
+    n = ns(0.62)
+    t = tt(n)
+    f1 = float(S.mtof(root_midi))
+    f = f1 + (170 - f1) * np.exp(-t / 0.03)
+    body = S.sine(f, n) * np.exp(-t / tail)
+    click = S.hp(rng.standard_normal(n), 3000) * np.exp(-t / 0.0035) * 0.5
+    x = np.tanh((body + click) * punch) / np.tanh(punch)
+    return S.fades(x, 0.0005, 0.08)
+
+
+def sub_drop(dur=1.8, f0=190.0, f1=40.0):
+    """Boum de sub qui plonge (le « drop » des motions produit)."""
+    n = ns(dur)
+    t = tt(n)
+    f = f1 + (f0 - f1) * np.exp(-t / 0.11)
+    x = np.tanh(2.4 * S.sine(f, n) * np.exp(-t / 0.6))
+    noise = S.lp(rng.standard_normal(n), 1600) * np.exp(-t / 0.05) * 0.45
+    return S.fades(x * 0.9 + noise, 0.001, 0.2)
+
+
+def rev_cymbal(dur=1.0):
+    c = S.crash(dur * 1.4)[: ns(dur)]
+    return S.fades(c[::-1].copy(), 0.01, 0.005)
+
+
+def rim():
+    n = ns(0.06)
+    t = tt(n)
+    return (S.bp(rng.standard_normal(n), 1800, 5200) * np.exp(-t / 0.006) * 0.7 + S.sine(1720, n) * np.exp(-t / 0.012) * 0.35)
+
+
+def tick_hat(level=1.0):
+    """Charleston très serrée, un peu métallique (tic-tac)."""
+    n = ns(0.04)
+    t = tt(n)
+    x = S.hp(rng.standard_normal(n), 8000, 4) * np.exp(-t / 0.008)
+    return x * level
+
+
+def stab(notes, dur=0.32):
+    """Stab d'accord house : supersaw filtré, attaque nette, chute rapide."""
+    n = ns(dur)
+    t = tt(n)
+    x = sum(S.supersaw(m, n, 5, 0.16) for m in notes) / len(notes)
+    x = S.sweep(x, lambda s: 700 + 4200 * np.exp(-s / 0.09), 'low')
+    return S.fades(x * np.exp(-t / 0.14) * np.minimum(1, t / 0.002), 0.001, 0.03)
+
+
+def offbass(midi, dur=0.2):
+    """Basse en contretemps (une octave au-dessus du kick), courte et ronde."""
+    n = ns(dur)
+    t = tt(n)
+    f = float(S.mtof(midi))
+    x = S.lp(S.saw(f, n), 380) * 0.75 + S.sine(f, n) * 0.4
+    return S.fades(x * np.exp(-t / 0.09) * np.minimum(1, t / 0.004), 0.002, 0.02)
+
+
+drums, bass, pad_b, arp_b, stabs_b, fx, send = (S.Bus() for _ in range(7))
 
 # ---------------------------------------------------------------- batterie
-kicks = [t for t in np.arange(INTRO, LIFT, 1.0)] + [t for t in np.arange(LIFT, DROP, 0.5)] + [FINAL]
+kicks = [t for t in np.arange(DROP, BREAKDOWN, 0.5)]
 for t in kicks:
-    drums.add(S.kick(decay=0.15), t, 0.85)
-for t in np.arange(INTRO + 0.5, DROP, 1.0):
+    root = chord_at(t + 1e-3)[2] - 12          # traîne du kick accordée sur la basse de l'accord
+    drums.add(kick808(root), t, 0.95)
+drums.add(kick808(45 - 12, tail=0.6), FINAL, 1.0)
+for t in np.arange(CLAPS + 0.5, BREAKDOWN, 1.0):          # clap sur 2 et 4
     c = S.clap()
-    drums.add(c, t, 0.3, pan=0.05)
-    send.add(c, t, 0.1)
-for k, t in enumerate(np.arange(INTRO, DROP, 0.25)):
-    drums.add(S.hat(), t, (0.3 if k % 2 else 0.18), pan=0.25)
-for t in np.arange(LIFT + 0.25, DROP, 0.5):
-    drums.add(S.hat(True), t, 0.13, pan=-0.2)
-for k, t in enumerate(np.arange(1.0, BREAK, 0.125)):        # shaker : de l'intro au témoignage
-    g = 0.6 if t < INTRO else (0.55 if t >= DROP else 1.0)
-    drums.add(S.shaker(), t, (0.16 if k % 2 else 0.08) * g, pan=-0.35)
-for k, t in enumerate(np.arange(LIFT - 0.5, LIFT - 0.02, 0.0625)):   # petit roulement avant la relance
-    drums.add(S.snare(0.25 + 0.75 * k / 8), t, 0.26)
-drums.add(S.crash(2.4), INTRO, 0.32)
-drums.add(S.crash(2.4), LIFT, 0.4)
-drums.add(S.crash(3.6), FINAL, 0.55)
-
-sc = S.sidechain([t for t in kicks if t < DROP], depth=0.55)
-
-# ---------------------------------------------------------------- basse
-for k, t in enumerate(np.arange(INTRO, DROP, 0.25)):          # croches avec rebond d'octave
-    root = chord_at(t + 1e-3)[2]
-    m = root + (12 if k % 4 == 2 else 0)
-    n = ns(0.23)
-    x = S.lp(S.saw(S.mtof(m), n), 900) * 0.8 + S.sine(S.mtof(m) / 2, n) * 0.3
-    env = np.exp(-tt(n) / 0.18) * np.minimum(1, tt(n) / 0.004)
-    bass.add(S.fades(x * env, 0.002, 0.02), t, 0.42)
-for (a, b, root, notes) in CHORDS:                             # notes tenues sous le témoignage
-    if DROP <= a < BREAK:
-        d = min(b, BREAK) - a
-        n = ns(d + 0.2)
-        x = S.lp(S.saw(S.mtof(root), n), 500) * 0.5 + S.sine(S.mtof(root) / 2, n) * 0.5
-        env = np.minimum(1, tt(n) / 0.05) * np.clip((d + 0.2 - tt(n)) / 0.3, 0, 1)
-        bass.add(S.fades(x * env, 0.005, 0.05), a, 0.2)
-n = ns(DUR - FINAL)
-bass.add(S.fades(S.sine(S.mtof(36), n) * 0.5 * np.exp(-tt(n) / 1.6), 0.01, 0.3), FINAL, 0.38)
-
-# ---------------------------------------------------------------- piano électrique
-for (a, b, root, notes) in CHORDS:
-    if a < INTRO:
-        keys_b.add(S.keys(notes, b - a, 0.55, tone=1.4), a, 1.0)
-    elif a >= FINAL:
-        keys_b.add(S.keys(notes, b - a, 0.9, tone=2.4), a, 1.0)
-    elif a >= DROP:   # témoignage : accords tenus, plus doux
-        keys_b.add(S.keys(notes, b - a, 0.6, tone=1.5), a, 0.9)
-        keys_b.add(S.keys([notes[-1] + 12], 0.6, 0.35, tone=1.2), a + 1.0 if b - a > 1.5 else a + 0.5, 0.7, pan=0.3)
-    else:   # syncopes : temps 1, « et » du 2, temps 4
-        for off, d, v in ((0.0, 0.45, 1.0), (0.75, 0.4, 0.75), (1.5, 0.45, 0.85)):
-            if a + off < b:
-                keys_b.add(S.keys(notes, d, v), a + off, 0.85, pan=0.1)
-
-# ---------------------------------------------------------------- pad (supersaw doux)
-for (a, b, root, notes) in CHORDS:
-    if a < INTRO:
+    drums.add(c, t, 0.32, pan=0.04)
+    send.add(c, t, 0.14)
+for k, t in enumerate(np.arange(0.5, BREAKDOWN, 0.5)):    # charleston sur les contretemps (dès l'intro, très douce)
+    g = 0.1 if t < DROP else 0.24
+    drums.add(tick_hat(), t + 0.25, g, pan=0.22)
+for k, t in enumerate(np.arange(DROP, BREAKDOWN, 0.125)):  # doubles-croches très discrètes
+    if k % 4 == 2:
         continue
-    n = ns(b - a + 0.4)
+    drums.add(tick_hat(0.6), t, 0.07 + 0.04 * (k % 2), pan=-0.3)
+for t in np.arange(LIFT + 0.25, BREAKDOWN, 0.5):          # charleston ouverte sur la relance
+    drums.add(S.hat(True), t, 0.12, pan=-0.15)
+RIMS = [0.75, 1.75, 2.25, 3.5]                              # petites percussions syncopées, par mesure
+for bar in np.arange(DROP, BREAKDOWN, 2.0):
+    for off in RIMS:
+        if bar + off < BREAKDOWN and not (bar < CLAPS and off == 3.5):
+            drums.add(rim(), bar + off, 0.12, pan=(0.45 if off % 1 else -0.45))
+for k, t in enumerate(np.arange(0.0, DROP - 0.2, 0.5)):  # tic-tac de l'intro
+    drums.add(rim(), t, 0.05 if k % 2 else 0.08, pan=0.35)
+for k, t in enumerate(np.arange(1.0, DROP - 0.4, 0.5)):   # pulsation étouffée qui monte vers le drop
+    p = (t - 1.0) / (DROP - 1.4)
+    drums.add(S.lp(kick808(30, tail=0.22), 180), t, 0.18 + 0.32 * p)
+for lo, hi in ((LIFT - 1.0, LIFT), (FINAL - 1.25, BREAK)):   # roulements avant les relances
+    steps = np.arange(lo, hi - 0.01, 0.0625)
+    for k, t in enumerate(steps):
+        drums.add(S.snare(0.2 + 0.8 * (k / len(steps)) ** 1.5), t, 0.24)
+drums.add(S.crash(2.6), DROP, 0.3)
+drums.add(S.crash(2.4), LIFT, 0.36)
+drums.add(S.crash(3.6), FINAL, 0.5)
+
+sc = S.sidechain(kicks, depth=0.7, tau=0.11)
+
+# ---------------------------------------------------------------- basse en contretemps
+for k, t in enumerate(np.arange(DROP + 0.25, BREAKDOWN, 0.5)):
+    root = chord_at(t + 1e-3)[2]
+    bass.add(offbass(root + (12 if k % 4 == 3 else 0)), t, 0.32)
+# notes tenues sous le témoignage, puis sub tenu final (la grave)
+for (a, b, root, notes) in CHORDS:
+    if BREAKDOWN <= a < BREAK:
+        d = min(b, BREAK) - a
+        n = ns(d + 0.15)
+        x = S.sine(S.mtof(root - 12), n) * 0.8 + S.lp(S.saw(S.mtof(root), n), 300) * 0.25
+        env = np.minimum(1, tt(n) / 0.08) * np.clip((d + 0.15 - tt(n)) / 0.25, 0, 1)
+        bass.add(S.fades(x * env, 0.005, 0.05), a, 0.17)
+n = ns(1.8)
+bass.add(S.fades(np.tanh(1.6 * S.sine(S.mtof(33), n)) * np.minimum(1, tt(n) / 0.01) * np.clip((1.8 - tt(n)) / 0.6, 0, 1), 0.005, 0.1), FINAL, 0.4)
+
+# ---------------------------------------------------------------- nappe sombre (pompe avec le kick)
+for (a, b, root, notes) in CHORDS:
+    n = ns(b - a + 0.5)
     t = tt(n)
-    L = sum(S.supersaw(m, n) for m in notes) / len(notes)
-    R = sum(S.supersaw(m, n) for m in notes) / len(notes)
-    env = np.minimum(1, t / 0.08) * np.clip((b - a + 0.4 - t) / 0.4, 0, 1)
+    L = sum(S.supersaw(m, n, 5, 0.12) for m in notes) / len(notes)
+    R = sum(S.supersaw(m, n, 5, 0.12) for m in notes) / len(notes)
+    att = 1.2 if a == 0 else 0.06
+    env = np.minimum(1, t / att) * np.clip((b - a + 0.5 - t) / 0.5, 0, 1)
     pad_b.add(np.stack([L * env, R * env], 1), a, 1.0)
-cut = lambda s: 1400 if s < LIFT else (2600 if s < DROP else (1700 if s < FINAL else 3600 * np.exp(-(s - FINAL) / 1.6) + 900))
+cut = lambda s: (500 + 700 * s / DROP) if s < DROP else (950 if s < LIFT else (2000 if s < BREAKDOWN else (1500 if s < FINAL else 3000 * np.exp(-(s - FINAL) / 1.4) + 800)))
 pad = np.stack([S.sweep(pad_b.x[:, c], cut, 'low') for c in range(2)], 1)
 tsec = tt(N)
-pad_gain = np.interp(tsec, [0, INTRO, LIFT - 0.01, LIFT, DROP - 0.01, DROP, BREAK, FINAL, DUR],
-                     [0, 0.45, 0.45, 0.8, 0.8, 0.75, 0.75, 1.0, 0.6])
-pad *= (pad_gain * np.where(tsec < DROP, sc, 1.0))[:, None] * 0.55
+pad_gain = np.interp(tsec, [0, 2.0, DROP - 0.01, DROP, LIFT - 0.01, LIFT, BREAKDOWN, BREAK, FINAL, DUR],
+                     [0.0, 1.0, 1.15, 0.5, 0.45, 0.6, 0.85, 0.85, 1.0, 0.6])
+pad *= (pad_gain * np.where((tsec >= DROP) & (tsec < BREAKDOWN), sc, 1.0))[:, None] * 0.5
 
-# ---------------------------------------------------------------- arpèges
-for k, t in enumerate(np.arange(ARPS, DROP, 0.125)):
+# ---------------------------------------------------------------- arpège filtré (mouvement discret)
+for k, t in enumerate(np.arange(ARPS, BREAKDOWN, 0.25)):
     m = ARP[chord_at(t + 1e-3)[2]][k % 8]
-    arp_b.add(S.pluck(m, bright=3800), t, (0.42 if k % 2 == 0 else 0.28) * (1.15 if t >= LIFT else 1.0), pan=(-0.35 if k % 2 else 0.35))
-for k, t in enumerate(np.arange(DROP, BREAK - 0.1, 0.25)):     # témoignage : croches, plus légères
-    m = ARP[chord_at(t + 1e-3)[2]][(2 * k) % 8]
-    arp_b.add(S.pluck(m, 0.3, bright=2600), t, 0.24, pan=(-0.4 if k % 2 else 0.4))
+    arp_b.add(S.pluck(m, 0.2, bright=2400), t, (0.34 if k % 2 == 0 else 0.22) * (1.2 if t >= LIFT else 1.0), pan=(-0.4 if k % 2 else 0.4))
 for k, t in enumerate(np.arange(FINAL + 0.5, DUR - 1.0, 0.25)):
-    m = [84, 79, 76, 72, 74, 76, 79, 84][k % 8]
-    arp_b.add(S.pluck(m, 0.3, bright=3000), t, 0.3 * (1 - (t - FINAL) / 4), pan=(-0.5 if k % 2 else 0.5))
-arp = arp_b.x + S.pingpong(arp_b.x.mean(axis=1)) * 0.5
-arp *= np.where(tsec < DROP, 0.6 + 0.4 * sc, 1.0)[:, None]
+    m = [88, 85, 81, 76, 81, 85, 88, 93][k % 8]
+    arp_b.add(S.pluck(m, 0.3, bright=2800), t, 0.24 * (1 - (t - FINAL) / 4), pan=(-0.5 if k % 2 else 0.5))
+arp = arp_b.x + S.pingpong(arp_b.x.mean(axis=1)) * 0.55
+arp *= np.where((tsec >= DROP) & (tsec < BREAKDOWN), 0.5 + 0.5 * sc, 1.0)[:, None]
 
-# ---------------------------------------------------------------- montées
-fx.add(S.riser(1.0, tone=(60, 72)), INTRO - 1.0, 0.16)
-fx.add(S.riser(1.0, tone=(55, 67)), BREAK - 1.0, 0.2)
+# ---------------------------------------------------------------- stabs d'accords sur la relance
+for t in np.arange(LIFT, BREAKDOWN, 0.5):
+    notes = chord_at(t + 0.25)[3]
+    stabs_b.add(stab([m + 12 for m in notes]), t + 0.25, 1.1, pan=0.0)
+
+# ---------------------------------------------------------------- montées, boums, cymbales inversées
+fx.add(S.riser(1.6, tone=(54, 66)), DROP - 1.6, 0.2)
+fx.add(rev_cymbal(1.0), DROP - 1.0, 0.3)
+fx.add(sub_drop(), DROP, 0.55)
+fx.add(rev_cymbal(0.8), LIFT - 0.8, 0.26)
+fx.add(sub_drop(1.4, 170, 44), LIFT, 0.4)
+fx.add(S.riser(1.2, tone=(52, 64)), BREAK - 1.2, 0.22)
+fx.add(rev_cymbal(0.75), BREAK - 0.75, 0.26)
+fx.add(sub_drop(2.2, 200, 36), FINAL, 0.6)
 
 # ---------------------------------------------------------------- effets sur repères
 def nth(ctype):
@@ -154,14 +218,15 @@ def nth(ctype):
     return lambda c: times.index(c['t'])
 
 
-PENTA = [523.25, 587.33, 659.26, 783.99, 880.0, 1046.5, 1174.66, 1318.51, 1567.98, 1760.0, 2093.0, 2349.32, 2637.02]
+# gamme pentatonique de la majeur / fa# mineur (la si do# mi fa#)
+PENTA = [440.0, 493.88, 554.37, 659.26, 739.99, 880.0, 987.77, 1108.73, 1318.51, 1479.98, 1760.0, 1975.53, 2217.46, 2637.02]
 bubble_k, react_k, star_k, step_k = nth('bubble'), nth('react'), nth('star'), nth('step')
-STEP_NOTES = [76, 79, 81, 84, 88]     # mi, sol, la, do, mi : toujours une note de l'accord joué
+STEP_NOTES = [73, 76, 81, 83, 86]     # do#, mi, la, si, ré : toujours une note de l'accord joué
 
 
 def bubble(c):
-    f = PENTA[bubble_k(c) % len(PENTA)]
-    return S.pop(f * 0.6, f, 0.1)
+    f = PENTA[2 + bubble_k(c) % 10]
+    return S.pop(f * 0.6, f, 0.09)
 
 
 def react(c):
@@ -173,9 +238,9 @@ def star(c):
 
 
 def step(c):
-    f = float(S.mtof(STEP_NOTES[step_k(c) % len(STEP_NOTES)]))
+    m = STEP_NOTES[step_k(c) % len(STEP_NOTES)]
     n = ns(1.2)
-    return S.bell(f, n, 0.7) * 0.5 + np.pad(S.pluck(STEP_NOTES[step_k(c) % 5], 0.3, 4200), (0, n - ns(0.3))) * 0.35
+    return S.bell(float(S.mtof(m)), n, 0.7) * 0.5 + np.pad(S.pluck(m, 0.3, 4200), (0, n - ns(0.3))) * 0.35
 
 
 def chord_chime(c, count=2):
@@ -193,7 +258,7 @@ def sparkle_on_chord(c):
 
 def tap(c):
     n = ns(0.08)
-    thump = np.pad(S.pop(320, 200, 0.06), (0, n - ns(0.06)))
+    thump = np.pad(S.pop(300, 190, 0.06), (0, n - ns(0.06)))
     return np.pad(S.click(2600, 0.005), (0, n - ns(0.04))) * 0.7 + thump * 0.6
 
 
@@ -226,31 +291,31 @@ def flip(c):
 
 SFX = {
     'type': (lambda c: S.click(3000 + S.rng.random() * 1500), 0.12, 0.03),
-    'pop': (lambda c: S.pop(), 0.3, 0.12),
-    'bubble': (bubble, 0.16, 0.15),
-    'react': (react, 0.14, 0.2),
-    'star': (star, 0.16, 0.2),
-    'step': (step, 0.3, 0.35),
+    'pop': (lambda c: S.pop(420, 820, 0.09), 0.3, 0.12),
+    'bubble': (bubble, 0.15, 0.15),
+    'react': (react, 0.13, 0.2),
+    'star': (star, 0.15, 0.2),
+    'step': (step, 0.28, 0.35),
     'tap': (tap, 0.34, 0.05),
     'click': (lambda c: S.click(2400, 0.006), 0.32, 0.06),
     'swipe': (lambda c: S.whoosh(0.32, 900, 4200), 0.16, 0.08),
-    'whoosh': (lambda c: S.whoosh(0.5), 0.26, 0.12),
-    'swoosh': (lambda c: S.whoosh(0.38, 500, 3600), 0.22, 0.1),
+    'whoosh': (lambda c: S.whoosh(0.5, 250, 2400, rumble=0.3), 0.28, 0.12),
+    'swoosh': (lambda c: S.whoosh(0.38, 450, 3400), 0.22, 0.1),
     'flip': (flip, 0.26, 0.1),
-    'drop': (lambda c: S.pop(1300, 650, 0.1), 0.26, 0.15),
-    'gold': (sparkle_on_chord, 0.3, 0.4),
+    'drop': (lambda c: S.pop(1100, 560, 0.1), 0.26, 0.15),
+    'gold': (sparkle_on_chord, 0.28, 0.4),
     'notif': (chord_chime, 0.36, 0.3),
-    'success': (lambda c: S.chime((880.0, 1046.5, 1318.51), 0.07, 0.35), 0.34, 0.3),   # la-do-mi (Am)
+    'success': (lambda c: S.chime((880.0, 1108.73, 1318.51), 0.07, 0.35), 0.34, 0.3),   # la-do#-mi (A)
     'buzz': (buzz, 0.2, 0.0),
     'ring': (ringback, 0.12, 0.1),
-    'tick': (lambda c: S.tick(), 0.26, 0.1),
+    'tick': (lambda c: S.tick(), 0.24, 0.1),
     'scribble': (lambda c: S.scribble(), 0.5, 0.05),
     'stamp': (lambda c: S.stamp(), 0.55, 0.15),
-    'riser_short': (lambda c: S.riser(0.5, tone=(60, 72)), 0.28, 0.2),
-    'hit': (lambda c: S.stab([60, 64, 67, 72, 76], 1.4) * 0.8 + np.pad(S.impact(), (0, ns(1.4) - ns(0.9))) * 0.5, 0.5, 0.35),
+    'riser_short': (lambda c: S.riser(0.5, tone=(54, 66)), 0.26, 0.2),
+    'hit': (lambda c: S.stab([66, 69, 73, 78, 81], 1.2, 0.3) * 0.6 + np.pad(S.impact(), (0, ns(1.2) - ns(0.9))) * 0.6, 0.45, 0.35),
     'zip': (lambda c: S.zip_(), 0.2, 0.1),
-    'counter': (lambda c: S.counter_ticks(18, 1.0), 0.3, 0.05),
-    'logo': (lambda c: S.sparkle((1046.5, 1318.51, 1567.98, 2093.0), 0.05, 0.7), 0.34, 0.5),   # do majeur
+    'counter': (lambda c: S.counter_ticks(18, 1.0), 0.28, 0.05),
+    'logo': (lambda c: S.sparkle((880.0, 1108.73, 1318.51, 1760.0), 0.06, 0.9), 0.36, 0.55),   # la majeur
 }
 missing = set()
 for c in CUES:
@@ -268,20 +333,21 @@ if missing:
     print('repères sans effet :', sorted(missing))
 
 # ---------------------------------------------------------------- réverbération + mixage
-ir = S.make_ir(2.2)
-send.x += pad * 0.2 + arp * 0.3 + keys_b.x * 0.18
-wet = S.reverb(send.x, ir) * 0.45
+ir = S.make_ir(2.6, damp=4200)
+send.x += pad * 0.25 + arp * 0.35 + stabs_b.x * 0.3
+wet = S.reverb(send.x, ir) * 0.5
 
 gate = np.ones(N)
-gate[(tsec >= BREAK) & (tsec < FINAL)] = 0.0      # respiration avant l'accord final
+gate[(tsec >= BREAK) & (tsec < FINAL)] = 0.0      # silence juste avant l'impact final
 gate = S.lp(gate, 60, 1)
-music = drums.x * 0.5 + bass.x * (sc[:, None] * 0.85 + 0.15) + keys_b.x * 0.55 + pad + arp * 0.9
+stabs = stabs_b.x * sc[:, None]
+music = drums.x * 0.62 + bass.x * (sc[:, None] * 0.8 + 0.2) + pad + arp * 0.75 + stabs * 0.8
 music[:, 0] *= gate
 music[:, 1] *= gate
 
 if os.environ.get('STEMS'):
-    for name, x in (('batterie', drums.x * 0.5), ('basse', bass.x), ('piano', keys_b.x * 0.55), ('pad', pad), ('arpèges', arp * 0.9), ('effets', fx.x), ('réverb', wet)):
+    for name, x in (('batterie', drums.x * 0.62), ('basse', bass.x), ('nappe', pad), ('arpège', arp * 0.75), ('stabs', stabs * 0.8), ('effets', fx.x), ('réverb', wet)):
         print(f'{name:10s}', ' '.join(f'{S.rms_db(x[ns(a):ns(b)]):6.1f}' for a, b in ((0, 4), (4, 20), (20, 24), (24, 28), (28, 32))))
 
-mix = S.master(music + fx.x * 1.3 + wet, fade_out=1.2, drive=1.25)
+mix = S.master(music + fx.x * 1.25 + wet, fade_out=1.2, drive=1.35)
 print(S.write(COMP, mix), f'{DUR:.2f} s')

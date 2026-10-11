@@ -16,6 +16,10 @@ Une vidéo pensée pour des agents qui ne connaissent pas le marketing digital :
 
 La charte est celle de la page Facebook du site (projet Framer, `PIFacebook.tsx`) : encre `#141414`, orange `#FF5100`, pêche `#FFF1EA`, crème `#F4F4F4`, bleu Facebook `#1877F2`, Plus Jakarta Sans 800, sur-titres en pastille, panneau dégradé pêche et maquette de téléphone du haut de page.
 
+Le fil Facebook du téléphone utilise de **vraies photos** pour être crédible : la maison de la publicité, la plage et le chien des publications d'« amis », et deux photos de profil sans visage. Elles sont dans `compositions/facebook/assets/` (sources et licences dans « Crédits et droits »).
+
+La musique suit le style des motions « produit » donnés en référence : intro atmosphérique, boum de sub au départ des étapes (4 s), kick 808 profond sur chaque temps, peu de médiums, roulements avant les transitions, puis une fin lumineuse (fa# mineur → la majeur).
+
 | Temps | Plan | Message |
 |---|---|---|
 | 0–4 s | Des propriétaires apparaissent autour du titre, avec leurs « J'aime ». Ils rejoignent ensuite le fil du téléphone | **Vos futurs vendeurs sont sur Facebook.** +40 M d'utilisateurs de Facebook en France |
@@ -68,7 +72,7 @@ Les textes reprennent ceux de la page Google Ads du site.
 compositions/
   _shared/engine.js        moteur commun : timeline GSAP en pause, révélations de texte, mesures, caméra, aperçu
   _shared/assets/          logo du site
-  facebook/                index.html · styles.css · main.js
+  facebook/                index.html · styles.css · main.js · assets/ (photos du fil Facebook)
   google-ads/              index.html · styles.css · main.js
   demo/                    la démo générale
 scripts/
@@ -115,11 +119,12 @@ Dans l'aperçu : `espace` met en pause, `←` et `→` reculent ou avancent d'un
 - Animation : [GSAP](https://gsap.com), gratuit y compris en usage commercial ([licence « no charge »](https://gsap.com/standard-license)).
 - Polices : Plus Jakarta Sans, Inter, Inter Tight et Instrument Serif (SIL Open Font License), via Fontsource.
 - Icônes : tracés dessinés pour le projet. La démo reprend des tracés de [Feather Icons](https://feathericons.com) (MIT).
+- Photos de la vidéo Facebook : [Unsplash](https://unsplash.com/license), licence Unsplash (usage commercial gratuit, sans autorisation ni mention obligatoire). Fichiers d'origine : maison `images.unsplash.com/photo-1523217582562-09d0def993a6`, plage `photo-1507525428034-b723cf961d3e`, chien `photo-1543466835-00a7907e9de1`, fleurs `photo-1490750967868-88aa4486c946`, montagne `photo-1464822759023-fed622ff2c3b`. Aucune photo ne montre de visage.
 - Logo, textes et chiffres de Première Immo : issus du site (projet Framer).
 - Musique et effets sonores : **entièrement synthétisés par code**, sans aucun échantillon externe, donc libres de droits.
 
 ## À savoir
 
-- Dans la vidéo Facebook, l'interface de Facebook, le formulaire, la notification, l'appel, le rendez-vous et le mandat sont des **illustrations**, comme la maquette de téléphone du site. L'adresse et le numéro sont fictifs. Le chiffre « +40 M d'utilisateurs » et l'avis de Lucas R. viennent de la page Facebook du site. L'avis est cité en extrait.
+- Dans la vidéo Facebook, l'interface de Facebook, le formulaire, la notification, l'appel, le rendez-vous et le mandat sont des **illustrations**, comme la maquette de téléphone du site. Les photos du fil sont des photos libres de droits, et les noms, l'adresse et le numéro sont fictifs. Le chiffre « +40 M d'utilisateurs » et l'avis de Lucas R. viennent de la page Facebook du site. L'avis est cité en extrait.
 - Dans la vidéo Google Ads, certains éléments sont des **illustrations** : la recherche, les résultats concurrents, les notifications, les dates du calendrier, le mandat et le graphique. Le graphique ne porte volontairement aucun montant. Les chiffres +500, +8 000 et +300 viennent de la page du site.
 - Pour la démo générale, le site n'était pas accessible à l'époque. Ses couleurs et son logo sont donc provisoires, contrairement à la vidéo Google Ads.
