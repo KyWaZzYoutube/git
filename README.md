@@ -4,10 +4,29 @@ Vidéos animées pour **premiere-immo.fr**, rendues image par image à partir de
 
 | Vidéo | Durée | Fichiers |
 |---|---|---|
+| **Publicité Facebook immobilier** pour la page `/publicite-facebook-immobilier` | 32 s | [`video/facebook/premiere-immo-facebook.mp4`](video/facebook/premiere-immo-facebook.mp4) · [`…-muet.mp4`](video/facebook/premiere-immo-facebook-muet.mp4) · [`poster.jpg`](video/facebook/poster.jpg) |
 | **Google Ads immobilier** pour la page `/google-ads-immobilier` | 32 s | [`video/google-ads/premiere-immo-google-ads.mp4`](video/google-ads/premiere-immo-google-ads.mp4) · [`…-muet.mp4`](video/google-ads/premiere-immo-google-ads-muet.mp4) · [`poster.jpg`](video/google-ads/poster.jpg) |
 | Démo générale | 25 s | [`video/demo/premiere-immo-demo.mp4`](video/demo/premiere-immo-demo.mp4) · [`…-muet.mp4`](video/demo/premiere-immo-demo-muet.mp4) · [`poster.jpg`](video/demo/poster.jpg) |
 
 Format : 1920×1080, 30 i/s, H.264 + AAC, son normalisé à -14 LUFS (standard web). La version `-muet` n'a pas de piste audio : elle est plus légère pour une lecture automatique en arrière-plan.
+
+## Publicité Facebook immobilier : le film, plan par plan
+
+Une vidéo pensée pour des agents qui ne connaissent pas le marketing digital : un seul message par plan, et le parcours du propriétaire en 5 étapes, comme sur la page. À gauche, les 5 étapes se cochent une à une. À droite, un téléphone montre chaque étape.
+
+La charte est celle de la page Facebook du site (projet Framer, `PIFacebook.tsx`) : encre `#141414`, orange `#FF5100`, pêche `#FFF1EA`, crème `#F4F4F4`, bleu Facebook `#1877F2`, Plus Jakarta Sans 800, sur-titres en pastille, panneau dégradé pêche et maquette de téléphone du haut de page.
+
+| Temps | Plan | Message |
+|---|---|---|
+| 0–4 s | Des propriétaires apparaissent autour du titre, avec leurs « J'aime ». Ils rejoignent ensuite le fil du téléphone | **Vos futurs vendeurs sont sur Facebook.** +40 M d'utilisateurs de Facebook en France |
+| 4–7 s | Étape 1. Le propriétaire fait défiler son fil et tombe sur la publicité de votre agence, entourée d'orange. Une carte montre la zone ciblée | **Il voit votre publicité.** Dans son fil Facebook, dans votre secteur |
+| 7–10,5 s | Étape 2. 1er clic sur « En savoir plus » : le formulaire s'ouvre. Adresse saisie, téléphone pré-rempli. 2e clic : « Demande envoyée », « Merci ! » | **Il demande une estimation.** En 2 clics, sans quitter Facebook |
+| 10,5–13,5 s | Étape 3. Le téléphone se retourne : c'est le vôtre (« Vous, l'agence »). Il vibre : « Nouveau contact vendeur » | **Vous recevez le contact.** Tout de suite, et rien qu'à vous : contact exclusif |
+| 13,5–17 s | Étape 4. La notification s'ouvre sur la fiche du contact, vous touchez « Rappeler », l'appel démarre | **Vous le rappelez.** RDV fixé : estimation jeudi 10 h |
+| 17–20 s | Étape 5. Le mandat (origine : publicité Facebook) est signé à la main et tamponné « SIGNÉ ». Les 5 étapes sont cochées | **Vous signez le mandat.** Sans pige, sans portail |
+| 20–23,6 s | Le tampon remplit l'écran d'orange : les visuels, les annonces, le ciblage, le suivi | **Et on s'occupe de tout.** En ligne en 72 h · Compte à votre nom · Sans engagement |
+| 23,6–28 s | Avis client publié sur le site (extrait), 5 étoiles | « Je n'y connaissais strictement rien en publicité en ligne. Ils ont tout configuré. » **6 estimations et 2 mandats signés en deux mois.** Lucas R., ERA Lyon 6e |
+| 28–32 s | Logo, ondes « secteur », bouton | **Votre secteur est-il encore disponible ?** Une seule agence par secteur · Appel de découverte gratuit · Sans engagement · 15 minutes |
 
 ## Google Ads immobilier : le film, plan par plan
 
@@ -48,11 +67,14 @@ Les textes reprennent ceux de la page Google Ads du site.
 ```
 compositions/
   _shared/engine.js        moteur commun : timeline GSAP en pause, révélations de texte, mesures, caméra, aperçu
-  google-ads/              index.html · styles.css · main.js · assets/ (logo du site)
+  _shared/assets/          logo du site
+  facebook/                index.html · styles.css · main.js
+  google-ads/              index.html · styles.css · main.js
   demo/                    la démo générale
 scripts/
   render.mjs               rendu image par image (Playwright → ffmpeg), flou de mouvement adaptatif
   synth.py                 synthétiseur partagé : instruments, effets d'interface, mastering
+  score_facebook.py        bande-son de la vidéo Facebook
   score_google_ads.py      bande-son de la vidéo Google Ads
   score_demo.py            bande-son de la démo
   build.sh                 chaîne complète : ./scripts/build.sh <composition>
@@ -73,10 +95,11 @@ npm install
 pip install numpy scipy pillow imageio-ffmpeg
 npx playwright install chromium            # si Chromium n'est pas déjà présent
 
-npx http-server . -p 8080 -c-1             # puis ouvrir /compositions/google-ads/ : aperçu temps réel
-node scripts/render.mjs stills 4.5 12.8 --comp google-ads    # images fixes → build/google-ads/stills/
-./scripts/build.sh google-ads              # rendu final → video/google-ads/ (≈ 15 à 20 min)
-./scripts/build.sh google-ads --sub 1      # rendu rapide sans flou de mouvement
+npx http-server . -p 8080 -c-1             # puis ouvrir /compositions/facebook/ : aperçu temps réel
+node scripts/render.mjs stills 4.5 12.8 --comp facebook      # images fixes → build/facebook/stills/
+./scripts/build.sh facebook                # rendu final → video/facebook/ (≈ 15 à 20 min)
+./scripts/build.sh google-ads              # idem pour la vidéo Google Ads
+./scripts/build.sh facebook --sub 1        # rendu rapide sans flou de mouvement
 ```
 
 Dans l'aperçu : `espace` met en pause, `←` et `→` reculent ou avancent d'une seconde, et `?t=12.5` dans l'URL fige l'image à 12,5 s.
@@ -97,5 +120,6 @@ Dans l'aperçu : `espace` met en pause, `←` et `→` reculent ou avancent d'un
 
 ## À savoir
 
+- Dans la vidéo Facebook, l'interface de Facebook, le formulaire, la notification, l'appel, le rendez-vous et le mandat sont des **illustrations**, comme la maquette de téléphone du site. L'adresse et le numéro sont fictifs. Le chiffre « +40 M d'utilisateurs » et l'avis de Lucas R. viennent de la page Facebook du site. L'avis est cité en extrait.
 - Dans la vidéo Google Ads, certains éléments sont des **illustrations** : la recherche, les résultats concurrents, les notifications, les dates du calendrier, le mandat et le graphique. Le graphique ne porte volontairement aucun montant. Les chiffres +500, +8 000 et +300 viennent de la page du site.
 - Pour la démo générale, le site n'était pas accessible à l'époque. Ses couleurs et son logo sont donc provisoires, contrairement à la vidéo Google Ads.
