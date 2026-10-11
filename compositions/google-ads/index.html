@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Première Immo — Google Ads immobilier</title>
+<link rel="stylesheet" href="../../node_modules/@fontsource-variable/plus-jakarta-sans/index.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="20.5" y1="20.5" x2="16" y2="16"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><polyline points="3.5 6.5 12 13 20.5 6.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M21.5 16.9v2.9a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 4.1 2 2 0 0 1 3.6 2h2.9a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></symbol>
+    <symbol id="i-form" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2.5"/><line x1="8.5" y1="9" x2="15.5" y2="9"/><line x1="8.5" y1="12.5" x2="15.5" y2="12.5"/><line x1="8.5" y1="16" x2="12.5" y2="16"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="3.5" y1="10" x2="20.5" y2="10"/><polyline points="9 15 11 17 15 13"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6.5 9.5 17 4 11.5"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  </defs>
+</svg>
+
+<div id="stage">
+<div id="bump">
+
+  <!-- ============ A–D : recherche → n°1 → contacts → mandat (fond clair) ============ -->
+  <section class="scene" id="light">
+    <div class="bg-light"></div>
+    <div class="glow-o" id="glowO"></div>
+    <div class="cam" id="camL">
+
+      <div class="a-head">
+        <div class="mask"><p class="eyebrow" id="aEyebrow">Google Ads immobilier</p></div>
+        <div class="mask"><div class="ln" id="aL1">Un propriétaire veut vendre&#8239;?</div></div>
+        <div class="mask"><div class="ln" id="aL2">Son premier réflexe&#8239;: <span class="o">Google.</span></div></div>
+      </div>
+
+      <div class="col" id="colB">
+        <div class="mask"><p class="eyebrow">Position n°1</p></div>
+        <div class="h"><div class="mask"><div class="ln">Votre agence</div></div><div class="mask"><div class="ln">passe <span class="o">en tête.</span></div></div></div>
+        <p class="sub">Devant vos concurrents et les portails, sur les recherches vendeurs de votre secteur.</p>
+      </div>
+      <div class="col" id="colC">
+        <div class="mask"><p class="eyebrow">Contacts vendeurs</p></div>
+        <div class="h"><div class="mask"><div class="ln">Les vendeurs</div></div><div class="mask"><div class="ln"><span class="o">vous contactent.</span></div></div></div>
+        <p class="sub">Des contacts exclusifs, sans pige ni démarchage.</p>
+      </div>
+      <div class="col" id="colD">
+        <div class="mask"><p class="eyebrow">Mandats</p></div>
+        <div class="h"><div class="mask"><div class="ln">Vous estimez.</div></div><div class="mask"><div class="ln"><span class="o">Vous signez.</span></div></div></div>
+        <p class="sub">Chaque contact vendeur peut devenir un mandat de vente.</p>
+      </div>
+
+      <div class="panel" id="panel">
+        <div class="serp" id="serp">
+          <div class="serp-head" id="serpHead"></div>
+          <div class="res res-c" id="resC1">
+            <span class="res-url">www.agence-concurrente.fr</span>
+            <span class="res-title">Agence immobilière — votre ville</span>
+            <div class="res-bars"><i style="width:92%"></i><i style="width:64%"></i></div>
+            <span class="res-tag">Concurrent</span>
+          </div>
+          <div class="res res-c" id="resC2">
+            <span class="res-url">www.portail-annonces.fr</span>
+            <span class="res-title">Estimation et annonces — votre ville</span>
+            <div class="res-bars"><i style="width:86%"></i><i style="width:58%"></i></div>
+            <span class="res-tag">Portail</span>
+          </div>
+          <div class="res res-me" id="resMe">
+            <svg class="ad-border" id="adBorder" width="644" height="174" viewBox="0 0 644 174"><rect x="2" y="2" width="640" height="170" rx="30" ry="30"/></svg>
+            <span class="res-url"><span class="res-sponso" id="sponso">Sponsorisé · </span>www.votre-agence.fr</span>
+            <span class="res-title" id="adTitle">Agence immobilière à votre ville | Votre agence</span>
+            <span class="res-text">Estimation offerte sous 48 h. Agence locale, experte de votre quartier.</span>
+            <span class="badge" id="badge"><i class="badge-ring" id="badgeRing"></i>Position n°1</span>
+          </div>
+        </div>
+
+        <div class="chip-new" id="chipNew"><i id="chipDot"></i>3 nouveaux contacts vendeurs</div>
+        <div class="toast" id="toast1"><div class="toast-in">
+          <span class="t-ic"><svg class="ico"><use href="#i-mail"/></svg></span>
+          <span class="t-txt"><span class="t-title">Nouveau contact vendeur</span><span class="t-text">Demande d’estimation · maison T4</span></span>
+          <span class="t-time">à l’instant</span>
+        </div></div>
+        <div class="toast" id="toast2"><div class="toast-in">
+          <span class="t-ic"><svg class="ico"><use href="#i-phone"/></svg></span>
+          <span class="t-txt"><span class="t-title">Appel entrant</span><span class="t-text">Propriétaire · appartement T3</span></span>
+          <span class="t-time">à l’instant</span>
+        </div></div>
+        <div class="toast" id="toast3"><div class="toast-in">
+          <span class="t-ic"><svg class="ico"><use href="#i-form"/></svg></span>
+          <span class="t-txt"><span class="t-title">Formulaire d’estimation</span><span class="t-text">Projet de vente · terrain 600 m²</span></span>
+          <span class="t-time">à l’instant</span>
+        </div></div>
+
+        <div class="cal" id="cal"><div class="cal-in" id="calIn">
+          <div class="cal-head">
+            <span class="t-ic"><svg class="ico"><use href="#i-cal"/></svg></span>
+            <span class="t-txt"><span class="t-title">RDV fixé</span><span class="t-text">Estimation jeudi 10 h</span></span>
+          </div>
+          <div class="week">
+            <div class="day">Lun<b>12</b></div><div class="day">Mar<b>13</b></div><div class="day">Mer<b>14</b></div>
+            <div class="day on" id="dayOn">Jeu<b>15</b></div><div class="day">Ven<b>16</b></div>
+          </div>
+          <div class="slot"><svg class="ico"><use href="#i-clock"/></svg>10:00 · Estimation <em>maison T4</em></div>
+        </div></div>
+
+        <div class="doc" id="doc">
+          <div class="doc-k">Mandat de vente</div>
+          <div class="doc-t">Maison T4</div>
+          <div class="doc-rows">
+            <div class="doc-row"><span>Mandant</span><b>Propriétaire vendeur</b></div>
+            <div class="doc-row"><span>Mandataire</span><b>Votre agence</b></div>
+            <div class="doc-row"><span>Type</span><b>Mandat de vente</b></div>
+          </div>
+          <div class="doc-sig-l">Signature du mandant</div>
+          <i class="doc-line"></i>
+          <svg class="doc-sig" id="docSig" width="300" height="110" viewBox="0 0 300 110">
+            <path id="sig1" d="M10 78 C 30 20, 52 18, 46 62 C 42 92, 26 96, 34 70 C 44 40, 70 34, 78 60 C 84 80, 96 82, 104 60 C 112 40, 124 44, 122 64 C 120 82, 138 80, 150 58 C 160 40, 176 44, 172 66 C 168 86, 196 84, 214 56"/>
+            <path id="sig2" d="M196 88 C 226 74, 258 70, 290 62"/>
+          </svg>
+          <div class="stamp" id="stamp"><svg class="ico"><use href="#i-check"/></svg>SIGNÉ</div>
+        </div>
+      </div>
+
+      <div class="searchbar" id="search">
+        <span class="glogo"><b>G</b><b>o</b><b>o</b><b>g</b><b>l</b><b>e</b></span>
+        <div class="pill"><svg class="ico"><use href="#i-search"/></svg><span id="typed"></span><i class="caret" id="caret"></i><span class="city" id="city"><svg class="ico"><use href="#i-pin"/></svg>votre ville</span></div>
+      </div>
+
+      <svg class="cursor" id="cursor" viewBox="0 0 32 32"><path d="M6 3 L6 25 L11.5 19.6 L15.4 28.4 L19.4 26.6 L15.6 18 L23 18 Z" fill="#fff" stroke="#171717" stroke-width="2" stroke-linejoin="round"/></svg>
+      <i class="ripple" id="ripple"></i>
+    </div>
+  </section>
+
+  <!-- ============ E : chiffre d'affaires (orange) ============ -->
+  <section class="scene" id="money">
+    <div class="cam" id="camM">
+      <div class="m-head">
+        <div class="mask"><div class="ln" id="mL1">Plus de mandats,</div></div>
+        <div class="mask"><div class="ln" id="mL2">plus de chiffre d’affaires.</div></div>
+      </div>
+      <div class="bars" id="bars"></div>
+      <svg class="trend" id="trend" width="1920" height="1080" viewBox="0 0 1920 1080"><path id="trendPath" d=""/><path id="trendHead" d=""/></svg>
+      <div class="m-tag" id="mTag"><svg class="ico"><use href="#i-trend"/></svg>Vos honoraires</div>
+    </div>
+  </section>
+
+  <!-- ============ F : on s'occupe de tout (sombre) ============ -->
+  <section class="scene" id="dark">
+    <div class="cam" id="camD">
+      <div class="d-head">
+        <div class="mask"><p class="eyebrow">Concrètement</p></div>
+        <div class="h"><div class="mask"><div class="ln" id="dH">On s’occupe de <span class="o">tout.</span></div></div></div>
+        <p class="sub" id="dSub">Vous n’avez rien de technique à gérer.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><span class="card-n">01</span><div class="card-t">Mots-clés vendeurs</div><div class="card-d">« estimation maison », « vendre appartement »…</div></div>
+        <div class="card"><span class="card-n">02</span><div class="card-t">Acheteurs et locataires exclus</div><div class="card-d">Votre budget ne touche que des vendeurs.</div></div>
+        <div class="card"><span class="card-n">03</span><div class="card-t">Appels et formulaires suivis</div><div class="card-d">Vous savez ce que rapporte chaque euro.</div></div>
+        <div class="card"><span class="card-n">04</span><div class="card-t">Un rapport clair chaque mois</div><div class="card-d">Et un interlocuteur dédié.</div></div>
+      </div>
+      <div class="chips">
+        <span class="chip-d"><svg class="ico"><use href="#i-bolt"/></svg>En ligne en 72 h</span>
+        <span class="chip-d"><svg class="ico"><use href="#i-user"/></svg>Compte Google Ads à votre nom</span>
+        <span class="chip-d"><svg class="ico"><use href="#i-check"/></svg>Sans engagement</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P : preuves ============ -->
+  <section class="scene" id="proof">
+    <div class="cam" id="camP">
+      <div class="p-head">
+        <div class="mask"><p class="eyebrow">Première Immo en chiffres</p></div>
+        <div class="h"><div class="mask"><div class="ln" id="pH">Une méthode qui a fait ses preuves.</div></div></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="stat-n" id="n1">+0</span><span class="stat-l">campagnes créées</span></div>
+        <div class="stat"><span class="stat-n" id="n2">+0</span><span class="stat-l">contacts qualifiés générés</span></div>
+        <div class="stat"><span class="stat-n" id="n3">+0</span><span class="stat-l">professionnels accompagnés</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ G : appel à l'action ============ -->
+  <section class="scene" id="cta">
+    <div class="cta-glow"></div>
+    <div class="radar" id="radar"></div>
+    <div class="cam" id="camG">
+      <div class="logo" id="logo">
+        <img class="logo-icon" id="logoIcon" src="assets/logo-icon.png" alt="">
+        <div class="logo-word-box" id="logoWordBox"><img class="logo-word" src="assets/logo-word.png" alt="Première Immo"></div>
+      </div>
+      <div class="g-head">
+        <div class="mask"><div class="ln" id="gL1">Votre secteur est-il</div></div>
+        <div class="mask"><div class="ln" id="gL2">encore <span class="o">disponible&#8239;?</span></div></div>
+      </div>
+      <p class="sub g-sub" id="gSub">Une seule agence accompagnée par secteur.</p>
+      <div class="btn" id="btn"><i class="btn-ring" id="btnRing"></i>Appel de découverte gratuit<span class="btn-arrow" id="btnArrow"><svg viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></div>
+      <div class="reassure" id="reassure">Sans engagement<b>·</b>15 minutes<b>·</b>Réponse immédiate sur votre zone</div>
+      <div class="url" id="url">premiere-immo.fr</div>
+    </div>
+  </section>
+
+</div><!-- /bump -->
+<div class="wipe" id="wipe"></div>
+</div>
+<div id="hud"></div>
+
+<script src="../../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../../node_modules/gsap/dist/CustomEase.min.js"></script>
+<script src="../../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="../_shared/engine.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

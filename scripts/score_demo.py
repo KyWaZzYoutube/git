@@ -2,7 +2,7 @@
 """
 Bande-son 100 % synthétisée (aucun échantillon externe → aucun souci de droits).
 
-  python3 scripts/audio.py            → build/audio.wav (48 kHz, stéréo)
+  python3 scripts/score_demo.py       → build/demo/audio.wav (48 kHz, stéréo)
 
 Musique : 120 BPM, la mineur → do majeur (Am9 · Fmaj7 · Cadd9 · G, cadence finale sur C).
   0–4 s   intro tendue (sonnerie, tic-tac, montée)      4 s  DROP
@@ -17,7 +17,7 @@ from scipy.io import wavfile
 
 SR = 48000
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BUILD = os.path.join(ROOT, 'build')
+BUILD = os.path.join(ROOT, 'build', 'demo')
 cfg = json.load(open(os.path.join(BUILD, 'cues.json')))
 DUR = float(cfg['duration'])
 N = int(round(SR * DUR))

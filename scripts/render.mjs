@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /* ==========================================================================
-   Rendu déterministe de src/index.html → vidéo / images fixes.
+   Rendu déterministe d'une composition (compositions/<nom>/index.html) → vidéo / images fixes.
 
-   node scripts/render.mjs stills 0.5 3.2 7.4 [--scale 0.5]
-   node scripts/render.mjs video [--out build/video.mp4] [--fps 30] [--sub 6] [--submax 48]
-                                 [--shutter 0.5] [--from 0] [--to 25] [--crf 18]
+   node scripts/render.mjs stills 0.5 3.2 7.4 [--comp google-ads] [--scale 0.5]
+   node scripts/render.mjs video [--comp google-ads] [--out build/google-ads/video.mp4] [--fps 30]
+                                 [--sub 6] [--submax 48] [--shutter 0.5] [--from 0] [--to 30] [--crf 18]
+   (--comp vaut « demo » par défaut ; tout est écrit dans build/<comp>/)
 
    Flou de mouvement adaptatif (comme l'« adaptive sample limit » d'After Effects) :
    un pré-passage mesure la quantité de mouvement de chaque image, puis chaque image
@@ -20,13 +21,15 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const BUILD = path.join(ROOT, 'build');
-fs.mkdirSync(BUILD, { recursive: true });
 
 // ---------- arguments ----------
 const argv = process.argv.slice(2);
 const mode = argv[0];
 const opt = (name, def) => { const i = argv.indexOf('--' + name); return i >= 0 ? argv[i + 1] : def; };
+const COMP = opt('comp', 'demo');
+if (!fs.existsSync(path.join(ROOT, 'compositions', COMP, 'index.html'))) throw new Error(`composition inconnue : ${COMP}`);
+const BUILD = path.join(ROOT, 'build', COMP);
+fs.mkdirSync(BUILD, { recursive: true });
 const positional = argv.slice(1).filter((a, i, arr) => !a.startsWith('--') && !(i > 0 && arr[i - 1].startsWith('--')));
 
 function findFfmpeg() {
@@ -37,7 +40,7 @@ function findFfmpeg() {
 }
 
 // ---------- mini serveur statique (les polices ne se chargent pas en file://) ----------
-const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.woff': 'font/woff', '.svg': 'image/svg+xml', '.png': 'image/png', '.json': 'application/json' };
+const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.woff': 'font/woff', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.json': 'application/json' };
 function serve() {
   return new Promise(resolve => {
     const srv = http.createServer((req, res) => {
@@ -56,7 +59,7 @@ async function openPage(scale) {
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: scale });
   page.on('pageerror', e => console.error('[page error]', e.message));
   page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') console.error('[console]', m.text()); });
-  await page.goto(`http://127.0.0.1:${srv.address().port}/src/index.html?render=1`);
+  await page.goto(`http://127.0.0.1:${srv.address().port}/compositions/${COMP}/index.html?render=1`);
   await page.waitForFunction(() => window.__ready === true, null, { timeout: 60000 });
   const cues = await page.evaluate(() => window.__cues);
   const duration = await page.evaluate(() => window.__duration);
