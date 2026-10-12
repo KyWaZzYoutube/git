@@ -25,6 +25,7 @@
 }
 
 :root {
+  color-scheme: dark;
   --bg: #0a0a0a;
   --card: #151515;
   --card-2: #1b1b1b;
@@ -96,7 +97,7 @@ html.intro .nav, html.intro .hero { visibility: hidden; }
 .btn-light:hover { background: var(--peach); transform: translateY(-1px); }
 
 /* ---------- navigation ---------- */
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s; }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding-top: env(safe-area-inset-top, 0px); transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s; }
 .nav.scrolled { background: rgba(10, 10, 10, 0.72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
 .nav-in { max-width: var(--wrap); margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 36px; }
 .nav-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; flex: none; }
