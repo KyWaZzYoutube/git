@@ -9,7 +9,34 @@ Vidéos animées pour **premiere-immo.fr**, rendues image par image à partir de
 | **Google Ads immobilier** pour la page `/google-ads-immobilier` | 32 s | [`video/google-ads/premiere-immo-google-ads.mp4`](video/google-ads/premiere-immo-google-ads.mp4) · [`…-muet.mp4`](video/google-ads/premiere-immo-google-ads-muet.mp4) · [`poster.jpg`](video/google-ads/poster.jpg) |
 | Démo générale | 25 s | [`video/demo/premiere-immo-demo.mp4`](video/demo/premiere-immo-demo.mp4) · [`…-muet.mp4`](video/demo/premiere-immo-demo-muet.mp4) · [`poster.jpg`](video/demo/poster.jpg) |
 
+Une **landing page** complète accompagne les vidéos : voir « Landing page » plus bas ([`landing/`](landing/), aperçu filmé : [`video/landing/apercu-landing-page.mp4`](video/landing/apercu-landing-page.mp4)).
+
 Format : 1920×1080, 30 i/s, H.264 + AAC, son normalisé à -14 LUFS (standard web). La version `-muet` n'a pas de piste audio : elle est plus légère pour une lecture automatique en arrière-plan. La version `-sans-voix` garde la musique et les effets, sans la voix off.
+
+## Landing page « agence de publicité immobilière »
+
+Une page autonome (HTML, CSS, JavaScript, sans outil de construction) dans [`landing/`](landing/), pensée pour les campagnes publicitaires. Elle reprend la **structure** et les **types d'animation** de la page « motion design » de l'agence Cut, donnée en exemple : thème sombre, orange, gros titres condensés, pastilles lumineuses. Le contenu est celui de Première Immo : textes, chiffres, tarifs, avis et questions de premiere-immo.fr. Les textes, les images et le code sont originaux : rien n'est repris de la page d'exemple.
+
+| Section | Contenu | Animation |
+|---|---|---|
+| Accueil | « Agence de publicité **100 % immobilier** », preuves (+500 campagnes, +8 000 contacts, une agence par secteur), vidéo « agence » | Le décor « soie orange » s'allume, la navigation descend, le titre monte mot par mot, la pastille arrive lettre par lettre. Pastilles « aimantées » qui suivent la souris. Vidéo muette en boucle, « Activer le son » la relance avec le son |
+| Bandeau | Agences indépendantes, agents de réseau, mandataires, leviers | Défilement horizontal infini |
+| Nos leviers en vidéo | Les 3 vidéos (Google Ads, Facebook et Instagram, agence) | Carrousel en boucle, carte centrale et voisines, flèches, points (le point actif s'allonge), glisser au doigt, lecture au clic |
+| La pige ne suffit plus | 5 cartes « bento » | Les leviers convergent vers le logo et un « contact vendeur » en sort (impulsions lumineuses en boucle), citation sur fond flouté, barres qui montent (+8 000), secteur qui s'allume dans un nid d'abeilles |
+| Méthode | 5 étapes (appel découverte → optimisation) | Cartes inclinées qui se posent une à une, captures qui flottent, halo qui respire |
+| Tarifs | Google 199 €/mois, Facebook et Instagram 139 €/mois, référencement 119 € | Surlignage peint de gauche à droite, cartes qui montent, traits qui se tracent, prix qui défilent, avantages un par un, braises orange en fond |
+| Avis | Les 3 avis publiés sur le site | Trois colonnes qui défilent en sens inverses (une seule sur mobile) |
+| Rendez-vous | Agenda Calendly `premiere-immo/appel-de-decouverte` | Chargé seulement à l'approche de la section |
+| FAQ | 7 questions du site | Ouverture animée, « + » qui devient « − » |
+| Appel final et pied de page | « Votre secteur est-il **encore disponible ?** » | Cartes inclinées en 3D qui défilent, grand logo sur une lueur orange |
+
+La page est responsive (testée à 390 px de large), lisible sans JavaScript, et respecte le réglage « réduire les animations ». Les vidéos sont des versions web légères (720p, ≈ 2 Mo) dans `landing/media/`.
+
+- **Voir la page** : `npm run landing` (ou ouvrir `landing/index.html` via un petit serveur local).
+- **Captures et vidéo d'aperçu** : `npm run landing:shots` (→ `build/landing/shots/`) et `npm run landing:video` (→ `video/landing/apercu-landing-page.mp4`).
+- **Mettre en ligne** : envoyer le dossier `landing/` tel quel sur un hébergement statique (Netlify, Vercel, OVH…), par exemple sur un sous-domaine dédié aux publicités. Ajoutez-y vos balises de suivi (pixel Meta, conversion Google Ads) dans le `<head>` de `index.html`.
+- **Fonds « soie orange »** : calculés par `scripts/landing_silk.py` (aucune image externe).
+- Les couleurs de l'agenda Calendly (fond sombre, orange) ne s'appliquent qu'avec une offre Calendly payante ; sinon l'agenda garde ses couleurs par défaut.
 
 ## Agence de publicité immobilière : le film, plan par plan
 
@@ -106,6 +133,7 @@ Les textes reprennent ceux de la page Google Ads du site.
 ## Structure du projet
 
 ```
+landing/                   landing page autonome : index.html · css/ · js/ · img/ · media/ (vidéos web) · fonts/ · vendor/ (GSAP)
 compositions/
   _shared/engine.js        moteur commun : timeline GSAP en pause, révélations de texte, mesures, caméra, aperçu
   _shared/assets/          logo du site
@@ -122,6 +150,8 @@ scripts/
   score_google_ads.py      bande-son de la vidéo Google Ads
   score_demo.py            bande-son de la démo
   build.sh                 chaîne complète : ./scripts/build.sh <composition>
+  landing_silk.py          fonds « soie orange » de la landing page
+  landing_preview.mjs      captures et vidéo d'aperçu de la landing page
 video/<composition>/       fichiers finaux
 ```
 
@@ -158,7 +188,7 @@ Dans l'aperçu : `espace` met en pause, `←` et `→` reculent ou avancent d'un
 ## Crédits et droits
 
 - Animation : [GSAP](https://gsap.com), gratuit y compris en usage commercial ([licence « no charge »](https://gsap.com/standard-license)).
-- Polices : Plus Jakarta Sans, Inter, Inter Tight et Instrument Serif (SIL Open Font License), via Fontsource.
+- Polices : Plus Jakarta Sans, Inter, Inter Tight, Instrument Serif et Anton (SIL Open Font License), via Fontsource.
 - Icônes : tracés dessinés pour le projet. La démo reprend des tracés de [Feather Icons](https://feathericons.com) (MIT).
 - Voix off de la vidéo Facebook : **voix de synthèse** générée avec [Kyutai TTS 1.6B](https://huggingface.co/kyutai/tts-1.6b-en_fr) (modèle de Kyutai, laboratoire français, poids sous licence CC-BY 4.0), voix « developpeuse-3 » du dépôt [kyutai/tts-voices](https://huggingface.co/kyutai/tts-voices), enregistrée par Kyutai et publiée sous licence CC0. Usage commercial autorisé. Bonne pratique : indiquer « voix générée par IA » dans la description de la vidéo.
 - Photos des vidéos Facebook et « agence » (la vidéo « agence » reprend la photo de la maison dans sa maquette Facebook) : [Unsplash](https://unsplash.com/license), licence Unsplash (usage commercial gratuit, sans autorisation ni mention obligatoire). Fichiers d'origine : maison `images.unsplash.com/photo-1523217582562-09d0def993a6`, plage `photo-1507525428034-b723cf961d3e`, chien `photo-1543466835-00a7907e9de1`, fleurs `photo-1490750967868-88aa4486c946`, montagne `photo-1464822759023-fed622ff2c3b`. Aucune photo ne montre de visage.

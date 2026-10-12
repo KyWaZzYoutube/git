@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agence de publicité immobilière | Première Immo</title>
+<meta name="description" content="Première Immo crée et pilote vos campagnes Google Ads, Facebook et Instagram pour que les propriétaires de votre secteur vous contactent. Sans engagement, une seule agence par secteur.">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="icon" href="img/logo-icon.png">
+<link rel="preload" href="fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+<script>
+  // masque l'en-tête le temps que l'animation d'ouverture démarre (retiré au plus tard après 3 s)
+  document.documentElement.classList.add('js');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('intro');
+    setTimeout(function () { document.documentElement.classList.remove('intro'); }, 3000);
+  }
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "En combien de temps arrivent les premiers contacts ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Les annonces sont en ligne en 72 h. Les premiers contacts qualifiés arrivent généralement dans les 2 à 4 premières semaines." } },
+    { "@type": "Question", "name": "Quel budget publicitaire prévoir en plus ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Le budget dépend de votre secteur et de vos objectifs : on le définit ensemble lors de l'appel découverte. Il est versé directement à Google ou à Meta, jamais à Première Immo, et vous voyez chaque euro dépensé." } },
+    { "@type": "Question", "name": "Y a-t-il un engagement de durée ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Non. Les offres sont sans engagement et sans préavis : vous pouvez arrêter quand vous le souhaitez." } },
+    { "@type": "Question", "name": "Est-ce que je reste propriétaire de mes comptes publicitaires ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Les comptes Google Ads et Meta Ads sont créés à votre nom et le restent, même si vous arrêtez de travailler avec Première Immo." } },
+    { "@type": "Question", "name": "Travaillez-vous avec plusieurs agences sur le même secteur ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Non. Première Immo applique une exclusivité de zone : une seule agence immobilière est accompagnée par secteur." } },
+    { "@type": "Question", "name": "Accompagnez-vous les mandataires immobiliers ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Première Immo accompagne les agences indépendantes, les agents de réseaux et les mandataires (IAD, SAFTI, Capifrance…), dans le respect des règles de communication de chaque réseau." } },
+    { "@type": "Question", "name": "Comment trouver des mandats sans faire de pige ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Depuis le 11 août 2026, appeler un particulier sans son consentement préalable n'est plus possible. La publicité en ligne est l'alternative la plus directe : ce sont les propriétaires qui contactent l'agent." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============================== Navigation ============================== -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="#top" aria-label="Première Immo, haut de page">
+      <img src="img/logo-icon.png" alt="" width="40" height="40"><img class="nav-word" src="img/logo-word-white.png" alt="Première Immo" width="98" height="40">
+    </a>
+    <nav class="nav-links" aria-label="Sections de la page">
+      <a href="#videos">Nos leviers</a><a href="#methode">Méthode</a><a href="#tarifs">Tarifs</a><a href="#avis">Avis clients</a>
+    </nav>
+    <a class="btn btn-light nav-cta" href="#rdv">Prendre rendez-vous</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================== Accueil + vidéo ============================== -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"><img src="img/silk-hero.jpg" alt="" width="2400" height="1350"></div>
+  <div class="wrap hero-in">
+    <p class="hero-top">
+      <span>+500 campagnes créées</span><i aria-hidden="true"></i>
+      <span>+8 000 contacts qualifiés</span><i aria-hidden="true"></i>
+      <span class="hero-badge"><img src="img/logo-icon.png" alt="" width="20" height="20">Une seule agence par secteur</span>
+    </p>
+    <h1 class="display hero-title" aria-label="Agence de publicité 100 % immobilier">
+      <span class="ht-line">Agence de publicité</span>
+      <span class="pill"><span class="pill-in">100&nbsp;% immobilier</span></span>
+    </h1>
+    <p class="hero-sub">Nous créons et pilotons vos campagnes Google Ads, Facebook et Instagram pour que <b>les propriétaires qui veulent vendre vous contactent</b>. Sans pige, sans portails&#8239;: <b>on s’occupe de tout, vous n’avez rien de technique à gérer.</b></p>
+    <div class="vsl" id="vslBox">
+      <video id="vsl" src="media/agence.mp4" poster="img/poster-agence.jpg" muted loop playsinline preload="metadata" aria-label="Vidéo de présentation de Première Immo"></video>
+      <button class="vsl-btn" id="vslBtn" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 19V5L7.5 9.5z"/><path class="w" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+        <span id="vslLabel">Activer le son</span>
+      </button>
+    </div>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#rdv">Appel de découverte gratuit</a>
+      <a class="btn btn-ghost" href="#videos">Voir nos leviers</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== Bandeau défilant ============================== -->
+<section class="ticker" aria-label="Pour qui, avec quels leviers">
+  <div class="ticker-track">
+    <ul class="ticker-list">
+      <li>Agences indépendantes</li><li>Agents de réseau</li><li>Mandataires</li><li>Google Ads</li><li>Facebook</li><li>Instagram</li><li>Référencement naturel</li><li>Partout en France</li>
+    </ul>
+    <ul class="ticker-list" aria-hidden="true">
+      <li>Agences indépendantes</li><li>Agents de réseau</li><li>Mandataires</li><li>Google Ads</li><li>Facebook</li><li>Instagram</li><li>Référencement naturel</li><li>Partout en France</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================== Nos leviers en vidéo (carrousel) ============================== -->
+<section class="works" id="videos">
+  <div class="wrap head-c">
+    <h2 class="display h2" data-head>Nos leviers <span class="o">en vidéo</span></h2>
+    <p class="lead" data-reveal>Chaque levier a un rôle précis&#8239;: <b>être trouvé, être vu, être contacté.</b></p>
+  </div>
+  <div class="carousel" id="carousel" data-reveal>
+    <div class="car-track" id="carTrack">
+      <article class="car-card" data-video="media/google-ads.mp4">
+        <img src="img/poster-google-ads.jpg" alt="Vidéo Google Ads immobilier : votre agence en tête de Google" width="1280" height="720" loading="lazy">
+        <span class="car-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+        <div class="car-info"><h3>Google Ads immobilier</h3><p>En tête de Google quand un propriétaire cherche à vendre</p></div>
+        <div class="car-tags"><span>Google Ads</span><span>Contacts vendeurs</span></div>
+      </article>
+      <article class="car-card" data-video="media/facebook.mp4">
+        <img src="img/poster-facebook.jpg" alt="Vidéo publicité Facebook immobilier : les propriétaires de votre secteur" width="1280" height="720" loading="lazy">
+        <span class="car-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+        <div class="car-info"><h3>Facebook et Instagram</h3><p>Touchez les propriétaires avant même qu’ils cherchent</p></div>
+        <div class="car-tags"><span>Facebook</span><span>Instagram</span></div>
+      </article>
+      <article class="car-card" data-video="media/agence.mp4">
+        <img src="img/poster-agence.jpg" alt="Vidéo agence de publicité immobilière : les vendeurs de votre secteur vous contactent" width="1280" height="720" loading="lazy">
+        <span class="car-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
+        <div class="car-info"><h3>Tous les leviers, une seule agence</h3><p>Google, Facebook, Instagram et référencement naturel</p></div>
+        <div class="car-tags"><span>Stratégie</span><span>Suivi des contacts</span></div>
+      </article>
+    </div>
+  </div>
+  <div class="car-nav" data-reveal>
+    <button class="car-arrow" id="carPrev" type="button" aria-label="Vidéo précédente"><svg viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></svg></button>
+    <div class="car-dots" id="carDots"></div>
+    <button class="car-arrow" id="carNext" type="button" aria-label="Vidéo suivante"><svg viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ============================== Pourquoi maintenant (bento) ============================== -->
+<section class="why" id="pourquoi">
+  <div class="why-bg" aria-hidden="true"><img src="img/silk-band.jpg" alt="" width="2400" height="1100" loading="lazy"></div>
+  <div class="wrap">
+    <div class="why-head">
+      <h2 class="display h2 left" data-head>La pige ne suffit plus, <span class="o">la publicité prend le relais</span></h2>
+      <p class="lead-s" data-reveal>Les canaux historiques de prospection rapportent de moins en moins de mandats. <b>La publicité en ligne fait venir les vendeurs à vous.</b></p>
+    </div>
+    <div class="bento">
+      <article class="b-card b-flow" data-reveal>
+        <svg class="flow" id="flow" viewBox="0 0 640 250" aria-hidden="true">
+          <defs>
+            <linearGradient id="flowPulse" x1="0" x2="1"><stop offset="0" stop-color="#ff5100" stop-opacity="0"/><stop offset="1" stop-color="#ffb07a"/></linearGradient>
+            <radialGradient id="flowHalo"><stop offset="0" stop-color="#ff5100" stop-opacity=".75"/><stop offset="1" stop-color="#ff5100" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g id="flowIn">
+            <path d="M0 34 C 150 34, 210 125, 330 125"/>
+            <path d="M0 92 C 160 92, 220 125, 330 125"/>
+            <path d="M0 158 C 160 158, 220 125, 330 125"/>
+            <path d="M0 216 C 150 216, 210 125, 330 125"/>
+          </g>
+          <path id="flowOut" d="M330 125 L 640 125"/>
+          <circle id="flowHaloC" cx="330" cy="125" r="70" fill="url(#flowHalo)" opacity=".35"/>
+          <g id="flowLogo"><rect x="296" y="91" width="68" height="68" rx="18" fill="#ff5100"/><image href="img/logo-icon.png" x="296" y="91" width="68" height="68"/></g>
+          <g class="flow-labels"><text x="8" y="26">Google</text><text x="8" y="84">Facebook</text><text x="8" y="150">Instagram</text><text x="8" y="208">Référencement</text></g>
+          <g id="flowLead"><rect x="476" y="104" width="148" height="42" rx="21"/><circle cx="498" cy="125" r="6"/><text x="512" y="130">Contact vendeur</text></g>
+        </svg>
+        <div class="b-txt"><h3>Les vendeurs viennent à vous</h3><p>Google, Facebook, Instagram, référencement naturel&#8239;: on combine les leviers, vous recevez les contacts.</p></div>
+      </article>
+      <article class="b-card b-quote" data-reveal>
+        <img class="b-quote-bg" src="img/silk-card.jpg" alt="" width="1000" height="760" loading="lazy">
+        <i class="b-quote-blur" aria-hidden="true"></i>
+        <blockquote>« Je n’y connaissais strictement rien en publicité en ligne. Ils ont tout configuré. »</blockquote>
+        <p class="b-who">Lucas R. · ERA Lyon 6<sup>e</sup></p>
+      </article>
+      <article class="b-card b-bars" id="bars" data-reveal>
+        <div class="bars" aria-hidden="true"><i style="--h:22%"></i><i style="--h:34%"></i><i style="--h:30%"></i><i class="hot" style="--h:92%"></i><span class="bars-tile">+8&nbsp;000</span></div>
+        <div class="b-txt"><h3>+8 000 contacts qualifiés générés</h3><p>Appels et demandes d’estimation&#8239;: chaque contact est suivi et mesuré.</p></div>
+      </article>
+      <article class="b-card b-zone" id="zone" data-reveal>
+        <svg class="zone" viewBox="0 0 520 200" aria-hidden="true"><g id="zoneHex"></g><g id="zonePin"><path d="M0-30c-11 0-19 8-19 19 0 14 19 31 19 31s19-17 19-31c0-11-8-19-19-19z"/><circle cy="-11" r="6.5"/></g></svg>
+        <div class="b-txt"><h3>Une seule agence par secteur</h3><p>Votre concurrent direct ne peut pas avoir le même accompagnement.</p></div>
+      </article>
+      <article class="b-card b-help" data-reveal>
+        <img class="b-help-ic" src="img/logo-icon.png" alt="" width="48" height="48" loading="lazy">
+        <div class="b-help-txt"><b>On est là pour vous aider</b><p>Une question&#8239;? Réservez un appel de 15 minutes pour en discuter.</p></div>
+        <a class="btn btn-primary" href="#rdv">Prendre rendez-vous</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== Méthode (cartes empilées) ============================== -->
+<section class="method" id="methode">
+  <div class="wrap head-c">
+    <h2 class="display h2" data-head>Notre méthode pour <span class="o">rentrer des mandats</span></h2>
+    <p class="lead" data-reveal>Un interlocuteur dédié et <b>rien de technique à gérer</b>&#8239;: on s’occupe de tout, de l’analyse de votre secteur au rapport mensuel.</p>
+  </div>
+  <div class="steps wrap" id="steps">
+    <i class="steps-glow" aria-hidden="true"></i>
+    <article class="step s1"><h3><span>01</span> Appel découverte</h3><p><b>15 minutes</b> pour comprendre vos objectifs et vérifier que votre secteur est disponible.</p><div class="step-meta"><span>Votre temps</span><b>15 min</b></div></article>
+    <figure class="step-img i1"><img src="img/mock-google.jpg" alt="Votre agence en position n°1 sur Google" width="540" height="450" loading="lazy"></figure>
+    <article class="step s2"><h3><span>02</span> Stratégie</h3><p>Analyse de votre zone et <b>choix des leviers</b>&#8239;: Google Ads, Facebook, SEO ou une combinaison.</p><div class="step-meta"><span>Délai</span><b>Jours 1 à 2</b></div></article>
+    <figure class="step-img i2"><img src="img/mock-facebook.jpg" alt="Votre publicité dans le fil Facebook d’un propriétaire" width="540" height="450" loading="lazy"></figure>
+    <article class="step s3"><h3><span>03</span> Mise en place</h3><p>Comptes <b>à votre nom</b>, campagnes, annonces, visuels et suivi des contacts.</p><div class="step-meta"><span>Délai</span><b>Sous 72 h</b></div></article>
+    <article class="step s4"><h3><span>04</span> Premiers contacts</h3><p>Les propriétaires de votre secteur <b>commencent à vous contacter.</b></p><div class="step-meta"><span>Délai</span><b>2 à 4 semaines</b></div></article>
+    <figure class="step-img i3"><img src="img/mock-seo.jpg" alt="Les visites venues de Google qui progressent" width="540" height="450" loading="lazy"></figure>
+    <article class="step s5"><h3><span>05</span> Optimisation</h3><p>Ajustements réguliers et <b>rapport clair chaque mois</b>, avec un interlocuteur dédié.</p><div class="step-meta"><span>Rapport</span><b>Chaque mois</b></div></article>
+  </div>
+</section>
+
+<!-- ============================== Tarifs ============================== -->
+<section class="pricing" id="tarifs">
+  <canvas class="embers" id="embers" aria-hidden="true"></canvas>
+  <div class="wrap head-c">
+    <h2 class="display h2" id="priceHead">Des tarifs simples, <span class="hl">sans engagement</span></h2>
+    <p class="lead" id="priceLead">Des frais de gestion fixes. <b>Le budget publicitaire est payé directement à Google ou à Meta</b>, jamais à Première Immo.</p>
+  </div>
+  <div class="wrap price-grid" id="priceGrid">
+    <article class="price is-featured">
+      <span class="price-badge">Populaire</span>
+      <h3 class="price-title">Publicité sur Google</h3>
+      <p class="price-desc">Apparaissez en tête quand un propriétaire de votre secteur cherche à vendre.</p>
+      <i class="line"></i>
+      <p class="price-amount"><span class="price-num" data-to="199">199</span><span class="price-cur">€</span><span class="price-per">/mois</span></p>
+      <p class="price-note">Sans engagement · hors budget publicitaire</p>
+      <a class="btn btn-primary" href="#rdv">Appel de découverte gratuit</a>
+      <i class="line"></i>
+      <p class="price-inc">Tout est inclus</p>
+      <ul class="checks">
+        <li>Apparaissez en premier résultat sur Google</li><li>Analyse de votre secteur et de son potentiel</li><li>Choix des mots-clés et ciblage</li><li>Rédaction des annonces publicitaires</li><li>Optimisation régulière de vos campagnes</li><li>Paramétrage de votre compte Google Ads</li>
+      </ul>
+    </article>
+    <article class="price">
+      <h3 class="price-title">Facebook et Instagram</h3>
+      <p class="price-desc">Touchez les propriétaires de votre zone avant même qu’ils cherchent une agence.</p>
+      <i class="line"></i>
+      <p class="price-amount"><span class="price-num" data-to="139">139</span><span class="price-cur">€</span><span class="price-per">/mois</span></p>
+      <p class="price-note">Sans engagement · hors budget publicitaire</p>
+      <a class="btn btn-primary" href="#rdv">Appel de découverte gratuit</a>
+      <i class="line"></i>
+      <p class="price-inc">Tout est inclus</p>
+      <ul class="checks">
+        <li>Mise en place de votre campagne publicitaire</li><li>Création de visuels professionnels</li><li>Rédaction des annonces publicitaires</li><li>Ciblage précis sur un ou plusieurs critères</li><li>Optimisation régulière de vos campagnes</li><li>Paramétrage de votre compte Facebook Ads</li>
+      </ul>
+    </article>
+    <article class="price">
+      <h3 class="price-title">Référencement naturel</h3>
+      <p class="price-desc">Une visibilité durable sur Google, sans budget publicitaire.</p>
+      <i class="line"></i>
+      <p class="price-amount"><span class="price-num" data-to="119">119</span><span class="price-cur">€</span><span class="price-per">tarif unique</span></p>
+      <p class="price-note">Aucun budget publicitaire à prévoir en plus</p>
+      <a class="btn btn-primary" href="#rdv">Appel de découverte gratuit</a>
+      <i class="line"></i>
+      <p class="price-inc">Tout est inclus</p>
+      <ul class="checks">
+        <li>Audit SEO de votre site immobilier</li><li>Recherche des mots-clés de votre secteur</li><li>Optimisation du site et des contenus</li><li>Création de contenus optimisés pour Google</li><li>Correction des problèmes SEO identifiés</li><li>Conseils personnalisés et stratégiques</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- ============================== Avis (colonnes défilantes) ============================== -->
+<section class="reviews" id="avis">
+  <div class="wrap head-c">
+    <h2 class="display h2" data-head>Ils ont testé. <span class="o">Ils signent des mandats.</span></h2>
+  </div>
+  <div class="rv-grid wrap" id="rvGrid">
+    <!-- les colonnes sont remplies par main.js à partir de ces trois avis (publiés sur premiere-immo.fr) -->
+    <template id="rvData">
+      <figure class="rv-card" data-i="0"><p class="rv-stars" aria-label="5 étoiles sur 5">★★★★★</p><blockquote>« Entre Google et Facebook, j’ai eu 12 contacts qualifiés dès le premier mois, 2 mandats signés depuis. Et dès que j’ai une question, j’appelle mon conseiller, pas un standard. »</blockquote><figcaption><span class="rv-av">IM</span><span><b>Isabelle M.</b><small>Century 21 · Nantes</small></span></figcaption></figure>
+      <figure class="rv-card" data-i="1"><p class="rv-stars" aria-label="5 étoiles sur 5">★★★★★</p><blockquote>« Je n’y connaissais strictement rien en publicité en ligne, et je le leur ai dit dès le premier appel. Ils ont tout configuré. Résultat&#8239;: 6 estimations et 2 mandats signés en deux mois. »</blockquote><figcaption><span class="rv-av">LR</span><span><b>Lucas R.</b><small>ERA · Lyon 6<sup>e</sup></small></span></figcaption></figure>
+      <figure class="rv-card" data-i="2"><p class="rv-stars" aria-label="5 étoiles sur 5">★★★★★</p><blockquote>« Sans engagement, donc j’ai testé sans prendre de risque. 3 mandats signés en 2 mois, largement de quoi rentabiliser ce que j’ai mis en publicité. »</blockquote><figcaption><span class="rv-av">DL</span><span><b>David L.</b><small>Orpi · Montpellier</small></span></figcaption></figure>
+    </template>
+  </div>
+</section>
+
+<!-- ============================== Prise de rendez-vous ============================== -->
+<section class="booking" id="rdv">
+  <div class="booking-bg" aria-hidden="true"><img src="img/silk-band.jpg" alt="" width="2400" height="1100" loading="lazy"></div>
+  <div class="wrap head-c">
+    <h2 class="display h2" data-head><span class="o">Réservez votre appel</span> et vérifiez votre secteur.</h2>
+    <p class="lead" data-reveal>15 minutes, gratuit et sans engagement.</p>
+  </div>
+  <div class="wrap">
+    <div class="cal" id="calendly" data-url="https://calendly.com/premiere-immo/appel-de-decouverte?hide_gdpr_banner=1&amp;background_color=141414&amp;text_color=ffffff&amp;primary_color=ff5100">
+      <div class="cal-fallback">
+        <p>L’agenda se charge…</p>
+        <a class="btn btn-primary" href="https://calendly.com/premiere-immo/appel-de-decouverte" target="_blank" rel="noopener">Choisir un créneau</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== Questions fréquentes ============================== -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-head">
+      <h2 class="display h2 left" data-head>Vos questions, <span class="o">nos réponses</span></h2>
+      <a class="btn btn-primary" href="#rdv" data-reveal>Prendre rendez-vous</a>
+    </div>
+    <div class="faq-list" data-reveal>
+      <details class="qa"><summary>En combien de temps arrivent les premiers contacts&#8239;?<span class="plus" aria-hidden="true"><i></i><i></i></span></summary><div class="qa-a"><p>Les annonces sont en ligne en 72 h. Les premiers contacts qualifiés arrivent généralement dans les 2 à 4 premières semaines.</p></div></details>
+      <details class="qa"><summary>Quel budget publicitaire prévoir en plus&#8239;?<span class="plus" aria-hidden="true"><i></i><i></i></span></summary><div class="qa-a"><p>Le budget dépend de votre secteur et de vos objectifs&#8239;: on le définit ensemble lors de l’appel découverte. Il est versé directement à Google ou à Meta, jamais à Première Immo, et vous voyez chaque euro dépensé.</p></div></details>
+      <details class="qa"><summary>Y a-t-il un engagement de durée&#8239;?<span class="plus" aria-hidden="true"><i></i><i></i></span></summary><div class="qa-a"><p>Non. Les offres sont sans engagement et sans préavis&#8239;: vous pouvez arrêter quand vous le souhaitez.</p></div></details>
+      <details class="qa"><summary>Est-ce que je reste propriétaire de mes comptes publicitaires&#8239;?<span class="plus" aria-hidden="true"><i></i><i></i></span></summary><div class="qa-a"><p>Oui. Les comptes Google Ads et Meta Ads sont créés à votre nom et le restent, même si vous arrêtez de travailler avec Première Immo.</p></div></details>
+      <details class="qa"><summary>Travaillez-vous avec plusieurs agences sur le même secteur&#8239;?<span class="plus" aria-hidden="true"><i></i><i></i></span></summary><div class="qa-a"><p>Non. Première Immo applique une exclusivité de zone&#8239;: une seule agence immobilière est accompagnée par secteur.</p></div></details>
+      <details class="qa"><summary>Accompagnez-vous les mandataires immobiliers&#8239;?<span class="plus" aria-hidden="true"><i></i><i></i></span></summary><div class="qa-a"><p>Oui. Première Immo accompagne les agences indépendantes, les agents de réseaux et les mandataires (IAD, SAFTI, Capifrance…), dans le respect des règles de communication de chaque réseau.</p></div></details>
+      <details class="qa"><summary>Comment trouver des mandats sans faire de pige&#8239;?<span class="plus" aria-hidden="true"><i></i><i></i></span></summary><div class="qa-a"><p>Depuis le 11 août 2026, appeler un particulier sans son consentement préalable n’est plus possible. La publicité en ligne est l’alternative la plus directe&#8239;: ce sont les propriétaires qui contactent l’agent.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== Appel final ============================== -->
+<section class="final">
+  <div class="wrap head-c">
+    <h2 class="display h2" data-head>Votre secteur est-il <span class="pill pill-s"><span class="pill-in">encore disponible&#8239;?</span></span></h2>
+    <p class="lead" data-reveal>Nous n’accompagnons qu’une seule agence par secteur. <b>Réservez 15 minutes</b> pour vérifier votre zone et voir ce que la publicité en ligne peut vous apporter.</p>
+    <a class="btn btn-primary" href="#rdv" data-reveal>Appel de découverte gratuit</a>
+  </div>
+  <div class="deck" aria-hidden="true">
+    <div class="deck-track">
+      <img src="img/poster-google-ads.jpg" alt="" loading="lazy"><img src="img/mock-facebook.jpg" alt="" loading="lazy"><img src="img/poster-agence.jpg" alt="" loading="lazy"><img src="img/mock-google.jpg" alt="" loading="lazy"><img src="img/poster-facebook.jpg" alt="" loading="lazy"><img src="img/mock-seo.jpg" alt="" loading="lazy">
+      <img src="img/poster-google-ads.jpg" alt="" loading="lazy"><img src="img/mock-facebook.jpg" alt="" loading="lazy"><img src="img/poster-agence.jpg" alt="" loading="lazy"><img src="img/mock-google.jpg" alt="" loading="lazy"><img src="img/poster-facebook.jpg" alt="" loading="lazy"><img src="img/mock-seo.jpg" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================== Pied de page ============================== -->
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="nav-logo" href="#top" aria-label="Première Immo, haut de page"><img src="img/logo-icon.png" alt="" width="40" height="40"><img class="nav-word" src="img/logo-word-white.png" alt="Première Immo" width="98" height="40"></a>
+      <p>Première Immo, agence de publicité 100&nbsp;% immobilier. Basée en Alsace, près de Mulhouse, elle accompagne les professionnels de l’immobilier dans toute la France.</p>
+      <p class="foot-copy">© <span data-year>2026</span> Première Immo. Tous droits réservés.</p>
+    </div>
+    <div class="foot-col"><h4>Services</h4><a href="https://www.premiere-immo.fr/google-ads-immobilier">Google Ads immobilier</a><a href="https://www.premiere-immo.fr/publicite-facebook-immobilier">Publicité Facebook immobilier</a><a href="https://www.premiere-immo.fr/agence-publicite-immobiliere">Agence de publicité immobilière</a></div>
+    <div class="foot-col"><h4>Ressources</h4><a href="https://www.premiere-immo.fr/blog-index">Blog</a><a href="#faq">Questions fréquentes</a><a href="#rdv">Prendre rendez-vous</a></div>
+    <div class="foot-col"><h4>Légal</h4><a href="https://www.premiere-immo.fr/mentions-legales">Mentions légales</a><a href="https://www.premiere-immo.fr/politique-de-confidentialite">Politique de confidentialité</a><a href="https://www.premiere-immo.fr/conditions-generales-utilisation">Conditions générales</a></div>
+  </div>
+  <div class="foot-big" aria-hidden="true"><i class="foot-glow"></i><img src="img/logo-word-white.png" alt="" width="480" height="197" loading="lazy"></div>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
