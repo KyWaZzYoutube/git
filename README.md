@@ -4,7 +4,7 @@ Vidéos animées pour **premiere-immo.fr**, rendues image par image à partir de
 
 | Vidéo | Durée | Fichiers |
 |---|---|---|
-| **Agence de publicité immobilière** pour la page `/agence-publicite-immobiliere` (avec voix off) | 36 s | [`video/agence/premiere-immo-agence-publicite.mp4`](video/agence/premiere-immo-agence-publicite.mp4) · [`…-sans-voix.mp4`](video/agence/premiere-immo-agence-publicite-sans-voix.mp4) · [`…-muet.mp4`](video/agence/premiere-immo-agence-publicite-muet.mp4) · [`poster.jpg`](video/agence/poster.jpg) |
+| **Agence de publicité immobilière** pour la page `/agence-publicite-immobiliere` | 36 s | [`video/agence/premiere-immo-agence-publicite.mp4`](video/agence/premiere-immo-agence-publicite.mp4) · [`…-muet.mp4`](video/agence/premiere-immo-agence-publicite-muet.mp4) · [`poster.jpg`](video/agence/poster.jpg) |
 | **Publicité Facebook immobilier** pour la page `/publicite-facebook-immobilier` (avec voix off) | 32 s | [`video/facebook/premiere-immo-facebook.mp4`](video/facebook/premiere-immo-facebook.mp4) · [`…-sans-voix.mp4`](video/facebook/premiere-immo-facebook-sans-voix.mp4) · [`…-muet.mp4`](video/facebook/premiere-immo-facebook-muet.mp4) · [`poster.jpg`](video/facebook/poster.jpg) |
 | **Google Ads immobilier** pour la page `/google-ads-immobilier` | 32 s | [`video/google-ads/premiere-immo-google-ads.mp4`](video/google-ads/premiere-immo-google-ads.mp4) · [`…-muet.mp4`](video/google-ads/premiere-immo-google-ads-muet.mp4) · [`poster.jpg`](video/google-ads/poster.jpg) |
 | Démo générale | 25 s | [`video/demo/premiere-immo-demo.mp4`](video/demo/premiere-immo-demo.mp4) · [`…-muet.mp4`](video/demo/premiere-immo-demo-muet.mp4) · [`poster.jpg`](video/demo/poster.jpg) |
@@ -15,34 +15,20 @@ Format : 1920×1080, 30 i/s, H.264 + AAC, son normalisé à -14 LUFS (standard w
 
 La vidéo de la page « agence » présente toute l'offre en 36 s : pourquoi la prospection classique ne suffit plus, les trois leviers, les résultats, la méthode, puis l'appel à l'action. Elle reprend la mise en page de la page du site (projet Framer, `PIAgency.tsx`) : sur-titres orange précédés d'un trait, cartes « bento » sur fond pêche, onglets des leviers, ligne de méthode en 5 étapes, chiffres, bandeau orange final. Les textes et les chiffres sont ceux de la page.
 
-Le style est celui de la vidéo Facebook : même musique « tech-house sombre » (ici sol mineur → si bémol majeur, avec le boum de sub quand l'écran passe à l'orange) et même voix off féminine.
-
-| Temps | Voix off |
-|---|---|
-| 0,3 s | « La pige à froid ? Interdite depuis le onze août. » |
-| 3,4 s | « Portails et flyers ? Ça ne suffit plus. » |
-| 6,3 s | « Avec Première Immo, ce sont les vendeurs qui vous contactent. » |
-| 10,2 s | « Sur Google, vous êtes en tête quand un propriétaire cherche à vendre. » |
-| 14,2 s | « Sur Facebook et Instagram, il vous voit avant même de chercher. » |
-| 18,3 s | « Et le référencement naturel vous rend visible, durablement. » |
-| 22,2 s | « Résultat : plus de huit mille contacts qualifiés déjà générés. » |
-| 26,3 s | « On s'occupe de tout. En ligne en soixante-douze heures. » |
-| 30,4 s | « Une seule agence par secteur. » |
-| 32,1 s | « Votre secteur est-il encore disponible ? » |
-| 34,4 s | « Réservez votre appel gratuit. » |
+Le son est celui des vidéos Google Ads et Facebook : **pas de voix off**, seulement la musique « tech-house sombre » de la vidéo Facebook (ici sol mineur → si bémol majeur, avec le boum de sub quand l'écran passe à l'orange) et les bruitages. Tout est calé sur le tempo (120 BPM) : les croix, les étapes de la méthode et les notifications tombent sur les temps, et chaque levier change avec l'accord.
 
 | Temps | Plan | Message |
 |---|---|---|
-| 0–6 s | Bento « Pourquoi maintenant » : trois cartes barrées d'une croix au moment où la voix les nomme. La carte orange « La solution » arrive, puis remplit l'écran | **Pige, portails, flyers : ça ne suffit plus.** Depuis le 11 août 2026, la pige à froid n'est plus possible · Des contacts partagés · Impossible de mesurer |
+| 0–6 s | Bento « Pourquoi maintenant » : trois cartes barrées d'une croix, une tous les deux temps. La carte orange « La solution » arrive, puis remplit l'écran | **Pige, portails, flyers : ça ne suffit plus.** Depuis le 11 août 2026, la pige à froid n'est plus possible · Des contacts partagés · Impossible de mesurer |
 | 6–10 s | Bandeau orange, logo, les quatre leviers en pastilles | **Les vendeurs de votre secteur vous contactent.** Agence de publicité 100 % immobilier |
 | 10–14 s | Onglet « Google Ads » : la recherche « estimation maison » + « votre ville », « Votre agence » passe devant le concurrent et le portail, badge « Position n°1 » | **Le levier le plus direct pour rentrer des mandats** |
 | 14–18 s | Onglet « Facebook et Instagram » : votre publicité dans le fil d'un propriétaire, puis une demande d'estimation | **Faites-vous connaître avant que le propriétaire cherche** |
 | 18–22 s | Onglet « Référencement naturel » : la courbe des visites venues de Google monte | **Une visibilité durable, sans budget publicitaire** |
 | 22–26 s | Compteur et contacts entrants (Google Ads, Facebook, votre site) | **+8 000 contacts qualifiés générés** · +500 campagnes créées · +300 professionnels accompagnés · +4 années d'expérience en publicité |
-| 26–30 s | Les 5 étapes de la méthode s'allument ; « Sous 72 h » tombe sur « soixante-douze heures ». La dernière étape remplit l'écran d'orange | **On s'occupe de tout.** Une seule agence par secteur · Comptes à votre nom · Sans engagement |
+| 26–30 s | Les 5 étapes de la méthode s'allument, une par temps. La dernière étape remplit l'écran d'orange | **On s'occupe de tout.** Une seule agence par secteur · Comptes à votre nom · Sans engagement |
 | 30–36 s | Logo, titre, bouton qui pulse | **Votre secteur est-il encore disponible ?** Appel de découverte gratuit · Sans engagement · 15 minutes · Réponse immédiate sur votre zone |
 
-Les prises de voix sont dans `compositions/agence/voix/` (même fonctionnement que pour la vidéo Facebook, ci-dessous). Pour la page, l'affiche (`poster.jpg`) est l'image du bandeau orange « Les vendeurs de votre secteur vous contactent », à 9 s.
+Pour la page, l'affiche (`poster.jpg`) est l'image du bandeau orange « Les vendeurs de votre secteur vous contactent », à 9 s.
 
 ## Publicité Facebook immobilier : le film, plan par plan
 
@@ -123,7 +109,7 @@ Les textes reprennent ceux de la page Google Ads du site.
 compositions/
   _shared/engine.js        moteur commun : timeline GSAP en pause, révélations de texte, mesures, caméra, aperçu
   _shared/assets/          logo du site
-  agence/                  index.html · styles.css · main.js · voix/ (voix off)
+  agence/                  index.html · styles.css · main.js
   facebook/                index.html · styles.css · main.js · assets/ (photos du fil Facebook) · voix/ (voix off)
   google-ads/              index.html · styles.css · main.js
   demo/                    la démo générale
@@ -174,7 +160,7 @@ Dans l'aperçu : `espace` met en pause, `←` et `→` reculent ou avancent d'un
 - Animation : [GSAP](https://gsap.com), gratuit y compris en usage commercial ([licence « no charge »](https://gsap.com/standard-license)).
 - Polices : Plus Jakarta Sans, Inter, Inter Tight et Instrument Serif (SIL Open Font License), via Fontsource.
 - Icônes : tracés dessinés pour le projet. La démo reprend des tracés de [Feather Icons](https://feathericons.com) (MIT).
-- Voix off des vidéos Facebook et « agence » : **voix de synthèse** générée avec [Kyutai TTS 1.6B](https://huggingface.co/kyutai/tts-1.6b-en_fr) (modèle de Kyutai, laboratoire français, poids sous licence CC-BY 4.0), voix « developpeuse-3 » du dépôt [kyutai/tts-voices](https://huggingface.co/kyutai/tts-voices), enregistrée par Kyutai et publiée sous licence CC0. Usage commercial autorisé. Bonne pratique : indiquer « voix générée par IA » dans la description de la vidéo.
+- Voix off de la vidéo Facebook : **voix de synthèse** générée avec [Kyutai TTS 1.6B](https://huggingface.co/kyutai/tts-1.6b-en_fr) (modèle de Kyutai, laboratoire français, poids sous licence CC-BY 4.0), voix « developpeuse-3 » du dépôt [kyutai/tts-voices](https://huggingface.co/kyutai/tts-voices), enregistrée par Kyutai et publiée sous licence CC0. Usage commercial autorisé. Bonne pratique : indiquer « voix générée par IA » dans la description de la vidéo.
 - Photos des vidéos Facebook et « agence » (la vidéo « agence » reprend la photo de la maison dans sa maquette Facebook) : [Unsplash](https://unsplash.com/license), licence Unsplash (usage commercial gratuit, sans autorisation ni mention obligatoire). Fichiers d'origine : maison `images.unsplash.com/photo-1523217582562-09d0def993a6`, plage `photo-1507525428034-b723cf961d3e`, chien `photo-1543466835-00a7907e9de1`, fleurs `photo-1490750967868-88aa4486c946`, montagne `photo-1464822759023-fed622ff2c3b`. Aucune photo ne montre de visage.
 - Logo, textes et chiffres de Première Immo : issus du site (projet Framer).
 - Musique et effets sonores : **entièrement synthétisés par code**, sans aucun échantillon externe, donc libres de droits.

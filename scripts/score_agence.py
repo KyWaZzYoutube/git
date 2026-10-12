@@ -11,11 +11,8 @@ basse en contretemps, nappe qui pompe avec le kick), en sol mineur → si bémol
   6–22 s   groove : un accord par levier (sol m, si♭, fa, do m) ; claps dès 10 s, arpège dès 14 s
   22 s     relance sur les résultats (stabs, charleston ouverte) : sol m – fa, puis mi♭ – fa
   30 s     si bémol majeur : impact, sub tenu et cloche ; groove léger sous l'appel à l'action
-Les effets d'interface sont posés sur les repères exportés par la timeline.
-
-Voix off : les prises de compositions/agence/voix/ (voir scripts/voix.py) sont placées
-selon voix.json et la musique s'efface sous la voix (S.mix_voice). Le script écrit
-audio.wav (avec voix) et audio_sans_voix.wav (musique et effets seuls).
+Les effets d'interface sont posés sur les repères exportés par la timeline. Pas de voix off :
+comme les vidéos Google Ads et Facebook, le film est porté par la musique et les bruitages.
 """
 import os
 import sys
@@ -261,5 +258,5 @@ if os.environ.get('STEMS'):
     for name, x in (('batterie', drums.x * 0.62), ('basse', bass.x), ('nappe', pad), ('arpège', arp * 0.75), ('stabs', stabs * 0.8), ('effets', fx.x), ('réverb', wet)):
         print(f'{name:10s}', ' '.join(f'{S.rms_db(x[ns(a):ns(b)]):6.1f}' for a, b in ((0, 6), (6, 22), (22, 26), (26, 30), (30, 36))))
 
-# ---------------------------------------------------------------- voix off (compositions/agence/voix) et écriture
+# ---------------------------------------------------------------- écriture (mixage de la voix off si un dossier voix/ est ajouté)
 S.mix_voice(COMP, music, fx.x, wet)

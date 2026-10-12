@@ -29,6 +29,7 @@ else
 fi
 
 echo "2/4  Synthèse de la bande-son"
+rm -f "build/$COMP/audio_sans_voix.wav"   # réécrite par la partition seulement si la vidéo a une voix off
 python3 "scripts/score_${COMP//-/_}.py"
 
 echo "3/4  Mixage final (loudness web : -14 LUFS, crête -1,5 dBTP)"

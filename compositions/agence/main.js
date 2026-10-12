@@ -66,11 +66,11 @@ MotionEngine.run({
     rise(aw1, 0.2, { stagger: 0.06 });
     rise(aw2, 0.48, { stagger: 0.06 });
     const cards = $$('.ac');
-    tl.fromTo(cards, { opacity: 0, y: 110, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.85, stagger: 0.14, ease: 'back.out(1.3)' }, 0.85);
-    cards.forEach((c, i) => cue(0.85 + i * 0.14, 'pop', 0.45));
-    tl.fromTo('.ac-ic', { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.6, stagger: 0.14, ease: 'back.out(2.4)' }, 1.05);
-    // chaque canal historique est barré, au moment où la voix le nomme (« interdite », « portails », « flyers »)
-    const NO = [1.95, 3.45, 4.1];
+    tl.fromTo(cards, { opacity: 0, y: 110, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.85, stagger: 0.125, ease: 'back.out(1.3)' }, 1.0);
+    cards.forEach((c, i) => cue(1.0 + i * 0.125, 'pop', 0.45));
+    tl.fromTo('.ac-ic', { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.6, stagger: 0.125, ease: 'back.out(2.4)' }, 1.2);
+    // chaque canal historique est barré, une croix tous les deux temps
+    const NO = [2.0, 3.0, 4.0];
     cards.forEach((c, i) => {
       const t = NO[i];
       tl.fromTo($('.ac-x', c), { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.5, ease: 'back.out(2.6)' }, t);
@@ -80,7 +80,7 @@ MotionEngine.run({
       cue(t, 'deny');
     });
     // la solution arrive par le bas
-    const SOL = 4.45;
+    const SOL = 4.5;
     tl.fromTo('#aSol', { y: 330 }, { y: 0, duration: 0.85, ease: 'back.out(1.2)' }, SOL);
     tl.fromTo('#aSolIn > *', { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08 }, SOL + 0.22);
     cue(SOL, 'swoosh', 0.6);
@@ -105,8 +105,8 @@ MotionEngine.run({
     rise(bw1, B + 0.42, { stagger: 0.06 });
     rise(bw2, B + 0.62, { stagger: 0.06 });
     const chips = $$('.b-chip');
-    tl.fromTo(chips, { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.1, ease: 'back.out(2)' }, B + 1.5);
-    chips.forEach((c, i) => cue(B + 1.5 + i * 0.1, 'tick', 0.5));
+    tl.fromTo(chips, { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.125, ease: 'back.out(2)' }, B + 1.5);
+    chips.forEach((c, i) => cue(B + 1.5 + i * 0.125, 'tick', 0.5));
     tl.fromTo('#camB', { scale: 1.05 }, { scale: 1, duration: 1.4, ease: 'expo.out' }, B);
     tl.to('#camB', { scale: 1.02, duration: 2.6, ease: 'none' }, B + 1.4);
 
@@ -147,14 +147,14 @@ MotionEngine.run({
     }
 
     // --- 1. Google Ads : le propriétaire cherche, votre agence passe en tête ---
-    const TQ = C + 0.2;
+    const TQ = C + 0.25;
     const qEnd = typewriter($('#gQ'), 'estimation maison', TQ, 34);
-    tl.fromTo('.g-city', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(2.4)' }, qEnd + 0.02);
-    cue(qEnd + 0.02, 'pop', 0.4);
+    tl.fromTo('.g-city', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(2.4)' }, qEnd);
+    cue(qEnd, 'pop', 0.4);
     const SLOT = [160, 298, 436];
     gsap.set('#gr1', { y: SLOT[0] }); gsap.set('#gr2', { y: SLOT[1] }); gsap.set('#grMe', { y: SLOT[2], zIndex: 2 });
-    tl.fromTo(['#gr1', '#gr2', '#grMe'], { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.55, stagger: 0.1 }, qEnd + 0.1);
-    const CL = C + 1.35;   // « vous êtes en tête »
+    tl.fromTo(['#gr1', '#gr2', '#grMe'], { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.55, stagger: 0.125 }, C + 1.0);
+    const CL = C + 1.5;   // votre agence passe en tête (sur le temps)
     tl.to('#grMe', { y: SLOT[0], duration: 0.7, ease: 'expo.inOut' }, CL);
     tl.to('#gr1', { y: SLOT[1], duration: 0.7, ease: 'expo.inOut' }, CL + 0.04);
     tl.to('#gr2', { y: SLOT[2], duration: 0.7, ease: 'expo.inOut' }, CL + 0.08);
@@ -163,28 +163,28 @@ MotionEngine.run({
     tl.to(['#gr1', '#gr2'], { opacity: 0.55, duration: 0.4 }, CL + 0.5);
     cue(CL, 'swoosh', 0.5);
     gsap.set('#gRing rect', { drawSVG: '0%' }); gsap.set('#gRing', { opacity: 0 });
-    tl.set('#gRing', { opacity: 1 }, CL + 0.6);
-    tl.fromTo('#gRing rect', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.65, ease: 'power2.inOut', immediateRender: false }, CL + 0.6);
-    tl.fromTo('#gBadge', { scale: 0, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.55, ease: 'back.out(2.6)' }, CL + 0.8);
-    cue(CL + 0.8, 'gold', 0.8);
+    tl.set('#gRing', { opacity: 1 }, CL + 0.5);
+    tl.fromTo('#gRing rect', { drawSVG: '0%' }, { drawSVG: '100%', duration: 0.65, ease: 'power2.inOut', immediateRender: false }, CL + 0.5);
+    tl.fromTo('#gBadge', { scale: 0, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.55, ease: 'back.out(2.6)' }, CL + 1.0);
+    cue(CL + 1.0, 'gold', 0.8);
 
     // --- 2. Facebook et Instagram : votre publicité dans le fil des propriétaires ---
-    tab(1, C2 - 0.1);
-    textOut('#cpt1', C2 - 0.1); textIn('#cpt2', C2 + 0.22);
-    mockSwap('#mockG', '#mockF', C2 - 0.1);
-    cue(C2 - 0.1, 'swipe', 0.6);
-    tl.fromTo('#mPhone', { y: 90, rotation: 5 }, { y: 0, rotation: 0, duration: 1.0, immediateRender: false }, C2 - 0.05);
+    tab(1, C2 - 0.25);   // le milieu du glissement tombe sur le changement d'accord
+    textOut('#cpt1', C2 - 0.25); textIn('#cpt2', C2 + 0.1);
+    mockSwap('#mockG', '#mockF', C2 - 0.25);
+    cue(C2 - 0.25, 'swipe', 0.6);
+    tl.fromTo('#mPhone', { y: 90, rotation: 5 }, { y: 0, rotation: 0, duration: 1.0, immediateRender: false }, C2 - 0.2);
     float($('#mPhone'), 6, 1.3, 0);
-    const TO = C2 + 2.2;   // « il vous voit avant même de chercher »
+    const TO = C2 + 2.0;
     tl.fromTo('#fToast', { opacity: 0, x: -40, scale: 0.85 }, { opacity: 1, x: 0, scale: 1, duration: 0.6, ease: 'back.out(1.8)' }, TO);
     cue(TO, 'notif');
     float($('#fToast'), 5, 1.8, 2.0);
 
     // --- 3. Référencement naturel : la courbe des visites monte, durablement ---
-    tab(2, C3 - 0.1);
-    textOut('#cpt2', C3 - 0.1); textIn('#cpt3', C3 + 0.22);
-    mockSwap('#mockF', '#mockS', C3 - 0.1);
-    cue(C3 - 0.1, 'swipe', 0.6);
+    tab(2, C3 - 0.25);
+    textOut('#cpt2', C3 - 0.25); textIn('#cpt3', C3 + 0.1);
+    mockSwap('#mockF', '#mockS', C3 - 0.25);
+    cue(C3 - 0.25, 'swipe', 0.6);
     const PTS = [[0, 238], [112, 222], [224, 208], [336, 166], [448, 116], [560, 50]];
     let dPath = `M${PTS[0][0]} ${PTS[0][1]}`;
     for (let i = 0; i < PTS.length - 1; i++) {   // Catmull-Rom → Bézier
@@ -199,7 +199,7 @@ MotionEngine.run({
     sArea.setAttribute('clip-path', 'url(#sClip)');
     const sPulse = svgEl('circle', { r: 9, class: 's-pulse' });
     chart.insertBefore(sPulse, sDot);
-    const LEN = sLine.getTotalLength(), S0 = C3 + 0.45, SD = 1.9;
+    const LEN = sLine.getTotalLength(), S0 = C3 + 0.5, SD = 2.0;
     sLine.style.strokeDasharray = `${LEN} ${LEN}`;
     drivers.push(t => {
       const p = ez('power1.inOut', prog(t, S0, S0 + SD));
@@ -215,8 +215,8 @@ MotionEngine.run({
     });
     tl.fromTo(sDot, { attr: { r: 0 } }, { attr: { r: 9 }, duration: 0.4, ease: 'back.out(3)' }, S0 - 0.15);
     cue(S0, 'zip', 0.5);
-    tl.fromTo('.s-tag', { opacity: 0, y: 20, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(2)' }, S0 + SD - 0.1);
-    cue(S0 + SD - 0.1, 'gold', 0.7);
+    tl.fromTo('.s-tag', { opacity: 0, y: 20, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(2)' }, S0 + SD);
+    cue(S0 + SD, 'gold', 0.7);
 
     /* ================= D : résultats (22 → 26 s) ================= */
     slide('#sC', '#sD', D);
@@ -229,16 +229,16 @@ MotionEngine.run({
     cue(D + 1.75, 'gold', 0.6);
     // les contacts arrivent de tous les leviers
     ['#dt1', '#dt2', '#dt3'].forEach((s, i) => {
-      const t = D + 0.5 + i * 0.4;
+      const t = D + 0.5 + i * 0.5;
       tl.fromTo(s, { opacity: 0, scale: 0.8, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: 'back.out(1.8)' }, t);
       cue(t, 'notif', 0.5);
       float($(s), 6, 1.5 + i * 0.2, i * 1.7);
     });
-    tl.fromTo('.d-stat', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 }, D + 1.9);
-    counter($('#dS1'), 500, D + 1.95, 1.2, { pre: '+' });
-    counter($('#dS2'), 300, D + 2.07, 1.2, { pre: '+' });
-    counter($('#dS3'), 4, D + 2.19, 0.9, { pre: '+' });
-    [0, 0.12, 0.24].forEach(d => cue(D + 1.9 + d, 'tick', 0.5));
+    tl.fromTo('.d-stat', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.125 }, D + 2.0);
+    counter($('#dS1'), 500, D + 2.05, 1.2, { pre: '+' });
+    counter($('#dS2'), 300, D + 2.175, 1.2, { pre: '+' });
+    counter($('#dS3'), 4, D + 2.3, 0.9, { pre: '+' });
+    [0, 0.125, 0.25].forEach(d => cue(D + 2.0 + d, 'tick', 0.5));
     tl.fromTo('#camD', { scale: 1.04 }, { scale: 1, duration: 1.4, ease: 'expo.out' }, D);
     tl.to('#camD', { scale: 1.02, duration: 2.6, ease: 'none' }, D + 1.4);
 
@@ -249,7 +249,7 @@ MotionEngine.run({
     tl.fromTo('#eSub', { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.7 }, M + 0.3);
     tl.fromTo('.p-s', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 }, M + 0.2);
     tl.fromTo('#pTrack', { opacity: 0 }, { opacity: 1, duration: 0.5 }, M + 0.3);
-    const P0 = M + 0.8, PD = 2.6;   // l'étape « Sous 72 h » s'allume sur « soixante-douze heures »
+    const P0 = M + 0.5, PD = 2.0;   // une étape par temps
     tl.fromTo('#pFill', { scaleX: 0 }, { scaleX: 1, duration: PD, ease: 'none' }, P0);
     $$('.p-dot').forEach((d, i) => {
       const t = P0 + PD * i / 4;
@@ -257,8 +257,8 @@ MotionEngine.run({
       tl.to(d, { scale: 1.12, duration: 0.12, ease: 'power2.out' }, t).to(d, { scale: 1, duration: 0.4, ease: 'back.out(3)' }, t + 0.12);
       cue(t, 'step', 0.6);
     });
-    tl.fromTo('.e-chip', { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.12 }, M + 2.0);
-    [0, 0.12, 0.24].forEach(d => cue(M + 2.0 + d, 'tick', 0.5));
+    tl.fromTo('.e-chip', { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.125 }, M + 1.5);
+    [0, 0.125, 0.25].forEach(d => cue(M + 1.5 + d, 'tick', 0.5));
     tl.fromTo('#camE', { scale: 1 }, { scale: 1.025, duration: F - M, ease: 'none' }, M);
 
     // la dernière étape s'ouvre en plein écran orange
@@ -281,21 +281,21 @@ MotionEngine.run({
     drift($('#fRing1'), F, 8, -5, 0.01); drift($('#fRing2'), F, -7, 6, 0.012);
     rise(words($('#fL1')), F + 0.3, { stagger: 0.06 });
     rise(words($('#fL2')), F + 0.46, { stagger: 0.06 });
-    tl.fromTo('#fSub', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8 }, F + 0.9);
+    tl.fromTo('#fSub', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8 }, F + 0.75);
     gsap.set('#fBtn', { xPercent: -50 });
-    tl.fromTo('#fBtn', { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.85 }, F + 1.2);
+    tl.fromTo('#fBtn', { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.85 }, F + 1.0);
     tl.fromTo('#fArrow', { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.6, ease: 'back.out(2.5)' }, F + 1.5);
-    cue(F + 1.2, 'swoosh', 0.5); cue(F + 1.5, 'pop', 0.6);
-    tl.fromTo('#fReassure', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 }, F + 1.7);
-    tl.fromTo('#fUrl', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 }, F + 1.9);
+    cue(F + 1.0, 'swoosh', 0.5); cue(F + 1.5, 'pop', 0.6);
+    tl.fromTo('#fReassure', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 }, F + 1.75);
+    tl.fromTo('#fUrl', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.8 }, F + 2.0);
     tl.fromTo('#camF', { scale: 1.04 }, { scale: 1, duration: 1.6, ease: 'expo.out' }, F);
     tl.to('#camF', { scale: 1.015, duration: 4.4, ease: 'none' }, F + 1.6);
-    // vie du bouton : pulsation blanche + flèche qui avance
+    // vie du bouton : pulsation blanche à chaque mesure + flèche qui avance à chaque temps fort
     const btnRing = $('#fBtnRing'), arrow = $('#fArrow');
     drivers.push(t => {
-      const p = t < F + 2.2 ? -1 : ((t - F - 2.2) % 1.6) / 1.6;
+      const p = t < F + 2.0 ? -1 : ((t - F - 2.0) % 2.0) / 2.0;
       btnRing.style.boxShadow = p < 0 ? 'none' : `0 0 0 ${(p * 24).toFixed(1)}px rgba(255,255,255,${(0.5 * (1 - p)).toFixed(3)})`;
-      const k = t > F + 2.4 ? Math.max(0, Math.sin((t - F - 2.4) * Math.PI * 1.25)) ** 6 * 8 : 0;
+      const k = t > F + 2.5 ? Math.max(0, Math.sin((t - F - 2.5) * Math.PI)) ** 6 * 8 : 0;
       arrow.style.translate = `${k.toFixed(2)}px 0px`;
     });
   },
