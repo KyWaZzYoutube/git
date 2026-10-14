@@ -4,6 +4,7 @@ Vidéos animées pour **premiere-immo.fr**, rendues image par image à partir de
 
 | Vidéo | Durée | Fichiers |
 |---|---|---|
+| **Realty, le logiciel immobilier tout-en-un** pour la page d'accueil de la refonte de realty.fr | 72 s | [`video/realty/realty-logiciel-immobilier.mp4`](video/realty/realty-logiciel-immobilier.mp4) · [`…-muet.mp4`](video/realty/realty-logiciel-immobilier-muet.mp4) · [`poster.jpg`](video/realty/poster.jpg) |
 | **Agence de publicité immobilière** pour la page `/agence-publicite-immobiliere` | 36 s | [`video/agence/premiere-immo-agence-publicite.mp4`](video/agence/premiere-immo-agence-publicite.mp4) · [`…-muet.mp4`](video/agence/premiere-immo-agence-publicite-muet.mp4) · [`poster.jpg`](video/agence/poster.jpg) |
 | **Publicité Facebook immobilier** pour la page `/publicite-facebook-immobilier` (avec voix off) | 32 s | [`video/facebook/premiere-immo-facebook.mp4`](video/facebook/premiere-immo-facebook.mp4) · [`…-sans-voix.mp4`](video/facebook/premiere-immo-facebook-sans-voix.mp4) · [`…-muet.mp4`](video/facebook/premiere-immo-facebook-muet.mp4) · [`poster.jpg`](video/facebook/poster.jpg) |
 | **Google Ads immobilier** pour la page `/google-ads-immobilier` | 32 s | [`video/google-ads/premiere-immo-google-ads.mp4`](video/google-ads/premiere-immo-google-ads.mp4) · [`…-muet.mp4`](video/google-ads/premiere-immo-google-ads-muet.mp4) · [`poster.jpg`](video/google-ads/poster.jpg) |
@@ -37,6 +38,35 @@ La page est responsive (testée à 390 px de large), lisible sans JavaScript, et
 - **Mettre en ligne** : envoyer le dossier `landing/` tel quel sur un hébergement statique (Netlify, Vercel, OVH…), par exemple sur un sous-domaine dédié aux publicités. Ajoutez-y vos balises de suivi (pixel Meta, conversion Google Ads) dans le `<head>` de `index.html`.
 - **Fonds « soie orange »** : calculés par `scripts/landing_silk.py` (aucune image externe).
 - Les couleurs de l'agenda Calendly (fond sombre, orange) ne s'appliquent qu'avec une offre Calendly payante ; sinon l'agenda garde ses couleurs par défaut.
+
+## Realty, le logiciel immobilier tout-en-un : le film, plan par plan
+
+La vidéo de la page d'accueil de la refonte de realty.fr présente les **6 domaines du menu « Le logiciel »**, chacun avec ses fonctionnalités, puis le **site web inclus**, l'**application mobile** et l'offre. La mise en scène suit les films « produit » des éditeurs de logiciels (référence : le film de présentation de Sellsy). Chaque domaine a sa couleur. Une barre de module bleu nuit apparaît au centre, puis devient l'en-tête de la fenêtre de l'application. Un curseur clique dans l'interface, et les fonctionnalités du menu se cochent une par une, en rythme. Le film n'a pas de voix off : il est porté par la musique et les bruitages.
+
+La charte est celle de la refonte : police Manrope, violet `#3300FF`, encre `#141B33`, dégradé orange → magenta → violet du logo, coins arrondis, vrais logos Realty (`compositions/realty/assets/`). Les textes viennent du menu et de la page d'accueil validés (propositions de page d'accueil). Les interfaces sont des maquettes simplifiées dans le style de l'application Realty, pas des captures d'écran.
+
+| Temps | Plan | Message |
+|---|---|---|
+| 0–4 s | Fond violet, ondes concentriques, huit fenêtres d'outils (pige, agenda, portails, mandats, contrats, factures, site web, tableur). Le curseur clique de l'une à l'autre, puis tout est aspiré au centre | **Une agence, c'est dix outils à jongler.** Pige, mandats, portails, contrats, factures… |
+| 4–8 s | L'icône Realty apparaît (drop), puis le logo se déploie. La pastille violette se remplit | **Le logiciel immobilier tout-en-un.** Logiciel, site web, application mobile, pige et contrats : une seule offre |
+| 8–12 s | L'application en perspective. La sélection descend la barre latérale : les 6 domaines, le site web, l'application mobile | 6 domaines · 29 fonctionnalités · tout est inclus |
+| 12–18 s | **Prospection** (lavande) : les annonces de particuliers arrivent en direct, le secteur se trace sur la carte, notification, « Appeler » le vendeur | Pige immobilière (gratuit) · Porte-à-porte & phoning · Secteurs & îlots · Campagnes e-mail & SMS · Parrainage |
+| 18–24 s | **Estimation & mandat** (menthe) : la valeur du bien monte jusqu'à 412 000 €, 3 ventes comparables, « Générer le mandat », signature et tampon « Signé » | Estimation comparative · Fiche bien & immeuble · Mandats & délégation · Registres des mandats · Barème d'honoraires |
+| 24–30 s | **Diffusion** (pêche) : l'IA rédige l'annonce, clic sur « Diffuser », le bien part vers les portails, le site, les réseaux et les flyers | Multidiffusion · Site web agence (inclus) · Annonces par l'IA · Modèles & flyers |
+| 30–36 s | **Vente** (jaune) : acquéreuse à 96 % de correspondance, créneau Click & Visit réservé, compromis signé par les deux parties, badge eIDAS | Fiches acquéreurs · Click & Visit · Offres & compromis · Signature électronique · Notification SRU |
+| 36–42 s | **Location** (bleu ciel) : le bail se génère (« prêt en 2 minutes »), locataire, bailleur et garant signent, l'extranet suit loyer, quittance et honoraires | Baux de location · Acte de caution · Honoraires & règlements · Extranet locataires & bailleurs |
+| 42–48 s | **Pilotage** (rose) : compteurs (mandats, CA, ventes), histogramme du chiffre d'affaires, agenda partagé, facture envoyée | Tableau de bord · Agenda partagé · Tâches & automatisations · Facturation · Tableau des clés · Multi-agences |
+| 48–56 s | **Site web inclus** : le site de l'agence et sa version mobile, annonces synchronisées en temps réel. Le curseur change la couleur du site (orange, vert, violet), puis arrive une demande d'estimation | Modèles de site · Annonces en ligne · Contacts & estimations · Visibilité SEO & SEA · Statistiques · Domaine & hébergement offerts |
+| 56–62 s | **Application mobile** : trois écrans du téléphone (prospection sur la carte, estimation, compromis signé au doigt) | **Prospectez, estimez et faites signer depuis le terrain.** Application mobile · Tablette et iPad · PC et Mac · Version full web |
+| 62–66 s | Cartes empilées, les arguments défilent sur chaque temps, puis le prix (impact) | +100 modules intelligents · +50 types de contrats · Pige gratuite · Site web inclus · Signature électronique → **Tout est inclus : 99 € HT/mois**, 5 utilisateurs · sans option cachée |
+| 66–72 s | Fond encre, logo blanc, clic sur le bouton qui pulse | **Rentrez plus de mandats, Realty fait le reste !** Réserver une démo · realty.fr |
+
+**Son** (`scripts/score_realty.py`) : pop « produit » lumineuse, 120 BPM, ré majeur. L'ouverture a un tic-tac et un piano retenu, avec un souffle inversé quand les fenêtres sont aspirées. Le drop tombe sur le logo à 4 s. Le groove complet sous les 6 domaines enchaîne ré, la/do#, si m7 et sol maj7, une mesure par accord. Le film repart sur le site web à 48 s, monte sur les arguments, frappe un impact sur « 99 € » et finit sur un accord de ré majeur 9. Les bruitages suivent les repères de la timeline : transitions, clics du curseur, notifications, compteurs, signatures, tampon, frappe de l'IA. Chaque fonctionnalité cochée joue une note de la gamme pentatonique, de plus en plus haute.
+
+- **Construire** : `npm run build:realty` (ou `./scripts/build.sh realty`).
+- **Aperçu dans le navigateur** : `npx http-server . -p 8080 -c-1 -o /compositions/realty/` (espace : pause, ← → : ±1 s, `?t=30` pour une image fixe).
+- **Changer un texte ou une fonctionnalité** : les domaines sont décrits dans le tableau `DOMAINS` de `compositions/realty/main.js` (nom, couleur, phrase, fonctionnalités et badges « Gratuit », « Inclus », « IA »).
+- L'affiche (`poster.jpg`) est l'image du domaine « Prospection » à 16,6 s.
 
 ## Agence de publicité immobilière : le film, plan par plan
 
@@ -138,6 +168,7 @@ compositions/
   _shared/engine.js        moteur commun : timeline GSAP en pause, révélations de texte, mesures, caméra, aperçu
   _shared/assets/          logo du site
   agence/                  index.html · styles.css · main.js
+  realty/                  index.html · styles.css · main.js · assets/ (logos Realty)
   facebook/                index.html · styles.css · main.js · assets/ (photos du fil Facebook) · voix/ (voix off)
   google-ads/              index.html · styles.css · main.js
   demo/                    la démo générale
@@ -145,6 +176,7 @@ scripts/
   render.mjs               rendu image par image (Playwright → ffmpeg), flou de mouvement adaptatif
   synth.py                 synthétiseur partagé : instruments, effets d'interface, mixage de la voix off, mastering
   score_agence.py          bande-son de la vidéo « agence de publicité immobilière »
+  score_realty.py          bande-son de la vidéo Realty (page d'accueil realty.fr)
   score_facebook.py        bande-son de la vidéo Facebook
   voix.py                  synthèse de la voix off (Kyutai TTS), si l'on veut changer le texte
   score_google_ads.py      bande-son de la vidéo Google Ads

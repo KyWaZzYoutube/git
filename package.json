@@ -7,6 +7,7 @@
     "stills": "node scripts/render.mjs stills",
     "build:google-ads": "./scripts/build.sh google-ads",
     "build:demo": "./scripts/build.sh demo",
+    "build:realty": "./scripts/build.sh realty",
     "landing": "npx http-server landing -p 8080 -c-1 -o /",
     "landing:shots": "node scripts/landing_preview.mjs shots && node scripts/landing_preview.mjs shots --mobile",
     "landing:video": "node scripts/landing_preview.mjs video"
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@fontsource-variable/inter": "^5.3.0",
     "@fontsource-variable/inter-tight": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.3.0",
     "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
     "@fontsource/anton": "^5.3.0",
     "@fontsource/instrument-serif": "^5.3.0",
