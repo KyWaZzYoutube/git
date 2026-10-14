@@ -39,6 +39,31 @@ La page est responsive (testée à 390 px de large), lisible sans JavaScript, et
 - **Fonds « soie orange »** : calculés par `scripts/landing_silk.py` (aucune image externe).
 - Les couleurs de l'agenda Calendly (fond sombre, orange) ne s'appliquent qu'avec une offre Calendly payante ; sinon l'agenda garde ses couleurs par défaut.
 
+## Page d'accueil Realty (structure go.sellsy.com)
+
+Une page d'accueil complète pour la refonte de realty.fr, dans [`realty-accueil/`](realty-accueil/) : HTML, CSS et JavaScript, sans outil de construction. Elle reprend la **structure de la page d'accueil de Sellsy** (go.sellsy.com), section par section, avec le contenu, la charte et le **menu validé** de Realty (balisage, styles et script repris tels quels des propositions de page d'accueil : `assets/realty.css`, `assets/menu.css`, `assets/menu.js`).
+
+| Section Sellsy | Version Realty |
+|---|---|
+| Barre utilitaire, menu, héros (titre, deux boutons, garanties) | Liens « Pourquoi Realty », menu validé, « Le logiciel immobilier **tout-en-un** pour rentrer plus de mandats », Découvrir le logiciel / Réserver une démo |
+| Vidéo de présentation | La vidéo motion Realty (version web légère, 6,5 Mo, lecture muette en boucle, bouton « Activer le son ») |
+| Garanties, logos clients | eIDAS, registres loi Hoguet, site web inclus, application mobile ; « La presse parle de Realty » (logos qui défilent) |
+| « S'adapte et grandit avec votre organisation » | Agence indépendante, agence en croissance, réseaux & multi-agences (d'après le tarif) |
+| « Pourquoi ? » : 6 raisons | Tout inclus, de la pige à la facture, vendeurs en temps réel, 50 contrats, partout avec vous, CRM 24h/24 |
+| Les 4 solutions + bandeau sombre | Les 6 domaines du menu (images tirées de la vidéo) + bandeau « Site web inclus » |
+| « Facturez en toute conformité » | « Vos contrats signés en toute conformité » |
+| « Souverain, sécurisé, intelligent » + 8 garanties | « Complet, connecté, mobile » : pige, site, IA + 8 fonctionnalités incluses |
+| Accompagnement (texte + image) | Application mobile (texte + capture) |
+| Intégrations | Multidiffusion sur les portails |
+| Témoignages, « Recommandé sur » | Realty en chiffres (+100 modules, +50 contrats, 5 utilisateurs, 24h/24) et logos presse |
+| Groupe TeamSystem | Tarif : 99 € HT/mois, tout inclus |
+| Appel final, pied de page | « Rentrez plus de mandats, Realty fait le reste ! », pied de page aux couleurs Realty |
+
+Tous les textes viennent du menu et de la page d'accueil validés ; les liens pointent vers les vraies pages de realty.fr. La page est responsive (testée à 390 px), lisible sans JavaScript et respecte le réglage « réduire les animations ».
+
+- **Voir la page** : `npx http-server realty-accueil -p 8080 -c-1 -o /`
+- **Remplacer la vidéo** : `realty-accueil/assets/media/realty-video.mp4` et son affiche `realty-video-poster.jpg`.
+
 ## Realty, le logiciel immobilier tout-en-un : le film, plan par plan
 
 La vidéo de la page d'accueil de la refonte de realty.fr présente les **6 domaines du menu « Le logiciel »**, chacun avec ses fonctionnalités, puis le **site web inclus**, l'**application mobile** et l'offre. La mise en scène suit les films « produit » des éditeurs de logiciels (référence : le film de présentation de Sellsy). Chaque domaine a sa couleur. Une barre de module bleu nuit apparaît au centre, puis devient l'en-tête de la fenêtre de l'application. Un curseur clique dans l'interface, et les fonctionnalités du menu se cochent une par une, en rythme. Le film n'a pas de voix off : il est porté par la musique et les bruitages.
@@ -163,6 +188,7 @@ Les textes reprennent ceux de la page Google Ads du site.
 ## Structure du projet
 
 ```
+realty-accueil/            page d'accueil Realty (structure go.sellsy.com) : index.html · assets/
 landing/                   landing page autonome : index.html · css/ · js/ · img/ · media/ (vidéos web) · fonts/ · vendor/ (GSAP)
 compositions/
   _shared/engine.js        moteur commun : timeline GSAP en pause, révélations de texte, mesures, caméra, aperçu

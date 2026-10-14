@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Dégradé_sans_nom_16);
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#Dégradé_sans_nom_21);
+      }
+    </style>
+    <linearGradient id="Dégradé_sans_nom_16" data-name="Dégradé sans nom 16" x1="-10179.77" y1="301.3" x2="-10586.63" y2="315.54" gradientTransform="translate(7328.15 7868.54) rotate(45) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".2" stop-color="#fff" stop-opacity=".99"/>
+      <stop offset=".33" stop-color="#fff" stop-opacity=".95"/>
+      <stop offset=".45" stop-color="#fff" stop-opacity=".89"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity=".81"/>
+      <stop offset=".65" stop-color="#fff" stop-opacity=".7"/>
+      <stop offset=".74" stop-color="#fff" stop-opacity=".57"/>
+      <stop offset=".83" stop-color="#fff" stop-opacity=".41"/>
+      <stop offset=".91" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset=".99" stop-color="#fff" stop-opacity=".02"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="Dégradé_sans_nom_21" data-name="Dégradé sans nom 21" x1="-4451.46" y1="4023.32" x2="-4173.84" y2="3725.56" gradientTransform="translate(4620.61 4079.1) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".2" stop-color="#fff" stop-opacity=".99"/>
+      <stop offset=".33" stop-color="#fff" stop-opacity=".95"/>
+      <stop offset=".45" stop-color="#fff" stop-opacity=".89"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity=".81"/>
+      <stop offset=".65" stop-color="#fff" stop-opacity=".7"/>
+      <stop offset=".74" stop-color="#fff" stop-opacity=".57"/>
+      <stop offset=".83" stop-color="#fff" stop-opacity=".41"/>
+      <stop offset=".91" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset=".99" stop-color="#fff" stop-opacity=".02"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect class="cls-1" x="57.47" y="84.01" width="293.47" height="448.84" rx="146.73" ry="146.73" transform="translate(566.68 382.12) rotate(135)"/>
+  <rect class="cls-2" x="161.22" y="-19.75" width="293.47" height="448.84" rx="146.73" ry="146.73" transform="translate(670.44 131.63) rotate(135)"/>
+</svg>
