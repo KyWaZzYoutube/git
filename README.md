@@ -64,6 +64,22 @@ Tous les textes viennent du menu et de la page d'accueil validés ; les liens po
 - **Voir la page** : `npx http-server realty-accueil -p 8080 -c-1 -o /`
 - **Remplacer la vidéo** : `realty-accueil/assets/media/realty-video.mp4` et son affiche `realty-video-poster.jpg`.
 
+## Six autres compositions de page d'accueil (propositions 6 à 11)
+
+Dans [`realty-propositions/`](realty-propositions/) : six pages d'accueil complètes qui évitent l'accueil centré empilé et l'accueil texte à gauche / image à droite. Elles reprennent le menu validé, la charte, la vidéo et les sections de `realty-accueil/` ; seule la composition change.
+
+| Proposition | Accueil | Idée |
+|---|---|---|
+| 6 · Bento | Grille de tuiles | Vidéo, prix, pige en direct, site, application et contrats en tuiles ; les 6 domaines en tuiles de tailles variées |
+| 7 · Vidéo plein écran | Vidéo en fond, titre posé dessus | Le film en fond, chiffres en bandeau, les 6 domaines en grandes lignes numérotées |
+| 8 · Hub | Schéma circulaire interactif | Realty au centre, 8 modules autour (survol ou clic), puis « sans / avec Realty » |
+| 9 · Parcours | Frise des 6 étapes | De la pige à la facture : chaque étape ouvre l'écran du logiciel |
+| 10 · Carrousel | Grand titre + rail de cartes | Le film, les 6 domaines, le site, l'application et le prix dans un rail qui défile |
+| 11 · Éditorial | Très grande typographie | Titre de magazine, le film en grand format, les 6 domaines en chapitres |
+
+- **Régénérer** : `python3 realty-propositions/build.py` (les pages sont construites à partir de `realty-accueil/index.html`).
+- **Voir** : `npx http-server realty-propositions -p 8080 -c-1 -o /` (le dossier `assets` est un lien vers `realty-accueil/assets`).
+
 ## Realty, le logiciel immobilier tout-en-un : le film, plan par plan
 
 La vidéo de la page d'accueil de la refonte de realty.fr présente les **6 domaines du menu « Le logiciel »**, chacun avec ses fonctionnalités, puis le **site web inclus**, l'**application mobile** et l'offre. La mise en scène suit les films « produit » des éditeurs de logiciels (référence : le film de présentation de Sellsy). Chaque domaine a sa couleur. Une barre de module bleu nuit apparaît au centre, puis devient l'en-tête de la fenêtre de l'application. Un curseur clique dans l'interface, et les fonctionnalités du menu se cochent une par une, en rythme. Le film n'a pas de voix off : il est porté par la musique et les bruitages.
@@ -188,6 +204,7 @@ Les textes reprennent ceux de la page Google Ads du site.
 ## Structure du projet
 
 ```
+realty-propositions/       propositions 6 à 11 de la page d'accueil : build.py · pp.css · pp.js · captures/
 realty-accueil/            page d'accueil Realty (structure go.sellsy.com) : index.html · assets/
 landing/                   landing page autonome : index.html · css/ · js/ · img/ · media/ (vidéos web) · fonts/ · vendor/ (GSAP)
 compositions/

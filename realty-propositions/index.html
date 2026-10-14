@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nouvelles propositions accueil Realty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="assets/realty.css">
+<link rel="stylesheet" href="assets/accueil.css">
+<link rel="stylesheet" href="pp.css">
+<style>
+body{font-family:"Manrope",ui-sans-serif,system-ui,sans-serif;background:#fff;color:var(--sx-ink)}
+.so-top{border-bottom:1px solid var(--sx-line)}
+.so-top .sx-wrap{display:flex;align-items:center;gap:16px;height:72px}
+.so-top img{width:130px;height:auto}
+.so-top span{margin-left:auto;font-size:14px;color:var(--sx-muted)}
+.so-intro{padding-block:clamp(44px,6vw,76px) 32px}
+.so-intro h1{margin-top:16px;font-size:clamp(32px,4.4vw,54px);font-weight:800;line-height:1.08;letter-spacing:-.03em;max-width:22ch;text-wrap:balance}
+.so-intro p{margin-top:16px;font-size:17px;line-height:1.6;color:var(--sx-ink2);max-width:66ch}
+.so-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-bottom:64px}
+.pp-card{display:flex;flex-direction:column;border:1px solid var(--sx-line);border-radius:22px;overflow:hidden;background:#fff;transition:border-color .3s,transform .4s var(--ease,ease)}
+.pp-card:hover{border-color:var(--sx-violet);transform:translateY(-3px)}
+.pp-card .shots{position:relative;background:var(--sx-bg2);padding:22px 22px 0;overflow:hidden}
+.pp-card .shots .d{border-radius:12px 12px 0 0;box-shadow:0 10px 30px -18px rgba(20,27,51,.45);aspect-ratio:1200/750;object-fit:cover;object-position:top;width:100%}
+.pp-card .ph{position:absolute;right:18px;bottom:-40px;width:23%;border-radius:20px;padding:5px;background:var(--sx-ink);box-shadow:0 20px 40px -20px rgba(20,27,51,.6)}
+.pp-card .ph img{border-radius:15px;aspect-ratio:585/1266;object-fit:cover;object-position:top;width:100%}
+.pp-card .body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:8px}
+.pp-card .num{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sx-violet)}
+.pp-card h3{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.pp-card p{font-size:15px;line-height:1.55;color:var(--sx-ink2)}
+.pp-card .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.pp-card .tags li{font-size:12.5px;font-weight:600;padding:5px 10px;border-radius:999px;background:var(--sx-bg);color:var(--sx-ink2)}
+.pp-card .go{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-weight:700;font-size:15px}
+.pp-card .go .i{width:18px;height:18px}
+.so-h2{font-size:clamp(24px,2.8vw,32px);font-weight:700;letter-spacing:-.02em;margin-bottom:18px}
+.so-table{overflow-x:auto;border:1px solid var(--sx-line);border-radius:18px;margin-bottom:20px}
+.so-table table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:720px}
+.so-table th,.so-table td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--sx-line)}
+.so-table thead th{background:var(--sx-bg);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sx-muted)}
+.so-table tbody tr:last-child th,.so-table tbody tr:last-child td{border-bottom:0}
+.so-table tbody th a{display:inline-flex;align-items:center;gap:12px;font-weight:700;white-space:nowrap}
+.so-table .n{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--sx-bg2);font-size:12.5px}
+.so-note{font-size:14px;color:var(--sx-muted);margin-bottom:72px;max-width:80ch}
+@media (max-width:900px){.so-grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-chevr" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-chevl" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-burger" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+  <symbol id="i-call" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18 6"/><circle cx="12" cy="12" r="1.2"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24"><path d="M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18"/><circle cx="15" cy="12" r="1"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8S10 3 7.5 4.5 9 8 12 8m0 0s2-5 4.5-3.5S15 8 12 8"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 3 10.5l7 3 3 7z"/><path d="m10 13.5 4-4"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="3" height="7"/><rect x="10.5" y="6" width="3" height="12"/><rect x="16" y="13" width="3" height="5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1.5 1.5 0 0 0 2-2l-3-3"/><path d="m14 14 2.5 2.5a1.5 1.5 0 0 0 2-2L13 9l-2 2a2 2 0 0 1-3-3l3-3h4l5 5-2 2M3 10l4-4 5 5"/><path d="m3 10 7 7"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M16 3l5 5L9 20H4v-5z"/><path d="M3 21h18"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-portal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><circle cx="12" cy="10" r="2.5"/><path d="M8.5 15a4 4 0 0 1 7 0"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17 6.5A7 7 0 1 0 17 17.5M4 10h9M4 14h9"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H4zM20 4h-6a3 3 0 0 0-3 3"/><path d="M20 4v15h-7"/></symbol>
+  <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M15 8l2 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-checkc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2h12v2"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol><symbol id="i-volume" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></symbol>
+<symbol id="i-volume-off" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m16 9 5 6M21 9l-5 6"/></symbol>
+<symbol id="i-tablet" viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+<symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="11" rx="2"/><path d="M2 19.5h20"/></symbol>
+<symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 10a4.3 4.3 0 0 1-.5 8.5z"/></symbol>
+</svg>
+<header class="so-top"><div class="sx-wrap"><img src="assets/img/logo-realty-bleu.webp" alt="Realty" width="130" height="30"><span>Refonte de realty.fr · Page d’accueil</span></div></header>
+<main class="sx-wrap">
+  <section class="so-intro"><span class="sx-pill">Propositions 6 à 11</span><h1>Six nouvelles compositions pour la page d’accueil</h1>
+    <p>Ni accueil centré empilé, ni accueil texte à gauche / image à droite&#8239;: chaque page propose une autre façon d’ouvrir le site. Toutes reprennent le menu validé, la charte Realty, la vidéo et les mêmes contenus&#8239;; seule la composition change.</p></section>
+  <h2 class="so-h2">Les 6 propositions</h2>
+  <div class="so-grid"><a class="pp-card" href="06-bento.html">
+  <div class="shots"><img class="d" src="captures/06-bento.webp" alt="Aperçu ordinateur : Bento" width="1200" height="750" loading="lazy"><div class="ph"><img src="captures/mobile-06-bento.webp" alt="Aperçu mobile : Bento" width="585" height="1266" loading="lazy"></div></div>
+  <div class="body"><span class="num">Proposition 6</span><h3>Bento</h3><p>Vidéo, pige en direct, site, application et contrats réunis dans une grille de tuiles ; les 6 domaines en tuiles de tailles variées.</p><ul class="tags"><li>Grille de tuiles</li><li>Moderne, dense</li></ul><span class="go">Voir la page <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span></div></a><a class="pp-card" href="07-video-plein-ecran.html">
+  <div class="shots"><img class="d" src="captures/07-video-plein-ecran.webp" alt="Aperçu ordinateur : Vidéo plein écran" width="1200" height="750" loading="lazy"><div class="ph"><img src="captures/mobile-07-video-plein-ecran.webp" alt="Aperçu mobile : Vidéo plein écran" width="585" height="1266" loading="lazy"></div></div>
+  <div class="body"><span class="num">Proposition 7</span><h3>Vidéo plein écran</h3><p>Le film occupe tout le haut de page, le titre est posé dessus ; les 6 domaines en grandes lignes numérotées.</p><ul class="tags"><li>Vidéo en fond, titre posé dessus</li><li>Immersive, cinéma</li></ul><span class="go">Voir la page <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span></div></a><a class="pp-card" href="08-hub.html">
+  <div class="shots"><img class="d" src="captures/08-hub.webp" alt="Aperçu ordinateur : Hub" width="1200" height="750" loading="lazy"><div class="ph"><img src="captures/mobile-08-hub.webp" alt="Aperçu mobile : Hub" width="585" height="1266" loading="lazy"></div></div>
+  <div class="body"><span class="num">Proposition 8</span><h3>Hub</h3><p>Realty au centre, les 8 modules autour : survolez-les pour les découvrir ; puis un « avant / avec Realty ».</p><ul class="tags"><li>Schéma circulaire interactif</li><li>Pédagogique</li></ul><span class="go">Voir la page <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span></div></a><a class="pp-card" href="09-parcours.html">
+  <div class="shots"><img class="d" src="captures/09-parcours.webp" alt="Aperçu ordinateur : Parcours" width="1200" height="750" loading="lazy"><div class="ph"><img src="captures/mobile-09-parcours.webp" alt="Aperçu mobile : Parcours" width="585" height="1266" loading="lazy"></div></div>
+  <div class="body"><span class="num">Proposition 9</span><h3>Parcours</h3><p>Une frise de la pige à la facture : chaque étape ouvre l’écran correspondant du logiciel.</p><ul class="tags"><li>Frise des 6 étapes</li><li>Concrète, orientée métier</li></ul><span class="go">Voir la page <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span></div></a><a class="pp-card" href="10-carrousel.html">
+  <div class="shots"><img class="d" src="captures/10-carrousel.webp" alt="Aperçu ordinateur : Carrousel" width="1200" height="750" loading="lazy"><div class="ph"><img src="captures/mobile-10-carrousel.webp" alt="Aperçu mobile : Carrousel" width="585" height="1266" loading="lazy"></div></div>
+  <div class="body"><span class="num">Proposition 10</span><h3>Carrousel</h3><p>Un grand titre, puis un rail de cartes qui défile : le film, les 6 domaines, le site, l’application et le prix.</p><ul class="tags"><li>Grand titre + rail de cartes</li><li>Dynamique, produit</li></ul><span class="go">Voir la page <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span></div></a><a class="pp-card" href="11-editorial.html">
+  <div class="shots"><img class="d" src="captures/11-editorial.webp" alt="Aperçu ordinateur : Éditorial" width="1200" height="750" loading="lazy"><div class="ph"><img src="captures/mobile-11-editorial.webp" alt="Aperçu mobile : Éditorial" width="585" height="1266" loading="lazy"></div></div>
+  <div class="body"><span class="num">Proposition 11</span><h3>Éditorial</h3><p>Une typographie de magazine, le film en grand format, puis les 6 domaines en chapitres numérotés.</p><ul class="tags"><li>Très grande typographie</li><li>Premium, magazine</li></ul><span class="go">Voir la page <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span></div></a></div>
+  <h2 class="so-h2">Comparatif</h2>
+  <div class="so-table"><table><thead><tr><th scope="col">Proposition</th><th scope="col">Accueil</th><th scope="col">Ambiance</th><th scope="col">Mise en avant du prix</th></tr></thead><tbody><tr><th scope="row"><a href="06-bento.html"><span class="n">6</span>Bento</a></th><td>Grille de tuiles</td><td>Moderne, dense</td><td>Tuile violette dès l’accueil</td></tr><tr><th scope="row"><a href="07-video-plein-ecran.html"><span class="n">7</span>Vidéo plein écran</a></th><td>Vidéo en fond, titre posé dessus</td><td>Immersive, cinéma</td><td>Pastilles sur la vidéo + section</td></tr><tr><th scope="row"><a href="08-hub.html"><span class="n">8</span>Hub</a></th><td>Schéma circulaire interactif</td><td>Pédagogique</td><td>Centre du hub + avant / avec Realty</td></tr><tr><th scope="row"><a href="09-parcours.html"><span class="n">9</span>Parcours</a></th><td>Frise des 6 étapes</td><td>Concrète, orientée métier</td><td>Section dédiée</td></tr><tr><th scope="row"><a href="10-carrousel.html"><span class="n">10</span>Carrousel</a></th><td>Grand titre + rail de cartes</td><td>Dynamique, produit</td><td>Dernière carte du rail</td></tr><tr><th scope="row"><a href="11-editorial.html"><span class="n">11</span>Éditorial</a></th><td>Très grande typographie</td><td>Premium, magazine</td><td>Bloc prix dans l’accueil</td></tr></tbody></table></div>
+  <p class="so-note">Chaque page est complète, fonctionne sur mobile et se lit sans JavaScript. Dans chaque page, la bande sombre du haut permet de passer d’une proposition à l’autre (touches ← →).</p>
+</main>
+</body>
+</html>
