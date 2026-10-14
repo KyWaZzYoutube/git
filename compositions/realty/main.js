@@ -268,7 +268,7 @@ MotionEngine.run({
           <path class="zone" d="M58 170 L248 138 L292 332 L204 444 L70 404 Z"/></svg>
           <span class="chip zl">${ico('i-target')}Secteur Rezé Sud</span>
           <i class="pin" style="left:118px;top:236px"></i><i class="pin" style="left:226px;top:300px"></i><i class="pin" style="left:150px;top:372px"></i></div>`;
-      const toast = html(`<div class="toast" style="left:600px;top:930px"><span class="t-ic">${ico('i-bell')}</span><span class="t-txt"><span class="t-title">Nouvelle annonce de particulier</span><span class="t-text">Maison 5 pièces · Rezé · 389 000 €</span></span></div>`);
+      const toast = html(`<div class="toast tr"><span class="t-ic">${ico('i-bell')}</span><span class="t-txt"><span class="t-title">Nouvelle annonce de particulier</span><span class="t-text">Maison 5 pièces · Rezé · 389 000 €</span></span></div>`);
       $('.cam', sec).appendChild(toast);
       const rows = $$('.p-row', body);
       rows.forEach((r, i) => { tl.fromTo(r, { y: -50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'back.out(1.5)' }, a + 1.35 + i * 0.3); cue(a + 1.35 + i * 0.3, 'blip', 1); });
@@ -277,15 +277,15 @@ MotionEngine.run({
       draw(zone, a + 1.6, 0.9);
       tl.fromTo(zone, { fillOpacity: 0 }, { fillOpacity: 1, duration: 0.5 }, a + 2.3);
       $$('.pin', body).forEach((p, i) => { tl.fromTo(p, { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'bounce.out' }, a + 2.4 + i * 0.15); cue(a + 2.45 + i * 0.15, 'tick', 0.6); });
-      pop(toast, a + 3.0, { y: 40, cue: 'notif' });
-      tl.to(toast, { y: 30, opacity: 0, duration: 0.35, ease: 'power2.in' }, a + 4.4);
+      pop(toast, a + 3.0, { y: -40, cue: 'notif' });
+      tl.to(toast, { y: -30, opacity: 0, duration: 0.35, ease: 'power2.in' }, a + 4.4);
       // le curseur ouvre la première annonce et appelle le vendeur
       const call = $('.p-call', body);
       cursorSeg(a + 3.2, a + 5.5, [1280, 1120]);
       cursorOn(a + 3.75, rows[0], { fx: 0.55 });
-      tl.to($('.pr', rows[0]), { opacity: 0, duration: 0.2 }, a + 3.8);
+      tl.to(rows[0], { paddingBottom: 70, duration: 0.45, ease: 'power3.inOut' }, a + 3.75);   // l'annonce s'ouvre : le bouton s'affiche dessous
       tl.to(rows[0], { borderColor: '#3300FF', duration: 0.25 }, a + 3.75);
-      pop(call, a + 3.85, { from: 0.5 });
+      pop(call, a + 4.0, { from: 0.5 });
       cursorOn(a + 4.25, call, { click: true, dx: 10, dy: 6, mt: a + 4.3 });
       tl.to(call, { backgroundColor: '#0B9B6A', boxShadow: '0 14px 24px -12px rgba(11,155,106,0.8)', duration: 0.25 }, a + 4.3);
       drivers.push(t => { const d = t - (a + 4.3); $('.ico', call).style.rotate = d > 0 && d < 1.2 ? `${(Math.sin(d * 38) * 14 * (1 - d / 1.2)).toFixed(1)}deg` : '0deg'; });
@@ -336,8 +336,9 @@ MotionEngine.run({
         <div class="card f-prop"><div class="lst-img h4"></div><div class="ttl">Maison 150 m²</div><div class="pr">412 000 €</div>
           <span class="btn" style="right:16px;bottom:16px;height:52px;font-size:20px;padding:0 22px">${ico('i-cast')}Diffuser</span></div>
         ${DEST.map(([ic, n, x, y]) => `<div class="card f-dest" style="left:${x}px;top:${y}px"><span class="ic">${ico(ic)}</span><b>${n}</b><span class="ok">${ico('i-check')}Publié</span></div>`).join('')}
-        <div class="card f-ai"><div class="ai-l">${ico('i-spark')}Annonce rédigée par l’IA</div><p><span class="ai-t"></span><i class="caret"></i></p></div>
-        <div class="toast f-total"><span class="t-ic">${ico('i-cast')}</span><span class="t-txt"><span class="t-title">Diffusé sur tous vos canaux</span><span class="t-text">Une seule saisie, mise à jour partout</span></span></div>`;
+        <div class="card f-ai"><div class="ai-l">${ico('i-spark')}Annonce rédigée par l’IA</div><p><span class="ai-t"></span><i class="caret"></i></p></div>`;
+      const total = html(`<div class="toast tr"><span class="t-ic">${ico('i-cast')}</span><span class="t-txt"><span class="t-title">Diffusé sur tous vos canaux</span><span class="t-text">Une seule saisie, mise à jour partout</span></span></div>`);
+      $('.cam', sec).appendChild(total);
       pop($('.f-prop', body), a + 1.15, { y: 40 });
       const dests = $$('.f-dest', body);
       dests.forEach((d, i) => tl.fromTo(d, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.6)' }, a + 1.35 + i * 0.08));
@@ -363,8 +364,7 @@ MotionEngine.run({
         pop($('.ok', d), t, { from: 0.3, cue: i === 0 ? 'gold' : 'pop', gain: 0.7 });
         tl.fromTo(d, { borderColor: '#FF5A36' }, { borderColor: '#E3E6F2', duration: 0.8, immediateRender: false }, t);
       });
-      gsap.set($('.f-total', body), { xPercent: -50 });
-      pop($('.f-total', body), a + 4.4, { y: 30, cue: 'notif' });
+      pop(total, a + 4.4, { y: -40, cue: 'notif' });
     }
 
     /* ---- D4 vente : acquéreur, visite Click & Visit, compromis signé en ligne ---- */
@@ -433,9 +433,9 @@ MotionEngine.run({
       tl.fromTo($$('.l-item', body), { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, stagger: 0.14, ease: 'pi' }, a + 2.2);
       $$('.l-item .st', body).forEach((s, i) => pop(s, a + 2.5 + i * 0.14, { from: 0.4, cue: false }));
       $$('.okc', body).forEach((c, i) => pop(c, a + 3.3 + i * 0.45, { from: 0.2, ease: 'back.out(3)', cue: 'success', gain: 0.6 }));
-      const notif = html(`<div class="toast" style="left:560px;top:930px"><span class="t-ic">${ico('i-euro')}</span><span class="t-txt"><span class="t-title">Loyer d’octobre encaissé</span><span class="t-text">Quittance envoyée automatiquement</span></span></div>`);
+      const notif = html(`<div class="toast tr"><span class="t-ic">${ico('i-euro')}</span><span class="t-txt"><span class="t-title">Loyer d’octobre encaissé</span><span class="t-text">Quittance envoyée automatiquement</span></span></div>`);
       $('.cam', sec).appendChild(notif);
-      pop(notif, a + 4.55, { y: 40, cue: 'notif' });
+      pop(notif, a + 4.55, { y: -40, cue: 'notif' });
     }
 
     /* ---- D6 pilotage : chiffres, chiffre d'affaires, agenda partagé, facturation ---- */
@@ -468,9 +468,9 @@ MotionEngine.run({
       cursorOn(a + 3.5, bar, { click: true, fy: 0.3 });
       pop(tip, a + 3.56, { y: 14, from: 0.6, cue: false });
       tl.fromTo(bar, { scaleX: 1 }, { scaleX: 1.12, duration: 0.3, ease: 'back.out(3)', immediateRender: false }, a + 3.56);
-      const inv = html(`<div class="toast" style="left:560px;top:930px"><span class="t-ic">${ico('i-euro')}</span><span class="t-txt"><span class="t-title">Facture F-2026-118 envoyée</span><span class="t-text">Honoraires · 12 400 € HT</span></span></div>`);
+      const inv = html(`<div class="toast tr"><span class="t-ic">${ico('i-euro')}</span><span class="t-txt"><span class="t-title">Facture F-2026-118 envoyée</span><span class="t-text">Honoraires · 12 400 € HT</span></span></div>`);
       $('.cam', sec).appendChild(inv);
-      pop(inv, a + 4.3, { y: 40, cue: 'notif' });
+      pop(inv, a + 4.3, { y: -40, cue: 'notif' });
       cursorAt(a + 5.5, 1250, 1000);
     }
 

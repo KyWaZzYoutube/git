@@ -160,8 +160,8 @@ html.render #hud { display: none; }
 .live { display: inline-flex; align-items: center; gap: 10px; height: 38px; padding: 0 16px; border-radius: 19px; background: #E7F8EF; color: var(--ok); font-size: 18px; font-weight: 800; }
 .live i { width: 10px; height: 10px; border-radius: 50%; background: var(--ok); }
 .p-head .chip { margin-left: auto; }
-.p-list { position: absolute; left: 40px; top: 108px; width: 600px; display: flex; flex-direction: column; gap: 14px; }
-.p-row { position: relative; height: 128px; display: flex; align-items: center; gap: 20px; padding: 0 20px 0 16px; border-radius: 22px; background: #fff; border: 2px solid var(--line); }
+.p-list { position: absolute; left: 40px; top: 108px; width: 600px; display: flex; flex-direction: column; gap: 12px; }
+.p-row { position: relative; display: flex; align-items: center; gap: 20px; padding: 14px 20px 14px 16px; border-radius: 22px; background: #fff; border: 2px solid var(--line); }
 .p-row .lst-img { width: 96px; height: 96px; flex: none; }
 .p-row .tx { display: flex; flex-direction: column; gap: 4px; }
 .p-row .tx b { font-size: 24px; font-weight: 800; }
@@ -170,7 +170,7 @@ html.render #hud { display: none; }
 .p-row .pr b { font-size: 24px; font-weight: 800; color: var(--primary); }
 .new { padding: 4px 12px; border-radius: 10px; background: #E7F8EF; color: var(--ok); font-size: 16px; font-weight: 800; }
 .p-call .c1 { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
-.p-call { position: absolute; right: 20px; bottom: -24px; height: 48px; padding: 0 20px; display: flex; align-items: center; gap: 10px; border-radius: 23px; background: var(--primary); color: #fff; font-size: 19px; font-weight: 800; box-shadow: 0 14px 24px -12px rgba(51, 0, 255, 0.8); z-index: 2; }
+.p-call { position: absolute; left: 132px; bottom: 14px; height: 46px; padding: 0 20px; display: flex; align-items: center; gap: 10px; border-radius: 23px; background: var(--primary); color: #fff; font-size: 19px; font-weight: 800; box-shadow: 0 14px 24px -12px rgba(51, 0, 255, 0.8); z-index: 2; }
 .p-map { left: 668px; top: 108px; width: 332px; height: 572px; overflow: hidden; background: #F3F4FA; }
 .p-map svg { position: absolute; inset: 0; }
 .p-map .roads { fill: none; stroke: #fff; stroke-width: 14; stroke-linecap: round; }
@@ -227,7 +227,8 @@ html.render #hud { display: none; }
 .f-ai .ai-l .ico { color: #E0219B; font-size: 24px; }
 .f-ai p { margin: 12px 0 0; font-size: 20px; font-weight: 600; line-height: 1.4; color: var(--ink2); white-space: normal; }
 .caret { display: inline-block; width: 3px; height: 1.05em; margin-left: 2px; vertical-align: -0.15em; background: #E0219B; }
-.f-total { position: absolute; left: 50%; bottom: -34px; z-index: 5; }
+/* notifications : elles descendent en haut à droite de la fenêtre, sur la barre du module */
+.toast.tr { right: 790px; top: 146px; }
 
 /* --- D4 vente --- */
 .v-acq { left: 36px; top: 40px; width: 320px; height: 640px; padding: 26px; }
