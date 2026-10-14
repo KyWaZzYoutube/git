@@ -258,11 +258,11 @@ MotionEngine.run({
     function prospection(sec, body, a) {
       const ROWS = [['h1', 'Maison 5 pièces · 128 m²', 'Particulier · Rezé · il y a 1 min', '389 000 €'],
                     ['h2', 'Appartement T3 · 68 m²', 'Particulier · Nantes · il y a 4 min', '245 000 €'],
-                    ['h3', 'Longère · 160 m²', 'Particulier · Vertou · il y a 9 min', '498 000 €'],
+                    ['h3', 'Pavillon · 110 m²', 'Particulier · Vertou · il y a 9 min', '348 000 €'],
                     ['h4', 'Maison 4 pièces · 96 m²', 'Particulier · Orvault · il y a 12 min', '312 000 €']];
       body.innerHTML = `
         <div class="p-head"><span class="ttl">Pige immobilière</span><span class="live"><i></i>En direct</span><span class="chip">${ico('i-pin')}Mon secteur</span></div>
-        <div class="p-list">${ROWS.map(([h, t, s, p], i) => `<div class="p-row"><div class="lst-img ${h}"></div><div class="tx"><b>${t}</b><span>${s}</span></div>
+        <div class="p-list">${ROWS.map(([h, t, s, p], i) => `<div class="p-row"${i === 0 ? ' style="z-index:3"' : ''}><div class="lst-img ${h}"></div><div class="tx"><b>${t}</b><span>${s}</span></div>
           <div class="pr"><b>${p}</b><span class="new">Nouveau</span></div>${i === 0 ? `<span class="p-call"><span class="c1">${ico('i-phone')}Appeler</span></span>` : ''}</div>`).join('')}</div>
         <div class="card p-map"><svg viewBox="0 0 332 572" width="332" height="572"><path class="roads" d="M-10 120 L340 88 M-10 300 Q 160 266 340 330 M-10 476 L340 500 M84 -10 L122 590 M252 -10 L214 590"/>
           <path class="zone" d="M58 170 L248 138 L292 332 L204 444 L70 404 Z"/></svg>
@@ -299,7 +299,7 @@ MotionEngine.run({
         <div class="card e-prop"><div class="lst-img h1"></div><div class="ttl">Maison 150 m² · 5 pièces</div><div class="sub">Nantes · jardin de 600 m²</div>
           <div class="chips"><span class="chip">4 chambres</span><span class="chip">DPE B</span><span class="chip">Garage</span></div></div>
         <div class="e-main"><div class="lbl">Estimation comparative</div><div class="e-val">0 €</div><div class="e-range"><i></i><b></b></div><div class="e-ends"><span>395 000 €</span><span>430 000 €</span></div></div>
-        <div class="e-comps">${[['h2', '405 000 €', '145 m²'], ['h3', '420 000 €', '152 m²'], ['h5', '398 000 €', '140 m²']].map(([h, p, s]) => `<div class="e-comp"><div class="lst-img ${h}"></div><b>${p}</b><span>Vendu · ${s}</span></div>`).join('')}</div>
+        <div class="e-comps">${[['h3', '405 000 €', '145 m²'], ['h4', '420 000 €', '152 m²'], ['h5', '398 000 €', '140 m²']].map(([h, p, s]) => `<div class="e-comp"><div class="lst-img ${h}"></div><b>${p}</b><span>Vendu · ${s}</span></div>`).join('')}</div>
         <div class="btn e-btn">${ico('i-file')}Générer le mandat</div>
         <div class="card e-doc"><div class="doc-t">Mandat exclusif de vente</div><div class="doc-s">N° 2026-148 · Registre des mandats</div>
           <div class="doc-lines">${sk(92)}${sk(78)}${sk(86)}${sk(60)}${sk(70)}</div>

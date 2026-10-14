@@ -43,7 +43,7 @@ La page est responsive (testée à 390 px de large), lisible sans JavaScript, et
 
 La vidéo de la page d'accueil de la refonte de realty.fr présente les **6 domaines du menu « Le logiciel »**, chacun avec ses fonctionnalités, puis le **site web inclus**, l'**application mobile** et l'offre. La mise en scène suit les films « produit » des éditeurs de logiciels (référence : le film de présentation de Sellsy). Chaque domaine a sa couleur. Une barre de module bleu nuit apparaît au centre, puis devient l'en-tête de la fenêtre de l'application. Un curseur clique dans l'interface, et les fonctionnalités du menu se cochent une par une, en rythme. Le film n'a pas de voix off : il est porté par la musique et les bruitages.
 
-La charte est celle de la refonte : police Manrope, violet `#3300FF`, encre `#141B33`, dégradé orange → magenta → violet du logo, coins arrondis, vrais logos Realty (`compositions/realty/assets/`). Les textes viennent du menu et de la page d'accueil validés (propositions de page d'accueil). Les interfaces sont des maquettes simplifiées dans le style de l'application Realty, pas des captures d'écran.
+La charte est celle de la refonte : police Manrope, violet `#3300FF`, encre `#141B33`, dégradé orange → magenta → violet du logo, coins arrondis, vrais logos Realty (`compositions/realty/assets/`). Les textes viennent du menu et de la page d'accueil validés (propositions de page d'accueil). Les interfaces sont des maquettes simplifiées dans le style de l'application Realty, pas des captures d'écran. Les photos des biens (annonces, estimation, site web, application) sont celles fournies par Realty, dans `compositions/realty/assets/photos/`.
 
 | Temps | Plan | Message |
 |---|---|---|
