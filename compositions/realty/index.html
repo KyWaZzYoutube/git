@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Realty — bande démo du logiciel immobilier</title>
+<link rel="stylesheet" href="../../node_modules/@fontsource-variable/bricolage-grotesque/index.css">
+<link rel="stylesheet" href="../../node_modules/@fontsource-variable/inter/index.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- logo Realty : deux pilules à 135°, dégradés horizontaux (géométrie du fichier realty-ico) -->
+    <linearGradient id="gBlue" gradientUnits="userSpaceOnUse" x1="-104" y1="0" x2="216" y2="0" gradientTransform="rotate(-135)">
+      <stop offset="0" stop-color="#3300FF"/><stop offset=".35" stop-color="#4a1bff" stop-opacity=".92"/><stop offset="1" stop-color="#7a6cff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gRed" gradientUnits="userSpaceOnUse" x1="-198" y1="0" x2="122" y2="0" gradientTransform="rotate(-135)">
+      <stop offset="0" stop-color="#FF6A3D" stop-opacity="0"/><stop offset=".6" stop-color="#FF4A1A" stop-opacity=".9"/><stop offset="1" stop-color="#FF3300"/>
+    </linearGradient>
+    <linearGradient id="gGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF5A36"/><stop offset=".45" stop-color="#E0219B"/><stop offset="1" stop-color="#3300FF"/></linearGradient>
+    <symbol id="logo" viewBox="0 0 512 512">
+      <g transform="translate(308 204.7) rotate(135)"><rect x="-146.7" y="-224.4" width="293.5" height="448.8" rx="146.7" fill="url(#gRed)"/></g>
+      <g transform="translate(204.2 308.4) rotate(135)"><rect x="-146.7" y="-224.4" width="293.5" height="448.8" rx="146.7" fill="url(#gBlue)"/></g>
+    </symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+    <symbol id="i-sms" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
+    <symbol id="i-task" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="m8 12.5 3 3 5-6"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z"/><path d="M19 15c.3 1.8 1 2.6 2.8 2.8-1.8.3-2.5 1-2.8 2.8-.3-1.8-1-2.5-2.8-2.8 1.8-.2 2.5-1 2.8-2.8z"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></symbol>
+    <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17 6.5A7 7 0 1 0 17 17.5M4 10h9M4 14h9"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="11" width="3" height="7"/><rect x="10.5" y="6" width="3" height="12"/><rect x="16" y="13" width="3" height="5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 3 10.5l7 3 3 7z"/><path d="m10 13.5 4-4"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2.5h8.5A1.5 1.5 0 0 1 21 9v9.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 4 2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4M12 17h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H4zM20 4h-6a3 3 0 0 0-3 3"/><path d="M20 4v15h-7"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M15 8l2 2"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8S10 3 7.5 4.5 9 8 12 8m0 0s2-5 4.5-3.5S15 8 12 8"/></symbol>
+    <symbol id="i-news" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></symbol>
+    <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18 6"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M22 7 13.5 15.5l-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M22 17 13.5 8.5l-5 5L2 7"/><path d="M16 17h6v-6"/></symbol>
+    <symbol id="i-grip" viewBox="0 0 24 24"><circle cx="9" cy="6" r="1.2"/><circle cx="15" cy="6" r="1.2"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><circle cx="9" cy="18" r="1.2"/><circle cx="15" cy="18" r="1.2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="2.5" y="6" width="14" height="12" rx="2.5"/><path d="m16.5 10.5 5-3v9l-5-3"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-sofa" viewBox="0 0 24 24"><path d="M4 11V8a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3"/><path d="M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zM5 19v2M19 19v2"/></symbol>
+    <symbol id="i-360" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4.5"/><path d="M12 7.5v9M16 10l3 2-3 2"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M7 10v11M2 10h5l4-8a2 2 0 0 1 2 2v4h6a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 17.6 21H7"/></symbol>
+    <symbol id="i-dn" viewBox="0 0 24 24"><path d="M17 14V3M22 14h-5l-4 8a2 2 0 0 1-2-2v-4H5a2 2 0 0 1-2-2.3l1.4-8A2 2 0 0 1 6.4 3H17"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16M3 12a9 9 0 0 1 15.5-6.3L21 8"/><path d="M21 3v5h-5M3 21v-5h5"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M16 3l5 5L9 20H4v-5z"/></symbol>
+    <symbol id="i-cake" viewBox="0 0 24 24"><path d="M4 21V12a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9M2 21h20M4 15c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 .5M12 6v4M12 3v.01"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1.5 1.5 0 0 0 2-2l-3-3"/><path d="m14 14 2.5 2.5a1.5 1.5 0 0 0 2-2L13 9l-2 2a2 2 0 0 1-3-3l3-3h4l5 5-2 2M3 10l4-4 5 5"/><path d="m3 10 7 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24"><path d="m21 11-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7"/></symbol>
+    <symbol id="i-cursor" viewBox="0 0 24 24"><path d="M4 2.5 20 11l-7 1.8L9.6 20z" fill="#fff" stroke="#141B33" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div id="stage">
+<div id="bump">
+
+  <!-- ============ 0 : intro, logo ============ -->
+  <section class="scene bg-dark on-dark" id="s0">
+    <div class="grid-bg" id="g0"></div>
+    <div class="cam" id="c0">
+      <svg class="logo-ic hero-ic" id="heroIc" viewBox="0 0 512 512">
+        <g id="pRed"><g transform="translate(308 204.7) rotate(135)"><rect x="-146.7" y="-224.4" width="293.5" height="448.8" rx="146.7" fill="url(#gRed)"/></g></g>
+        <g id="pBlue"><g transform="translate(204.2 308.4) rotate(135)"><rect x="-146.7" y="-224.4" width="293.5" height="448.8" rx="146.7" fill="url(#gBlue)"/></g></g>
+      </svg>
+      <div class="wm-mask" id="wm0"><img class="wmark" id="wm0i" src="assets/wordmark-blanc.png" alt="Realty"></div>
+      <div class="tag0"><div class="mask"><div class="ln" id="tag0">Le logiciel immobilier qui <b>travaille pour vous.</b></div></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 1 : cartes stratégiques ============ -->
+  <section class="scene bg-dark on-dark" id="s1">
+    <div class="cam" id="c1">
+      <div class="mapwrap"><div class="map" id="map1"><svg id="map1svg" width="1400" height="980" viewBox="0 0 1400 980"></svg></div></div>
+      <div id="labs1"></div>
+      <div class="tx" style="left:110px;top:150px">
+        <div class="mask"><span class="eb"><span class="n">01</span>Cartes stratégiques</span></div>
+        <div class="h"><div class="mask"><span class="ln">Prospectez là où</span></div><div class="mask"><span class="ln hl">ça vend vraiment.</span></div></div>
+        <div class="sub" style="max-width:560px">Turnover par îlot, quartier et commune&#8239;: ventes et honoraires à prendre.</div>
+      </div>
+      <div class="legend" id="leg1">
+        <div class="lg-row"><span class="avatar" style="background:#3300FF">JD</span>Julie D.<em>4 îlots</em></div>
+        <div class="lg-row"><span class="avatar" style="background:#E0219B">MR</span>Marc R.<em>3 îlots</em></div>
+        <div class="lg-row"><span class="avatar" style="background:#FF5A36">SL</span>Sofia L.<em>3 îlots</em></div>
+      </div>
+      <div class="scale" id="scale1">Turnover<i></i>fort</div>
+    </div>
+  </section>
+
+  <!-- ============ 2 : prospection terrain ============ -->
+  <section class="scene bg-white" id="s2">
+    <div class="grid-bg lt"></div>
+    <div class="cam" id="c2">
+      <div class="phone" id="ph2"><div class="notch"></div><div class="scr">
+        <div class="sbar"><span>9:41</span><span>●●●</span></div>
+        <div class="street"><svg id="street2" width="372" height="792" viewBox="0 0 372 792"></svg>
+          <i class="me-ring" id="meRing"></i><i class="me" id="me"></i></div>
+        <div class="sheet" id="sheet2"><div class="grab"></div>
+          <h4>Nouveau prospect</h4>
+          <div class="inp on" id="inp2"><svg class="ico"><use href="#i-mail"/></svg><span id="type2"></span><i class="caret" id="caret2"></i></div>
+          <div class="inp"><svg class="ico"><use href="#i-pin"/></svg>14 rue des Lilas</div>
+          <div class="chips"><div class="chip sel">Vente<div class="chipfill" id="chip2">Vente</div></div><div class="chip">Achat</div><div class="chip">Location</div></div>
+          <div class="save" id="save2">Suivre ce prospect</div>
+        </div>
+      </div></div>
+      <div class="tx" style="left:860px;top:150px">
+        <div class="mask"><span class="eb"><span class="n">02</span>Prospection terrain</span></div>
+        <div class="h"><div class="mask"><span class="ln">Croisez un prospect.</span></div><div class="mask"><span class="ln hl">Realty le suit des mois.</span></div></div>
+        <div class="sub">Géolocalisation, nom sur la boîte aux lettres, projet annoté&#8239;: les relances partent toutes seules.</div>
+      </div>
+      <div class="tline" id="tl2">
+        <i class="tl-rail"></i><i class="tl-fill" id="tlFill"></i>
+        <div class="tl-it" style="left:30px"><div class="tl-dot"><svg class="ico"><use href="#i-mail"/></svg></div><b>J+1</b><span>Email de bienvenue</span></div>
+        <div class="tl-it" style="left:270px"><div class="tl-dot"><svg class="ico"><use href="#i-sms"/></svg></div><b>J+15</b><span>SMS de suivi</span></div>
+        <div class="tl-it" style="left:510px"><div class="tl-dot"><svg class="ico"><use href="#i-task"/></svg></div><b>M+2</b><span>Tâche&#8239;: rappeler</span></div>
+        <div class="tl-it" style="left:750px"><div class="tl-dot" style="background:var(--blue);color:#fff"><svg class="ico"><use href="#i-refresh"/></svg></div><b>M+6</b><span>Nouvelle relance</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 : prospection cadastrale ============ -->
+  <section class="scene bg-dark on-dark" id="s3">
+    <div class="cam" id="c3">
+      <svg class="cad" id="cad3" viewBox="0 0 1920 1080"></svg>
+      <i class="scanring" id="sr3a"></i><i class="scan" id="scan3"></i>
+      <div id="mk3"></div>
+      <div class="tx" style="left:110px;top:150px">
+        <div class="mask"><span class="eb"><span class="n">03</span>Prospection cadastrale</span></div>
+        <div class="h"><div class="mask"><span class="ln">Découvrez vos</span></div><div class="mask"><span class="ln hl">futurs vendeurs.</span></div></div>
+        <div class="sub" style="max-width:600px">Tout ce qui bouge autour de vous, parcelle par parcelle.</div>
+      </div>
+      <div class="layers" id="lay3"><h5>Calques</h5></div>
+      <div class="count" id="cnt3"><span class="ibox g"><svg class="ico"><use href="#i-radar"/></svg></span><div><b id="cnt3n">0</b><span>futurs vendeurs détectés</span></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 4 : saisie assistée ============ -->
+  <section class="scene bg-white" id="s4">
+    <div class="cam" id="c4">
+      <div class="tx" style="left:140px;top:130px">
+        <div class="mask"><span class="eb"><span class="n">04</span>Saisie de biens assistée</span></div>
+        <div class="h"><div class="mask"><span class="ln">Géolocalisez.</span></div><div class="mask"><span class="ln hl">Tout se remplit.</span></div></div>
+      </div>
+      <div class="minimap" id="mm4"><svg id="street4" width="560" height="460" viewBox="0 0 560 460"></svg>
+        <i class="pinring" id="pr4"></i><i class="pinshadow" id="psh4"></i>
+        <svg class="pin" id="pin4" viewBox="0 0 24 30"><path d="M12 29s9-8.4 9-16a9 9 0 0 0-18 0c0 7.6 9 16 9 16z" fill="#3300FF"/><circle cx="12" cy="12.5" r="3.6" fill="#fff"/></svg>
+      </div>
+      <div class="card fiche" id="fiche4">
+        <div class="card-h"><svg class="ico"><use href="#i-home"/></svg>Fiche du bien<span class="tag ok" id="ok4"><svg class="ico"><use href="#i-check"/></svg>Données officielles</span></div>
+        <div class="fr"><span class="ibox"><svg class="ico"><use href="#i-pin"/></svg></span><div class="fld"><b>Adresse officielle</b><span>14 rue des Lilas, 69006 Lyon</span></div><span class="src">BAN</span></div>
+        <div class="fr"><span class="ibox"><svg class="ico"><use href="#i-map"/></svg></span><div class="fld"><b>Cadastre</b><span>Section AB · Parcelle 124 · 612 m²</span></div><span class="src">Cadastre</span></div>
+        <div class="fr"><span class="ibox"><svg class="ico"><use href="#i-building"/></svg></span><div class="fld"><b>Immeuble &amp; copropriété</b><span>AC1-234-567 · 48 lots · aucune procédure</span></div><span class="src">Registre</span></div>
+        <div class="fr"><span class="ibox"><svg class="ico"><use href="#i-zap"/></svg></span><div class="fld"><b>DPE</b><span>142 kWh/m²/an</span></div><div class="dpe" id="dpe4"><i style="background:#009C6D">A</i><i style="background:#52B153">B</i><i style="background:#A5CC74" class="c">C</i><i style="background:#F4E70F;color:#141B33">D</i><i style="background:#F0B50F">E</i><i style="background:#EB8235">F</i><i style="background:#D7221F">G</i></div></div>
+        <div class="fr"><span class="ibox"><svg class="ico"><use href="#i-shield"/></svg></span><div class="fld"><b>Géorisques</b><span>Inondation faible · Radon 1 · Argiles moyen</span></div><span class="src">Géorisques</span></div>
+        <div class="fr" style="border:0"><span class="ibox"><svg class="ico"><use href="#i-file"/></svg></span><div class="fld"><b>Bien</b><span>Maison · 5 pièces · 128 m²</span></div><span class="src">Saisi</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5 : magic scan ============ -->
+  <section class="scene bg-lav" id="s5">
+    <div class="cam" id="c5">
+      <div class="tx" style="left:150px;top:110px">
+        <div class="mask"><span class="eb"><span class="n">05</span>Magic Scan</span></div>
+        <div class="h md"><div class="mask"><span class="ln">Déposez tout en vrac.</span></div><div class="mask"><span class="ln hl">On classe, on remplit.</span></div></div>
+      </div>
+      <div class="pile" id="pile5"></div>
+      <div class="beam" id="beam5"></div>
+      <div class="card fiche" id="fiche5">
+        <div class="card-h"><svg class="ico"><use href="#i-home"/></svg>Maison · 128 m²<span class="tag" id="ms5"><svg class="ico"><use href="#i-scan"/></svg>Magic Scan</span></div>
+        <div id="rows5"></div>
+        <div class="done" id="done5"><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span><span><b id="n5">0</b> champs complétés · 8 documents</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6 : saisie IA ============ -->
+  <section class="scene bg-blue on-blue" id="s6">
+    <div class="cam" id="c6">
+      <div class="tx" style="left:120px;top:300px">
+        <div class="mask"><span class="eb"><span class="n">06</span>Saisie de biens avec l’IA</span></div>
+        <div class="h"><div class="mask"><span class="ln hl-w">Dictez, photographiez.</span></div><div class="mask"><span class="ln">Votre bien est prêt.</span></div></div>
+        <div class="sub" style="max-width:700px">Fiche complète, DPE, immeuble, Géorisques, texte pub et mandat générés en un instant.</div>
+      </div>
+      <i class="orb" id="orb6"></i>
+      <div class="wave" id="wave6"></div>
+      <div class="orbcore" id="core6"><svg class="ico"><use href="#i-mic"/></svg></div>
+      <div id="fly6"></div>
+      <div class="card gen" id="gen6">
+        <div class="ph"><img src="assets/maison-bois.jpg" alt=""><span class="tag grad"><svg class="ico"><use href="#i-spark"/></svg>Généré par l’IA</span></div>
+        <div class="gb">
+          <div class="gt">Maison d’architecte · 5 pièces</div>
+          <div class="gp">685 000 €</div>
+          <div class="gg">
+            <div class="gc"><b>Surface</b><span>128 m²</span></div><div class="gc"><b>Terrain</b><span>612 m²</span></div><div class="gc"><b>Chambres</b><span>4</span></div><div class="gc"><b>DPE</b><span>C · 142</span></div>
+          </div>
+          <div class="pub" id="pub6"></div>
+          <div class="tags"><span class="tag ok"><svg class="ico"><use href="#i-check"/></svg>Géorisques</span><span class="tag ok"><svg class="ico"><use href="#i-check"/></svg>Immeuble</span><span class="tag dark"><svg class="ico"><use href="#i-file"/></svg>Mandat prêt</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7 : estimations ============ -->
+  <section class="scene bg-white" id="s7">
+    <div class="grid-bg lt"></div>
+    <div class="cam" id="c7">
+      <div class="tx" style="left:130px;top:140px">
+        <div class="mask"><span class="eb"><span class="n">07</span>Estimations</span></div>
+        <div class="h"><div class="mask"><span class="ln">Toutes les méthodes.</span></div><div class="mask"><span class="ln hl">Un rapport qui bluffe.</span></div></div>
+      </div>
+      <div class="val" id="val7">0 €</div>
+      <div class="range" id="rg7"><div class="tr"></div><i class="mk" id="mk7"></i><div class="lb"><span>648 000 €</span><span>Fourchette</span><span>712 000 €</span></div></div>
+      <div class="meth" id="meth7">
+        <div class="mt"><span class="sw"><i class="f"></i><i class="k"></i></span>Comparaison</div>
+        <div class="mt"><span class="sw"><i class="f"></i><i class="k"></i></span>Rendement</div>
+        <div class="mt"><span class="sw"><i class="f"></i><i class="k"></i></span>Capitalisation</div>
+        <div class="mt"><span class="sw"><i class="f"></i><i class="k"></i></span><svg class="ico" style="color:var(--pink);font-size:22px"><use href="#i-spark"/></svg>IA</div>
+      </div>
+      <div class="reports" id="rep7">
+        <div class="rp" id="rp7c"><div class="rb"><b style="font:700 26px/1 var(--ft)">Références vendues</b><div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:55%"></i><i class="on" style="height:84%"></i><i style="height:70%"></i><i style="height:48%"></i></div></div></div>
+        <div class="rp" id="rp7b"><div class="rb"><b style="font:700 26px/1 var(--ft)">Analyse du marché</b><div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:52%"></i><i style="height:64%"></i><i class="on" style="height:92%"></i><i style="height:74%"></i></div></div></div>
+        <div class="rp" id="rp7a"><div class="cv"><img src="assets/maison-bois.jpg" alt=""><svg class="rlogo"><use href="#logo"/></svg><div class="ct"><small>Avis de valeur</small><b>685 000 €</b></div></div>
+          <div class="rb"><b style="font:700 24px/1 var(--ft)">Maison d’architecte · Lyon 6e</b><div style="margin-top:10px;font:500 17px/1.4 var(--fb);color:var(--muted)">Comparaison · Rendement · Capitalisation · IA</div><div class="bars" style="height:150px"><i style="height:35%"></i><i style="height:58%"></i><i class="on" style="height:88%"></i><i style="height:66%"></i><i style="height:50%"></i><i style="height:42%"></i></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 : mandat sur mobile ============ -->
+  <section class="scene bg-dark on-dark" id="s8">
+    <div class="cam" id="c8">
+      <div class="tx" style="left:110px;top:280px">
+        <div class="mask"><span class="eb"><span class="n">08</span>Mandat sur mobile</span></div>
+        <div class="h md"><div class="mask"><span class="ln">Un mandat signé</span></div><div class="mask"><span class="ln hl">en moins de 30 s.</span></div></div>
+        <div class="sub" style="max-width:560px">En face à face ou à distance. Contrats rédigés par nos juristes, 100&nbsp;% conformes.</div>
+      </div>
+      <div class="phone" id="ph8"><div class="notch"></div><div class="scr">
+        <div class="sbar"><span>9:41</span><span>●●●</span></div>
+        <div class="mdoc">
+          <h4>Mandat de vente exclusif</h4><div class="sm">Généré par Realty · conforme loi Hoguet</div>
+          <div class="mf" id="mf8a"><b>Bien</b><span>Maison · 128 m² · Lyon 6e</span></div>
+          <div class="mf" id="mf8b"><b>Prix net vendeur</b><span>685 000 €</span></div>
+          <div class="mf" id="mf8c"><b>Honoraires</b><span>4 % TTC · charge acquéreur</span></div>
+          <div class="sig" id="sig8"><small>Signature du mandant</small><svg viewBox="0 0 300 110"><path id="sigp" d="M8 78c18-30 30-58 40-60s-10 70-2 72 22-40 34-42-6 30 4 32 22-26 34-26-4 22 8 22 30-20 44-26M150 70c10-10 20-18 30-16s-6 22 4 22 24-28 40-30 16 16 28 10 20-14 30-16" fill="none" stroke="#141B33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="stamp" id="stamp8"><div><svg class="ico"><use href="#i-check"/></svg>Signé</div></div>
+      </div></div>
+      <div class="chrono" id="chr8"><svg viewBox="0 0 260 260" width="260" height="260"><circle cx="130" cy="130" r="116" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="12"/><circle id="chrRing" cx="130" cy="130" r="116" fill="none" stroke="url(#gGrad)" stroke-width="12" stroke-linecap="round" transform="rotate(-90 130 130)"/></svg><b id="chrN">00:00</b><small>chrono</small></div>
+      <div class="bub" id="bub8a" style="left:1290px;top:520px"><span class="ibox b"><svg class="ico"><use href="#i-sms"/></svg></span><div>SMS envoyé<small>Code de signature : 482 913</small></div></div>
+      <div class="bub" id="bub8b" style="left:1290px;top:640px"><span class="ibox b"><svg class="ico"><use href="#i-mail"/></svg></span><div>Email envoyé<small>Votre mandat est prêt à signer</small></div></div>
+      <div class="bub" id="bub8c" style="left:1290px;top:760px"><span class="ibox g"><svg class="ico"><use href="#i-shield"/></svg></span><div>Signature électronique<small>Face à face ou à distance</small></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 9 : valorisation ============ -->
+  <section class="scene bg-dark on-dark" id="s9">
+    <div class="cam" id="c9">
+      <div class="tx" style="left:110px;top:150px">
+        <div class="mask"><span class="eb"><span class="n">09</span>Valorisation</span></div>
+        <div class="h sm"><div class="mask"><span class="ln">Sublimez vos biens</span></div><div class="mask"><span class="ln hl">sans sortir de Realty.</span></div></div>
+      </div>
+      <div class="step" id="step9"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+      <div class="feat" id="feat9">
+        <div class="ft" id="ft9a"><b>Retouche photo IA</b><span>Plus de soleil, désencombrement&#8239;: la photo idéale en un clic.</span></div>
+        <div class="ft" id="ft9b"><b>Home staging virtuel</b><span>Rénovez, décorez, choisissez un style. Avant / après.</span></div>
+        <div class="ft" id="ft9c"><b>Visites virtuelles</b><span>Créez vos visites, sans investissement et sans limites.</span></div>
+        <div class="ft" id="ft9d"><b>Vidéos immersives</b><span>Photos + données + IA&#8239;: voix off, musique, logo. Tout se personnalise.</span></div>
+      </div>
+      <div class="frame" id="frame9">
+        <!-- a : retouche -->
+        <div class="layer" id="la9"><img src="assets/villa-piscine.jpg" alt=""></div>
+        <div class="layer dull" id="la9d"><img src="assets/villa-piscine.jpg" alt=""></div>
+        <i class="sun" id="sun9"></i>
+        <!-- b : home staging -->
+        <div class="layer" id="lb9"><img src="assets/salon-design.jpg" alt=""></div>
+        <div class="layer dull" id="lb9d"><img src="assets/salon-design.jpg" alt="" style="filter:saturate(.05) brightness(.62) contrast(.85) sepia(.35) blur(.6px)"></div>
+        <div class="slider" id="sl9"><i><svg class="ico"><use href="#i-grip"/></svg></i></div>
+        <span class="tag dark ba" id="baL" style="left:24px">Avant</span><span class="tag ba" id="baR" style="right:24px;background:#fff">Après</span>
+        <!-- c : visite virtuelle -->
+        <div class="layer" id="lc9"><img id="pano9" src="assets/salon-lumineux.jpg" alt="" style="width:1700px;height:100%;max-width:none"></div>
+        <i class="hot" id="hot9a" style="left:420px;top:380px"></i><i class="hot" id="hot9b" style="left:860px;top:300px"></i>
+        <svg class="deg" id="deg9" viewBox="0 0 110 110"><circle cx="55" cy="55" r="50" fill="rgba(12,16,36,.7)"/><path id="deg9a" d="M55 55 L55 13 A42 42 0 0 1 91 34 Z" fill="rgba(156,140,255,.85)"/><text x="55" y="62" text-anchor="middle" fill="#fff" font-family="Inter Variable" font-weight="700" font-size="22">360°</text></svg>
+        <!-- d : vidéo -->
+        <div class="layer" id="ld9"><img id="vid9" src="assets/salon-plantes.jpg" alt=""></div>
+        <div class="play" id="play9"><svg class="ico" style="font-size:52px;margin-left:8px"><use href="#i-play"/></svg></div>
+        <div class="vtl" id="vtl9"><div class="th"><img src="assets/villa-piscine.jpg"><img src="assets/salon-design.jpg"><img src="assets/salon-lumineux.jpg"><img src="assets/fauteuil.jpg"><img src="assets/salon-plantes.jpg"><img src="assets/maison-bois.jpg"><img src="assets/annonce-maison.jpg"><img src="assets/villa-piscine.jpg"></div><div class="wf" id="wf9"></div><i class="head" id="head9"></i></div>
+      </div>
+      <div class="styles" id="sty9"><span class="stl on" id="stl9a"><svg class="ico"><use href="#i-sofa"/></svg>Contemporain</span><span class="stl">Scandinave</span><span class="stl">Industriel</span><span class="stl">Sans meubles</span></div>
+      <div class="styles" id="opt9" style="visibility:hidden"><span class="stl on"><svg class="ico"><use href="#i-mic"/></svg>Voix off</span><span class="stl on"><svg class="ico"><use href="#i-music"/></svg>Musique</span><span class="stl on"><svg class="ico"><use href="#i-user"/></svg>Photo du conseiller</span><span class="stl"><svg class="ico"><use href="#i-image"/></svg>Logo</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 10 : démarrer la commercialisation ============ -->
+  <section class="scene bg-dark on-dark" id="s10">
+    <div class="glow" id="glow10" style="left:560px;top:160px;width:800px;height:800px;background:#3300FF;opacity:0"></div>
+    <div class="cam" id="c10">
+      <div class="tx" style="left:0;width:1920px;top:90px;text-align:center" id="tx10">
+        <div class="mask" style="display:inline-block"><span class="eb"><span class="n">10</span>Démarrer la commercialisation</span></div>
+        <div class="h sm"><div class="mask"><span class="ln">Un clic. <span class="hl">Realty gère tout.</span></span></div></div>
+      </div>
+      <svg class="net" id="net10" viewBox="0 0 1920 1080"></svg>
+      <i class="wave" id="wv10a"></i><i class="wave" id="wv10b"></i>
+      <div id="nodes10"></div>
+      <div class="go" id="go10"><svg class="ico"><use href="#i-play"/></svg>Démarrer la commercialisation</div>
+      <svg class="cup" id="cup10" viewBox="0 0 300 300">
+        <path id="steam1" d="M120 40c-14 18 14 30 0 50" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="8" stroke-linecap="round"/>
+        <path id="steam2" d="M160 30c-14 18 14 30 0 50" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="8" stroke-linecap="round"/>
+        <path id="steam3" d="M200 40c-14 18 14 30 0 50" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="8" stroke-linecap="round"/>
+        <path d="M70 110h170v70a70 70 0 0 1-70 70h-30a70 70 0 0 1-70-70z" fill="#fff"/>
+        <path d="M240 130h14a30 30 0 0 1 0 60h-18" fill="none" stroke="#fff" stroke-width="16"/>
+        <ellipse cx="155" cy="112" rx="85" ry="10" fill="#C9B8FF"/>
+        <path d="M40 268h230" stroke="rgba(255,255,255,.35)" stroke-width="8" stroke-linecap="round"/>
+      </svg>
+      <div class="coffee-t"><div class="mask"><div class="ln" id="cof10">Prenez un café.</div></div></div>
+      <div class="next-t"><div class="mask"><div class="ln" id="nxt10">Le lendemain…</div></div></div>
+      <div class="visits" id="vis10">
+        <div class="toast" id="v10a" style="top:0"><span class="ibox b"><svg class="ico"><use href="#i-calendar"/></svg></span><div>Visite programmée<small>Mardi 10:00 · Maison d’architecte</small></div><span class="tag ok">Click &amp; Visit</span></div>
+        <div class="toast" id="v10b" style="top:132px"><span class="ibox b"><svg class="ico"><use href="#i-calendar"/></svg></span><div>Visite programmée<small>Mardi 14:30 · Maison d’architecte</small></div><span class="tag ok">Click &amp; Visit</span></div>
+        <div class="toast" id="v10c" style="top:264px"><span class="ibox b"><svg class="ico"><use href="#i-calendar"/></svg></span><div>Visite programmée<small>Mercredi 18:00 · Maison d’architecte</small></div><span class="tag ok">Click &amp; Visit</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 : retours de visite ============ -->
+  <section class="scene bg-white" id="s11">
+    <div class="grid-bg lt"></div>
+    <div class="cam" id="c11">
+      <div class="tx" style="left:140px;top:300px">
+        <div class="mask"><span class="eb"><span class="n">11</span>Retours de visite</span></div>
+        <div class="h md"><div class="mask"><span class="ln">Vos visiteurs notent.</span></div><div class="mask"><span class="ln hl">Vos vendeurs le voient.</span></div></div>
+        <div class="sub" style="max-width:600px">Après chaque visite, Realty relance les visiteurs et collecte leurs notes et leurs avis.</div>
+      </div>
+      <div class="card rv" id="rv11">
+        <div class="card-h"><svg class="ico"><use href="#i-star"/></svg>Avis de visite · Maison d’architecte<span class="tag" id="rl11"><svg class="ico"><use href="#i-refresh"/></svg>Relance auto</span></div>
+        <div id="crit11"></div>
+      </div>
+      <div class="cm" id="cm11a" style="left:1040px;top:650px"><span class="ibox ok"><svg class="ico"><use href="#i-up"/></svg></span>«&#8239;Très lumineux, superbe jardin.&#8239;»</div>
+      <div class="cm" id="cm11b" style="left:1250px;top:745px"><span class="ibox" style="background:#FFE9E4;color:#E8380D"><svg class="ico"><use href="#i-dn"/></svg></span>«&#8239;Cuisine à rafraîchir.&#8239;»</div>
+      <div class="toast" id="snd11" style="left:140px;top:760px"><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span><div>Compte rendu partagé au vendeur<small>Extranet vendeur · 3 avis ce mois-ci</small></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 12 : click & visit ============ -->
+  <section class="scene bg-lav" id="s12">
+    <div class="cam" id="c12">
+      <div class="tx" style="left:120px;top:100px">
+        <div class="mask"><span class="eb"><span class="n">12</span>Click &amp; Visit</span></div>
+        <div class="h md"><div class="mask"><span class="ln">Vos acquéreurs <span class="hl">réservent seuls.</span></span></div></div>
+      </div>
+      <div class="card ann" id="ann12"><div class="im"><img src="assets/maison-bois.jpg" alt=""></div><div class="ab"><b>Maison d’architecte · 128 m²</b><div class="pr">685 000 €</div></div><div class="btn" id="btn12"><svg class="ico"><use href="#i-calendar"/></svg>Planifier une visite</div></div>
+      <div class="card cal" id="cal12"><h5>Choisissez un créneau</h5>
+        <div class="days" id="days12">
+          <div class="hd"></div><div class="hd">Mar.</div><div class="hd">Mer.</div><div class="hd">Jeu.</div><div class="hd">Ven.</div>
+          <div class="who">Conseiller</div><div class="sl a">10:00</div><div class="sl b">14:30</div><div class="sl a">18:00</div><div class="sl b">11:00</div>
+          <div class="who">Habitants</div><div class="sl b">10:00</div><div class="sl a">14:30</div><div class="sl c">18:00</div><div class="sl a">11:00</div>
+          <div class="who">Créneaux</div><div class="sl z">—</div><div class="sl z">—</div><div class="sl pk0" id="pick12">18:00</div><div class="sl z">—</div>
+        </div>
+        <div class="toast" id="ok12" style="position:relative;margin-top:30px;box-shadow:0 0 0 2px var(--line)"><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span><div>Disponibilités vérifiées<small>Conseiller et habitants libres jeudi 18:00</small></div></div>
+      </div>
+      <div class="phone" id="ph12"><div class="notch"></div><div class="scr" style="background:#EEF0F7">
+        <div class="sbar"><span>9:41</span><span>●●●</span></div>
+        <div class="toast" id="sms12" style="left:16px;right:16px;top:90px;white-space:normal;font-size:19px"><span class="ibox b"><svg class="ico"><use href="#i-sms"/></svg></span><div>Visite confirmée<small>Jeudi 18:00 · Maison d’architecte</small></div></div>
+        <div class="toast" id="bon12" style="left:16px;right:16px;top:230px;white-space:normal;font-size:19px"><span class="ibox g"><svg class="ico"><use href="#i-file"/></svg></span><div>Bon de visite signé<small>Envoyé avec ou sans adresse</small></div></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ============ 13 : site web inclus ============ -->
+  <section class="scene bg-blue on-blue" id="s13">
+    <div class="cam" id="c13">
+      <div class="tx" style="left:110px;top:230px">
+        <div class="mask"><span class="eb"><span class="n">13</span>Site web d’agence inclus</span></div>
+        <div class="h md"><div class="mask"><span class="ln">Votre site web,</span></div><div class="mask"><span class="ln hl-w">inclus et sur mesure.</span></div></div>
+        <div class="sub" style="max-width:560px">Modèles, modules à glisser, SEO, GEO et Ads. Nom de domaine inclus et géré pour vous.</div>
+      </div>
+      <div class="sws" id="sws13"><i style="background:#3300FF" class="on"></i><i style="background:#0F766E"></i><i style="background:#141B33"></i><span>Modèles et couleurs</span></div>
+      <div class="seo" id="seo13"><span class="tag"><svg class="ico"><use href="#i-trend"/></svg>SEO</span><span class="tag"><svg class="ico"><use href="#i-spark"/></svg>GEO</span><span class="tag"><svg class="ico"><use href="#i-zap"/></svg>Google Ads</span><span class="tag"><svg class="ico"><use href="#i-globe"/></svg>Nom de domaine inclus</span></div>
+      <div class="browser" id="br13"><div class="bb"><i></i><i></i><i></i><div class="url"><svg class="ico"><use href="#i-lock"/></svg><span id="url13"></span></div></div>
+        <div style="position:relative;height:744px" id="site13">
+          <div class="sh"><span class="lg">Votre Agence</span><span>Acheter</span><span>Vendre</span><span>Estimer</span><span class="cta">Contact</span></div>
+          <div class="hero-s">Trouvez le bien qui vous ressemble</div>
+          <div class="mods">
+            <div class="mod" id="m13a" style="top:0"><svg class="ico grip"><use href="#i-grip"/></svg><div><b>Biens à la une</b><small>Synchronisés avec Realty</small></div><div class="ths"><img src="assets/maison-bois.jpg"><img src="assets/villa-piscine.jpg"><img src="assets/annonce-maison.jpg"></div></div>
+            <div class="mod" id="m13b" style="top:184px"><svg class="ico grip"><use href="#i-grip"/></svg><div><b>Nos avis clients</b><small>4,9 / 5 · 212 avis</small></div><div class="ths"><i></i><i></i><i></i></div></div>
+            <div class="mod" id="m13c" style="top:368px"><svg class="ico grip"><use href="#i-grip"/></svg><div><b>Estimez votre bien</b><small>Formulaire relié à Realty</small></div><div class="ths"><img src="assets/salon-design.jpg"><img src="assets/fauteuil.jpg"><i></i></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14 : offre d'achat ============ -->
+  <section class="scene bg-white" id="s14">
+    <div class="grid-bg lt"></div>
+    <div class="cam" id="c14">
+      <div class="tx" style="left:140px;top:120px">
+        <div class="mask"><span class="eb"><span class="n">14</span>Offre d’achat</span></div>
+        <div class="h md"><div class="mask"><span class="ln">Une offre d’achat</span></div><div class="mask"><span class="ln hl">en 1 minute.</span></div></div>
+      </div>
+      <div class="card mand" id="mand14"><div class="mi"><img src="assets/maison-bois.jpg" alt=""><div><b>Mandat n° 2026-148</b><small>Maison d’architecte · Lyon 6e<br>685 000 € · Exclusif</small></div></div><div class="act" id="act14">Actions<svg class="ico"><use href="#i-chev"/></svg></div></div>
+      <div class="card menu" id="menu14"><i class="hi" id="hi14"></i>
+        <div><svg class="ico"><use href="#i-calendar"/></svg>Nouvelle visite</div>
+        <div id="mo14"><svg class="ico"><use href="#i-handshake"/></svg>Nouvelle offre</div>
+        <div><svg class="ico"><use href="#i-file"/></svg>Avenant</div>
+        <div><svg class="ico"><use href="#i-down"/></svg>Baisse de prix</div>
+      </div>
+      <div class="card form" id="form14">
+        <div class="card-h"><svg class="ico"><use href="#i-handshake"/></svg>Nouvelle offre d’achat<span class="timer" id="tm14"><svg class="ico"><use href="#i-clock"/></svg><span id="tm14n">0:00</span></span></div>
+        <div class="fb">
+          <div class="in2" id="f14a"><b>Prix de vente</b><span id="f14an"></span></div>
+          <div class="in2" id="f14b"><b>Honoraires</b><span id="f14bn"></span></div>
+          <div class="in2" id="f14c"><b>Date de validité</b><span id="f14cn"></span></div>
+        </div>
+        <div class="btn sendb" id="send14"><svg class="ico"><use href="#i-send"/></svg>Envoyer pour signature</div>
+      </div>
+      <svg class="plane" id="plane14" viewBox="0 0 24 24"><use href="#i-send" class="ico"/><path d="M21 3 3 10.5l7 3 3 7z" fill="#3300FF"/><path d="m10 13.5 4-4" stroke="#fff" stroke-width="1.6"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ 15 : compromis ============ -->
+  <section class="scene bg-soft" id="s15">
+    <div class="cam" id="c15">
+      <div class="tx" style="left:120px;top:110px">
+        <div class="mask"><span class="eb"><span class="n">15</span>Compromis de vente</span></div>
+        <div class="h sm"><div class="mask"><span class="ln">Un compromis fiable</span></div><div class="mask"><span class="ln hl">en moins de 2 min.</span></div></div>
+      </div>
+      <div class="att" id="att15">
+        <span class="label"><svg class="ico"><use href="#i-file"/></svg>Titre de propriété</span>
+        <span class="label"><svg class="ico"><use href="#i-zap"/></svg>Diagnostics (DDT)</span>
+        <span class="label"><svg class="ico"><use href="#i-building"/></svg>Règlement de copropriété</span>
+        <span class="label"><svg class="ico"><use href="#i-news"/></svg>3 derniers PV d’AG</span>
+        <span class="label"><svg class="ico"><use href="#i-euro"/></svg>Appels de charges</span>
+        <span class="label"><svg class="ico"><use href="#i-map"/></svg>Plans &amp; permis</span>
+      </div>
+      <div class="btn annex" id="anx15"><svg class="ico"><use href="#i-clip"/></svg>Annexer tout le dossier</div>
+      <div class="stack" id="stk15">
+        <div class="pg" id="pg15c"></div><div class="pg" id="pg15b"></div>
+        <div class="pg main" id="pg15">
+          <h4>Compromis de vente</h4><div class="meta">Maison d’architecte · 685 000 € · Lyon 6e</div>
+          <div class="sec"><b>Les parties</b><i style="width:92%"></i><i style="width:76%"></i></div>
+          <div class="sec"><b>Désignation du bien</b><i style="width:88%"></i><i style="width:94%"></i><i style="width:60%"></i></div>
+          <div class="sec"><b>Prix et conditions</b><i style="width:82%"></i><i style="width:70%"></i></div>
+          <div class="sec"><b>Conditions suspensives</b><i style="width:90%"></i><i style="width:66%"></i></div>
+          <div class="sec"><b>Annexes</b><i style="width:0" id="ax15"></i></div>
+          <div class="tag ok" id="ok15" style="position:absolute;left:46px;bottom:40px;height:46px;font-size:18px"><svg class="ico"><use href="#i-check"/></svg>Juridiquement fiable · accepté par les notaires</div>
+        </div>
+      </div>
+      <div class="timer toast" id="tm15"><span class="ibox b"><svg class="ico"><use href="#i-clock"/></svg></span><div><b id="tm15n" style="font:700 40px/1 var(--ft);font-variant-numeric:tabular-nums">0:00</b><small>pour tout le compromis</small></div></div>
+      <div class="mob" id="mob15"><span class="tag dark" style="height:50px;font-size:18px"><svg class="ico"><use href="#i-phone"/></svg>Aussi sur mobile</span><span class="tag grad" style="height:50px;font-size:18px"><svg class="ico"><use href="#i-star"/></svg>Les seuls à le faire</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 16 : SRU & notaires ============ -->
+  <section class="scene bg-dark on-dark" id="s16">
+    <div class="cam" id="c16">
+      <div class="tx" style="left:110px;top:120px">
+        <div class="mask"><span class="eb"><span class="n">16</span>Notification SRU &amp; notaires</span></div>
+        <div class="h sm"><div class="mask"><span class="ln">Recommandés, notaires&#8239;:</span></div><div class="mask"><span class="ln hl">tout part en 1 clic.</span></div></div>
+      </div>
+      <svg class="net" id="net16" viewBox="0 0 1920 1080" style="position:absolute;inset:0"></svg>
+      <div class="env" id="env16"><div class="bd"><i class="fl"></i><span class="tag" style="background:#fff;color:var(--blue)"><svg class="ico"><use href="#i-lock"/></svg>LRE · Notification SRU</span></div></div>
+      <div class="who" id="w16a" style="left:110px;top:430px"><span class="avatar" style="background:#E0219B">CM</span><div>Claire Martin<small>Acquéreur</small></div><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+      <div class="who" id="w16b" style="left:110px;top:560px"><span class="avatar" style="background:#FF5A36">TM</span><div>Thomas Martin<small>Acquéreur</small></div><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+      <div class="cal16" id="cal16"><div><small>Jeu.</small>12</div><div class="d1"><small>Ven.</small>13</div><div><small>Sam.</small>14</div><div><small>…</small>J+10</div><span class="tag w" style="align-self:center;margin-left:10px;height:44px;font-size:18px">Le délai démarre dès demain</span></div>
+      <div class="card folder" id="fold16"><h5><span class="ibox b"><svg class="ico"><use href="#i-folder"/></svg></span>Dossier notaires</h5>
+        <div class="fi"><span class="ibox"><svg class="ico"><use href="#i-mail"/></svg></span>Courrier d’accompagnement<span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+        <div class="fi"><span class="ibox"><svg class="ico"><use href="#i-file"/></svg></span>Compromis complet<span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+        <div class="fi"><span class="ibox"><svg class="ico"><use href="#i-pen"/></svg></span>Signatures + dossier de preuve<span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+        <div class="fi" style="border:0"><span class="ibox"><svg class="ico"><use href="#i-shield"/></svg></span>Notifications SRU + preuves<span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+      </div>
+      <div class="who" id="w16c" style="left:1500px;top:380px"><span class="avatar" style="background:#3300FF">MD</span><div>Me Durand<small>Notaire vendeur</small></div><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+      <div class="who" id="w16d" style="left:1500px;top:640px"><span class="avatar" style="background:#5B4BFF">MP</span><div>Me Petit<small>Notaire acquéreur</small></div><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+    </div>
+  </section>
+
+  <!-- ============ 17 : automatisations ============ -->
+  <section class="scene bg-dark on-dark" id="s17">
+    <div class="cam" id="c17">
+      <svg class="net" id="net17" viewBox="0 0 1920 1080" style="position:absolute;inset:0"></svg>
+      <i class="orbit" id="ob17a" style="width:520px;height:520px;margin:-260px"></i><i class="orbit" id="ob17b" style="width:820px;height:820px;margin:-410px"></i>
+      <div id="pl17"></div>
+      <div id="sc17"></div>
+      <div class="hub" id="hub17"><svg><use href="#logo"/></svg></div>
+      <div class="tx" style="left:110px;top:110px">
+        <div class="mask"><span class="eb"><span class="n">17</span>Automatisations</span></div>
+        <div class="h sm"><div class="mask"><span class="ln">Tout ce que vous n’avez</span></div><div class="mask"><span class="ln hl">jamais le temps de faire.</span></div></div>
+      </div>
+      <div class="big" id="big17"><b class="hl" id="big17n">0</b><span>scénarios activés automatiquement.<br>Vous n’avez rien à faire.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 18 : reporting ============ -->
+  <section class="scene bg-soft" id="s18">
+    <div class="cam" id="c18">
+      <div class="tx" style="left:120px;top:300px">
+        <div class="mask"><span class="eb"><span class="n">18</span>Reporting</span></div>
+        <div class="h sm"><div class="mask"><span class="ln">Toute votre production,</span></div><div class="mask"><span class="ln hl">en temps réel.</span></div></div>
+        <div class="sub" style="max-width:560px">CA vente et location, actions de l’équipe&#8239;: des tableaux de bord détaillés.</div>
+      </div>
+      <div class="card dash" id="dash18">
+        <div class="kpis">
+          <div class="kpi"><b>CA vente</b><span id="k18a">0 €</span><em>+18 %</em></div>
+          <div class="kpi"><b>CA location</b><span id="k18b">0 €</span><em>+9 %</em></div>
+          <div class="kpi"><b>Mandats</b><span id="k18c">0</span><em>+12</em></div>
+          <div class="kpi"><b>Visites</b><span id="k18d">0</span><em>+46</em></div>
+        </div>
+        <div class="chart"><h6>Honoraires encaissés · 2026</h6><svg id="ch18" viewBox="0 0 960 260" width="960" height="260" style="position:absolute;left:20px;top:56px"></svg></div>
+        <div class="team"><h6>Équipe</h6><div id="team18"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 19 : TRACFIN ============ -->
+  <section class="scene bg-dark on-dark" id="s19">
+    <div class="cam" id="c19">
+      <i class="rr" style="width:380px;height:380px;margin:-190px"></i><i class="rr" style="width:580px;height:580px;margin:-290px"></i><i class="rr" style="width:760px;height:760px;margin:-380px"></i>
+      <i class="radar" id="rad19"></i>
+      <svg class="shield" id="sh19" viewBox="0 0 24 24"><path d="M12 2.5 4 5.6v6.1c0 5.1 3.5 8.2 8 9.3 4.5-1.1 8-4.2 8-9.3V5.6z" fill="url(#gGrad)"/><path d="m8.6 11.8 2.4 2.4 4.5-4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="tx" style="left:110px;top:300px">
+        <div class="mask"><span class="eb"><span class="n">19</span>TRACFIN intégré <span class="soon">Bientôt</span></span></div>
+        <div class="h sm"><div class="mask"><span class="ln">Alerté seulement</span></div><div class="mask"><span class="ln hl">quand il le faut.</span></div></div>
+        <div class="sub" style="max-width:600px">Intégré à tous vos processus. Inutile d’y penser le reste du temps.</div>
+      </div>
+      <div class="card alert" id="al19"><span class="ibox"><svg class="ico"><use href="#i-alert"/></svg></span><div>Vigilance TRACFIN<small>Justificatif d’origine des fonds à compléter</small></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 20 : formation loi ALUR ============ -->
+  <section class="scene bg-blue on-blue" id="s20">
+    <div class="cam" id="c20">
+      <div class="tx" style="left:110px;top:300px">
+        <div class="mask"><span class="eb"><span class="n">20</span>Formation loi ALUR <span class="soon" style="background:#fff;color:var(--blue)">Bientôt</span></span></div>
+        <div class="h sm"><div class="mask"><span class="ln">Votre équipe formée,</span></div><div class="mask"><span class="ln hl-w">même sur mobile.</span></div></div>
+        <div class="sub" style="max-width:600px">Temps passé, progression, assiduité et tableau de bord dirigeant.</div>
+      </div>
+      <div class="ring" id="ring20"><svg viewBox="0 0 420 420" width="420" height="420"><circle cx="210" cy="210" r="186" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="22"/><circle id="ring20c" cx="210" cy="210" r="186" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round" transform="rotate(-90 210 210)"/></svg><b id="ring20n">0 h</b><small>sur 14 h cette année</small></div>
+      <div class="mods20" id="mods20">
+        <div class="m20"><span class="ibox b"><svg class="ico"><use href="#i-book"/></svg></span><div>Déontologie<small>2 h · terminé</small></div><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+        <div class="m20"><span class="ibox b"><svg class="ico"><use href="#i-shield"/></svg></span><div>Lutte anti-blanchiment<small>2 h · terminé</small></div><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+        <div class="m20"><span class="ibox b"><svg class="ico"><use href="#i-users"/></svg></span><div>Non-discrimination<small>2 h · terminé</small></div><span class="chk"><svg class="ico"><use href="#i-check"/></svg></span></div>
+        <div class="m20"><span class="ibox b"><svg class="ico"><use href="#i-file"/></svg></span><div>Droit des contrats<small>8 h · en cours</small></div><span class="chk" style="background:var(--warn)"><svg class="ico"><use href="#i-clock"/></svg></span></div>
+      </div>
+      <div class="devices" id="dev20"><span class="tag w" style="height:48px;font-size:19px"><svg class="ico"><use href="#i-phone"/></svg>Mobile</span><span class="tag w" style="height:48px;font-size:19px"><svg class="ico"><use href="#i-monitor"/></svg>Ordinateur</span><span class="tag w" style="height:48px;font-size:19px"><svg class="ico"><use href="#i-chart"/></svg>Suivi dirigeant</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 21 : fin ============ -->
+  <section class="scene bg-dark on-dark" id="s21">
+    <div class="grid-bg" id="g21"></div>
+    <div class="cam" id="c21">
+      <svg class="logo-ic" id="endIc" viewBox="0 0 512 512">
+        <g id="eRed"><g transform="translate(308 204.7) rotate(135)"><rect x="-146.7" y="-224.4" width="293.5" height="448.8" rx="146.7" fill="url(#gRed)"/></g></g>
+        <g id="eBlue"><g transform="translate(204.2 308.4) rotate(135)"><rect x="-146.7" y="-224.4" width="293.5" height="448.8" rx="146.7" fill="url(#gBlue)"/></g></g>
+      </svg>
+      <div class="wm-mask" id="wm21" style="position:absolute;overflow:hidden"><img class="wmark" id="wm21i" src="assets/wordmark-blanc.png" alt="Realty"></div>
+      <div class="t1"><div class="mask"><div class="ln" id="t21a">Le logiciel immobilier <span class="hl">tout-en-un.</span></div></div></div>
+      <div class="t2"><div class="mask"><div class="ln" id="t21b">Tout inclus · 99&nbsp;€&nbsp;HT/mois · 5 utilisateurs</div></div></div>
+      <div class="btn w cta" id="cta21" style="height:76px;padding:0 40px;font-size:26px">Réserver une démo<svg class="ico"><use href="#i-arrow"/></svg></div>
+      <div class="url" id="url21">realty.fr</div>
+    </div>
+  </section>
+
+</div><!-- /bump -->
+
+<!-- calques de transition -->
+<div class="ov" id="pw" style="inset:0">
+  <i class="pill" id="pwA" style="background:linear-gradient(90deg,#3300FF,#5a33ff)"></i>
+  <i class="pill" id="pwB" style="background:linear-gradient(90deg,#FF5A36,#E0219B 50%,#3300FF)"></i>
+</div>
+<svg class="cursor" id="cur" viewBox="0 0 24 24"><use href="#i-cursor"/></svg>
+<i class="ripple" id="rip"></i>
+<i id="flash"></i>
+</div>
+<div id="hud"></div>
+
+<script src="../../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../../node_modules/gsap/dist/CustomEase.min.js"></script>
+<script src="../../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="../_shared/engine.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
