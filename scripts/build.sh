@@ -13,7 +13,7 @@ case "$COMP" in
   google-ads) NAME=premiere-immo-google-ads; POSTER=8.78 ;;
   facebook)   NAME=premiere-immo-facebook;   POSTER=2.4 ;;
   agence)     NAME=premiere-immo-agence-publicite; POSTER=9 ;;
-  realty)     NAME=realty-bande-demo; POSTER=107.5 ;;
+  realty)     NAME=realty-bande-demo; POSTER=111.6 ;;
   *) echo "composition inconnue : $COMP" >&2; exit 1 ;;
 esac
 

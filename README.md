@@ -4,7 +4,7 @@ Vidéos animées pour **premiere-immo.fr**, rendues image par image à partir de
 
 | Vidéo | Durée | Fichiers |
 |---|---|---|
-| **Realty · bande démo du logiciel** pour la page d'accueil de realty.fr | 1 min 50 | [`video/realty/realty-bande-demo.mp4`](video/realty/realty-bande-demo.mp4) · [`…-web.mp4`](video/realty/realty-bande-demo-web.mp4) (16 Mo, pour la page d'accueil) · [`…-muet.mp4`](video/realty/realty-bande-demo-muet.mp4) · [`poster.jpg`](video/realty/poster.jpg) |
+| **Realty · bande démo du logiciel** pour la page d'accueil de realty.fr | 1 min 54 | [`video/realty/realty-bande-demo.mp4`](video/realty/realty-bande-demo.mp4) · [`…-web.mp4`](video/realty/realty-bande-demo-web.mp4) (16 Mo, pour la page d'accueil) · [`…-muet.mp4`](video/realty/realty-bande-demo-muet.mp4) · [`poster.jpg`](video/realty/poster.jpg) |
 | **Agence de publicité immobilière** pour la page `/agence-publicite-immobiliere` | 36 s | [`video/agence/premiere-immo-agence-publicite.mp4`](video/agence/premiere-immo-agence-publicite.mp4) · [`…-muet.mp4`](video/agence/premiere-immo-agence-publicite-muet.mp4) · [`poster.jpg`](video/agence/poster.jpg) |
 | **Publicité Facebook immobilier** pour la page `/publicite-facebook-immobilier` (avec voix off) | 32 s | [`video/facebook/premiere-immo-facebook.mp4`](video/facebook/premiere-immo-facebook.mp4) · [`…-sans-voix.mp4`](video/facebook/premiere-immo-facebook-sans-voix.mp4) · [`…-muet.mp4`](video/facebook/premiere-immo-facebook-muet.mp4) · [`poster.jpg`](video/facebook/poster.jpg) |
 | **Google Ads immobilier** pour la page `/google-ads-immobilier` | 32 s | [`video/google-ads/premiere-immo-google-ads.mp4`](video/google-ads/premiere-immo-google-ads.mp4) · [`…-muet.mp4`](video/google-ads/premiere-immo-google-ads-muet.mp4) · [`poster.jpg`](video/google-ads/poster.jpg) |
@@ -41,36 +41,37 @@ La page est responsive (testée à 390 px de large), lisible sans JavaScript, et
 
 ## Realty · bande démo du logiciel : le film, plan par plan
 
-Bande démo de 1 min 50 pour la page d'accueil de **realty.fr**. Elle présente les 20 fonctionnalités **dans l'ordre fourni**, sans effet « diapositive » : chaque écran naît du précédent (pilule du logo qui balaie l'écran, plongée dans un îlot ou dans l'écran du téléphone, iris qui s'ouvre sur un marqueur, fiche qui glisse d'une scène à l'autre, cadre photo qui devient le bouton « Démarrer la commercialisation », stores, poussées, moyeu qui envahit l'écran…).
+Bande démo de 1 min 54 pour la page d'accueil de **realty.fr**. Les 20 fonctionnalités sont présentées **dans l'ordre fourni**, en **un seul plan continu** : il n'y a pas de « diapositives » qui entrent et sortent, ce sont les objets eux-mêmes qui passent d'une fonctionnalité à la suivante (l'icône devient le logo de l'application, la carte rentre dans le téléphone, la même fiche du bien traverse quatre fonctionnalités, le rapport devient le téléphone du mandat, la photo devient le bouton…). Le fond passe du lavande au violet en s'ouvrant en cercle depuis l'objet que l'on touche, puis se referme sur l'objet suivant.
 
-La charte est celle du site et de la refonte en cours : encre `#141B33`, violet Realty `#3300FF`, blanc, dégradé du logo (`#FF5A36` → `#E0219B` → `#3300FF`), titres en Bricolage Grotesque, textes en Inter. Le logo est redessiné en vecteur à partir du fichier officiel (deux pilules à 135°) pour être animé, le logotype vient de `logo-realty-blanc.png` du site.
+Charte de la vidéo « logiciel immobilier » de Realty : fond lavande à anneaux concentriques, cartes blanches, texte encre `#141B33`, mots clés dans un **badge violet** `#3300FF` (badge blanc sur fond violet), police **Manrope**. Aucun dégradé sur le texte : le dégradé du logo n'apparaît que dans le logo et les illustrations.
 
-| Temps | Fonctionnalité | Animation |
+| Temps | Fonctionnalité | Ce qui se passe |
 |---|---|---|
-| 0–4,75 s | Intro | Les deux pilules du logo se rejoignent, le logotype sort de l'icône, « Le logiciel immobilier qui travaille pour vous. » La pilule violette balaie l'écran |
-| 4,75–9,9 s | 01 · Cartes stratégiques | Zoom arrière depuis l'îlot le plus chaud : carte inclinée en 3D, turnover en couleurs, bulles (turnover, ventes par an, honoraires à prendre), îlots attribués à Julie, Marc et Sofia |
-| 9,9–15 s | 02 · Prospection terrain | Plongée dans l'îlot → téléphone géolocalisé, saisie « Famille Lefèvre », projet « Vente », puis frise des relances automatiques (email, SMS, tâche, relance) |
-| 15–19,5 s | 03 · Prospection cadastrale | On entre dans l'écran : parcelles qui se tracent, radar, 7 calques qui s'allument (DPE, pige, confrères, estimations, anciens clients, acquéreurs revendeurs, SCI), compteur de futurs vendeurs |
-| 19,5–24,3 s | 04 · Saisie assistée | Iris sur un marqueur : l'épingle tombe, les données officielles volent jusqu'à la fiche (adresse, cadastre, copropriété, DPE, Géorisques) |
-| 24,3–29,7 s | 05 · Magic Scan | La fiche glisse vers la droite ; documents jetés en vrac, faisceau de scan, rangement et renommage, puis chaque document remplit la fiche |
-| 29,7–34,8 s | 06 · Saisie par IA | Pilule du logo → orbe vocal, photos et documents aspirés, la fiche du bien naît de l'orbe, texte pub tapé, mandat prêt |
-| 34,8–38,9 s | 07 · Estimations | Flash sur le prix → compteur 685 000 €, fourchette, 4 méthodes activées, rapports en éventail 3D |
-| 38,9–44,4 s | 08 · Mandat sur mobile | Le rapport devient le téléphone : chrono 00:28, champs, signature tracée, SMS + email, tampon « Signé » |
-| 44,4–51,6 s | 09 · Valorisation | On plonge dans l'écran : retouche (avant/après au curseur, soleil), home staging, visite virtuelle 360°, vidéo immersive (timeline, voix off, musique) |
-| 51,6–59,3 s | 10 · Commercialisation | Le cadre devient le bouton, clic : 9 actions jaillissent en étoile (remerciements, extranet, équipe, acquéreurs, Click & Visit, portails, site, voisins, réseaux sociaux). Pause café, « Le lendemain… », 3 visites programmées |
-| 59,3–64 s | 11 · Retours de visite | Poussée : notes par critère, avis positifs et négatifs, compte rendu partagé au vendeur |
-| 64–69,1 s | 12 · Click & Visit | Stores : bouton « Planifier une visite », agendas du conseiller et des habitants croisés, créneau commun, SMS de confirmation, bon de visite |
-| 69,1–74 s | 13 · Site web inclus | Pilule : site d'agence, module glissé vers le haut, couleurs qui changent, SEO, GEO, Ads, nom de domaine |
-| 74–78 s | 14 · Offre d'achat | Actions → Nouvelle offre, prix, honoraires, validité, chrono 0:47, envoi pour signature |
-| 78–82,4 s | 15 · Compromis | Compromis qui se rédige, tout le dossier annexé en 1 clic, chrono 1:52, « Aussi sur mobile · Les seuls à le faire » |
-| 82,4–87,5 s | 16 · SRU & notaires | Le compromis se plie dans l'enveloppe : LRE aux acquéreurs, délai dès demain, dossier complet aux deux notaires |
-| 87,5–93,6 s | 17 · Automatisations | Moyeu Realty, 9 scénarios reliés par des impulsions lumineuses, « Des centaines de scénarios » |
-| 93,6–97,6 s | 18 · Reporting | Le moyeu blanc envahit l'écran : chiffres d'affaires, courbe des honoraires, équipe |
-| 97,6–100,6 s | 19 · TRACFIN (bientôt) | Bouclier et radar, alerte de vigilance |
-| 100,6–103,5 s | 20 · Formation loi ALUR (bientôt) | Anneau de progression, modules, mobile et suivi dirigeant |
-| 103,5–110 s | Fin | Logo, « Le logiciel immobilier tout-en-un. », tout inclus 99 € HT/mois · 5 utilisateurs, « Réserver une démo », realty.fr |
+| 0–3,7 s | Ouverture | Fond violet, dix outils flottent : « Une agence, c'est **dix outils** à jongler. » Ils sont aspirés au centre, flash blanc |
+| 3,7–7,6 s | Logo | Les deux pilules se rejoignent, le logotype sort de l'icône : « Le logiciel immobilier que vous **attendiez** », « Logiciel, site web, application mobile, pige et contrats : une seule offre. » |
+| 7,6–12,9 s | Cartes stratégiques | L'icône vole jusqu'au logo de l'application, qui s'ouvre autour d'elle. La carte s'incline en 3D, les îlots chauffent (turnover, ventes, honoraires), Julie, Marc et Sofia reçoivent leurs îlots |
+| 12,9–18,4 s | Prospection terrain | On fonce dans la carte, qui devient celle du téléphone : saisie « Famille Lefèvre », projet « Vente », les relances sortent du téléphone (J+1, J+15, M+2, M+6) |
+| 18,4–23,1 s | Prospection cadastrale | On plonge dans la carte du téléphone : parcelles, radar, 7 calques qui s'allument, 137 futurs vendeurs |
+| 23,1–27,6 s | Saisie assistée | Un marqueur s'ouvre en fiche du bien ; les données officielles arrivent depuis leurs sources (BAN, cadastre, registre, ADEME, Géorisques) |
+| 27,6–33 s | Magic Scan | La même fiche se range à droite ; documents en vrac, scan, rangement, la fiche se remplit (42 champs) |
+| 33–37,7 s | Saisie par IA | Clic sur le micro de la fiche : le fond devient violet. Dictée, photos aspirées par l'orbe, la fiche se retourne en annonce générée |
+| 37,7–42,2 s | Estimations | Le fond se referme sur le prix : 685 000 €, fourchette, 4 méthodes, la fiche devient le rapport et ses pages s'ouvrent en éventail |
+| 42,2–47,8 s | Mandat sur mobile | Le rapport devient le téléphone : chrono 00:28, signature, SMS et email, tampon « Signé » |
+| 47,8–55 s | Valorisation | L'écran du téléphone s'agrandit en cadre photo : retouche, home staging, visite 360°, vidéo immersive |
+| 55–63,3 s | Commercialisation | Le cadre devient le bouton ; clic : le fond s'ouvre en violet, 9 actions en étoile. Pause café, « Le lendemain… », 3 visites |
+| 63,3–68 s | Retours de visite | La 1re visite devient l'avis de visite (notes, commentaires, compte rendu au vendeur) |
+| 68–73 s | Click & Visit | L'avis devient l'annonce : « Planifier une visite », agendas croisés, SMS, bon de visite |
+| 73–77,8 s | Site web inclus | L'annonce devient le site d'agence (fond violet) : module glissé, couleurs, SEO, GEO, Ads, domaine |
+| 77,8–82 s | Offre d'achat | Le site redevient l'application : Actions → Nouvelle offre, prix, honoraires, validité, envoi |
+| 82–86,3 s | Compromis | L'offre devient le compromis, tout le dossier est annexé en 1 clic, chrono 1:52 |
+| 86,3–91 s | SRU et notaires | Le compromis se plie dans l'enveloppe : recommandé aux acquéreurs, dossier complet aux notaires |
+| 91–97,3 s | Automatisations | Tout se resserre en moyeu, le fond devient violet, 9 scénarios reliés par des impulsions |
+| 97,3–101,4 s | Reporting | Le moyeu devient le tableau de bord : chiffres d'affaires, honoraires, équipe |
+| 101,4–104,3 s | TRACFIN (bientôt) | Un scan parcourt le tableau de bord, bouclier, alerte de vigilance |
+| 104,3–107,2 s | Formation ALUR (bientôt) | Le tableau de bord devient le téléphone : 11 h sur 14 h, modules |
+| 107,2–114 s | Fin | Le fond violet se referme en logo : « Le logiciel immobilier que vous **attendiez** », tout inclus 99 € HT/mois · 5 utilisateurs, « Réserver une démo », realty.fr |
 
-**Son** : musique électronique lumineuse à 120 BPM (la m – fa – do – sol), avec un premier temps calé sur la grande transition de l'intro, une relance au clic « Démarrer la commercialisation », une vraie pause café (piano électrique seul) et un impact final en do majeur. Plus de 250 bruitages posés sur les repères de la timeline : balayages, clics, frappe, notifications, scan, stylo, tampon, compteurs, alertes. Tout est synthétisé par `scripts/score_realty.py` (aucun échantillon externe).
+**Son** : musique électronique lumineuse à 120 BPM (la m – fa – do – sol) : montée sous les dix outils, boum sur le logo, groove qui démarre quand l'application apparaît, relance au clic « Démarrer la commercialisation », pause café au piano électrique, impact final en do majeur. Environ 280 bruitages posés sur les repères de la timeline (ouvertures et fermetures du fond, transformations, badges, clics, frappe, notifications, scan, stylo, tampon, compteurs). Tout est synthétisé par `scripts/score_realty.py`, sans échantillon externe.
 
 Photos des biens : Unsplash (voir « Crédits et droits »). Les noms, adresses, chiffres et interfaces sont des illustrations.
 
@@ -173,7 +174,7 @@ landing/                   landing page autonome : index.html · css/ · js/ · 
 compositions/
   _shared/engine.js        moteur commun : timeline GSAP en pause, révélations de texte, mesures, caméra, aperçu
   _shared/assets/          logo du site
-  realty/                  bande démo Realty : index.html · styles.css · main.js · assets/ (logotype, photos des biens)
+  realty/                  bande démo Realty : index.html · styles.css · main.js · assets/ (logotypes, photos des biens)
   agence/                  index.html · styles.css · main.js
   facebook/                index.html · styles.css · main.js · assets/ (photos du fil Facebook) · voix/ (voix off)
   google-ads/              index.html · styles.css · main.js
@@ -231,7 +232,7 @@ Dans l'aperçu : `espace` met en pause, `←` et `→` reculent ou avancent d'un
 - Voix off de la vidéo Facebook : **voix de synthèse** générée avec [Kyutai TTS 1.6B](https://huggingface.co/kyutai/tts-1.6b-en_fr) (modèle de Kyutai, laboratoire français, poids sous licence CC-BY 4.0), voix « developpeuse-3 » du dépôt [kyutai/tts-voices](https://huggingface.co/kyutai/tts-voices), enregistrée par Kyutai et publiée sous licence CC0. Usage commercial autorisé. Bonne pratique : indiquer « voix générée par IA » dans la description de la vidéo.
 - Photos des vidéos Facebook et « agence » (la vidéo « agence » reprend la photo de la maison dans sa maquette Facebook) : [Unsplash](https://unsplash.com/license), licence Unsplash (usage commercial gratuit, sans autorisation ni mention obligatoire). Fichiers d'origine : maison `images.unsplash.com/photo-1523217582562-09d0def993a6`, plage `photo-1507525428034-b723cf961d3e`, chien `photo-1543466835-00a7907e9de1`, fleurs `photo-1490750967868-88aa4486c946`, montagne `photo-1464822759023-fed622ff2c3b`. Aucune photo ne montre de visage.
 - Logo, textes et chiffres de Première Immo : issus du site (projet Framer).
-- Bande démo Realty : police Bricolage Grotesque (SIL Open Font License, via Fontsource). Logo, couleurs, offre « 99 € HT/mois, 5 utilisateurs » et liste des fonctionnalités : issus du site realty.fr, de la refonte en cours et du brief. Photos des biens : [Unsplash](https://unsplash.com/license), licence Unsplash ; fichiers d'origine `photo-1600585154340-be6161a56a0c` (maison bois), `photo-1600596542815-ffad4c1539a9` (villa piscine), `photo-1600607687939-ce8a6c25118c` (salon design), `photo-1560448204-e02f11c3d0e2` (salon lumineux), `photo-1586023492125-27b2c045efd7` (fauteuil), `photo-1502672260266-1c1ef2d93688` (salon plantes), plus la maison déjà utilisée dans la vidéo Facebook.
+- Bande démo Realty : police Manrope (SIL Open Font License, via Fontsource). Logo, couleurs, offre « 99 € HT/mois, 5 utilisateurs » et liste des fonctionnalités : issus du site realty.fr, de la refonte en cours et du brief. Photos des biens : [Unsplash](https://unsplash.com/license), licence Unsplash ; fichiers d'origine `photo-1600585154340-be6161a56a0c` (maison bois), `photo-1600596542815-ffad4c1539a9` (villa piscine), `photo-1600607687939-ce8a6c25118c` (salon design), `photo-1560448204-e02f11c3d0e2` (salon lumineux), `photo-1586023492125-27b2c045efd7` (fauteuil), `photo-1502672260266-1c1ef2d93688` (salon plantes), plus la maison déjà utilisée dans la vidéo Facebook.
 - Musique et effets sonores : **entièrement synthétisés par code**, sans aucun échantillon externe, donc libres de droits.
 
 ## À savoir

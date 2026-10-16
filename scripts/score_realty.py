@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """
-Bande-son de la bande démo Realty (110 s) — 100 % synthétisée, sans échantillon.
+Bande-son de la bande démo Realty (114 s) — 100 % synthétisée, sans échantillon.
 
   python3 scripts/score_realty.py   → build/realty/audio.wav
 
-Électro « corporate » lumineuse à 120 BPM, en la mineur / do majeur (la m – fa – do – sol),
-calée pour que le premier temps tombe sur la grande transition de l'intro (4,75 s) :
-  0–4,75     intro : nappe qui s'ouvre, arpège discret, montée → boum sur la pilule du logo
-  4,75–29,75 prospection et saisie : kick, basse en contretemps, charleston ; claps dès 12,75 s
-  29,75–52,75 IA, estimation, mandat, valorisation : arpège plus brillant, stabs
-  52,75–56,25 « Démarrer la commercialisation » : le clic relance tout (impact, crash)
-  56,25–59,25 pause café : la batterie s'arrête, piano électrique et nappe seuls, puis montée
-  59,25–103,25 vente, site, compromis, automatisations : groove complet
-  103,55     fin : impact, accord de do majeur 9 tenu, cloche, fondu
+Électro « corporate » lumineuse à 120 BPM, en la mineur / do majeur (la m – fa – do – sol) :
+  0–3,7      dix outils : nappe, pulsation étouffée et montée → flash
+  3,7–8      logo : boum de sub, cloche, arpège discret qui s'installe
+  8–33       l'application apparaît : kick, basse en contretemps, charleston ; claps dès 16 s
+  33–56,5    IA, estimation, mandat, valorisation : arpège plus brillant, stabs
+  56,5–60    « Démarrer la commercialisation » : le clic relance tout (impact, crash)
+  60–62      pause café : la batterie s'arrête, piano électrique seul, puis relance
+  62–107     vente, site, compromis, automatisations (charleston ouverte dès 91,5 s)
+  107,95     fin : impact, accord de do majeur 9 tenu, cloche, fondu
 Les bruitages (transitions, clics, notifications, signature, tampon…) sont posés sur les
 repères exportés par la timeline (build/realty/cues.json).
 """
@@ -30,10 +30,10 @@ S.setup(DUR, seed=2026)
 N, ns, tt = S.N, S.ns, S.tt
 tsec = tt(N)
 
-G0 = 0.75                       # décalage de la grille : un premier temps tombe à 4,75 s
-DROP, CLAPS, LIFT2, LAUNCH = 4.75, 12.75, 29.75, 52.75
-CAFE, CAFE_END = 56.25, 59.25
-AUTO, BREAK, FINAL = 87.75, 103.25, 103.55
+G0 = 0.0                        # grille à 120 BPM : le groove démarre quand l'application apparaît (8 s)
+DROP, CLAPS, LIFT2, LAUNCH = 8.0, 16.0, 33.0, 56.5
+CAFE, CAFE_END = 60.0, 62.0
+AUTO, BREAK, FINAL = 91.5, 107.0, 107.95
 OUTRO_END = FINAL + 4.0
 
 PROG = [(45, [57, 60, 64, 69]),   # la m
@@ -165,10 +165,10 @@ pad_gain = np.interp(tsec, [0, 3.0, DROP - 0.01, DROP, CAFE - 0.01, CAFE, CAFE_E
 pad *= (pad_gain * np.where(groove, sc, 1.0))[:, None] * 0.42
 
 # ---------------------------------------------------------------- arpège (pluck) avec écho ping-pong
-for k, t in enumerate(grid(2.75, BREAK, 0.25)):
+for k, t in enumerate(grid(4.0, BREAK, 0.25)):
     if t < DROP:
-        g = 0.1 + 0.12 * (t - 2.75) / 2.0
-    elif not in_groove(t) or t < 8.75:
+        g = 0.08 + 0.12 * (t - 4.0) / 4.0
+    elif not in_groove(t) or t < DROP + 4.0:
         continue
     else:
         g = 0.2 if t < LIFT2 else 0.27
@@ -189,13 +189,15 @@ for t in grid(AUTO, BREAK, 0.5):
         stabs_b.add(S.house_stab([m + 12 for m in chord_at(t)[1]]), t + 0.25, 0.75)
 
 # ---------------------------------------------------------------- piano électrique de la pause café
-for k, (t, notes) in enumerate([(CAFE + 0.05, [65, 69, 72, 76]), (CAFE + 1.0, [64, 67, 72, 76]), (CAFE + 2.0, [62, 65, 69, 72])]):
+for k, (t, notes) in enumerate([(CAFE + 0.45, [65, 69, 72, 76]), (CAFE + 1.0, [64, 67, 72, 76]), (CAFE + 1.5, [62, 65, 69, 72])]):
     keys_b.add(S.keys(notes, 0.9, 0.8, 1.6), t, 0.5, pan=(-0.2 + 0.2 * k))
 for t, notes in ((FINAL + 0.02, [60, 64, 67, 71, 74]),):
     keys_b.add(S.keys(notes, 3.5, 0.9, 1.4), t, 0.4)
 
 # ---------------------------------------------------------------- montées, boums
-fx.add(S.riser(3.4, tone=(52, 69)), DROP - 3.4, 0.2)
+fx.add(S.riser(3.0, tone=(50, 64)), 0.7, 0.14)               # montée sous les dix outils, jusqu'au flash
+fx.add(S.sub_drop(1.8, 180, 40), 3.7, 0.45)                # le logo apparaît
+fx.add(S.riser(2.4, tone=(52, 69)), DROP - 2.4, 0.16)
 fx.add(S.rev_cymbal(1.2), DROP - 1.2, 0.3)
 fx.add(S.sub_drop(2.0, 190, 38), DROP, 0.55)
 fx.add(S.rev_cymbal(0.9), LIFT2 - 0.9, 0.22)
@@ -369,6 +371,12 @@ SFX = {
     'voice': (voice, 0.2, 0.3),
     'cafe': (cafe, 0.3, 0.45),
     'draw': (draw, 0.15, 0.1),
+    'open': (lambda c: S.whoosh(0.85, 220, 3000, rumble=0.35), 0.26, 0.14),
+    'close': (lambda c: S.whoosh(0.8, 300, 3200, rumble=0.2, rev=True), 0.22, 0.12),
+    'badge': (lambda c: S.pop(760, 1500, 0.07), 0.12, 0.2),
+    'morph': (lambda c: S.whoosh(0.6, 450, 3400), 0.2, 0.1),
+    'flip': (lambda c: S.whoosh(0.3, 900, 4200), 0.22, 0.1),
+    'sweep': (draw, 0.12, 0.1),
 }
 missing = set()
 for c in CUES:
@@ -399,6 +407,6 @@ music *= gate[:, None]
 
 if os.environ.get('STEMS'):
     for name, x in (('batterie', drums.x * 0.6), ('basse', bass.x), ('nappe', pad), ('arpège', arp * 0.7), ('stabs', stabs * 0.7), ('effets', fx.x), ('réverb', wet)):
-        print(f'{name:10s}', ' '.join(f'{S.rms_db(x[ns(a):ns(b)]):6.1f}' for a, b in ((0, 4.75), (4.75, 30), (30, 56), (56, 59), (59, 103), (103.5, 110))))
+        print(f'{name:10s}', ' '.join(f'{S.rms_db(x[ns(a):ns(b)]):6.1f}' for a, b in ((0, 8), (8, 33), (33, 56), (60, 62), (62, 107), (108, 114))))
 
 S.mix_voice(COMP, music, fx.x, wet, fade_out=1.6)
